@@ -1,0 +1,59 @@
+/* Design tokens — ported from the approved prototype. */
+:root {
+  --font-display: "Space Grotesk", "Sora", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --accent: #e6926b;
+
+  --section-pad: clamp(72px, 9vw, 140px);
+  --gutter: clamp(20px, 5vw, 64px);
+  --maxw: 1180px;
+
+  --radius: 14px;
+  --radius-sm: 9px;
+  --radius-lg: 22px;
+
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+:root,
+[data-theme="dark"] {
+  --bg: #0a0c11;
+  --bg-grid: rgba(255,255,255,.03);
+  --panel: #10131a;
+  --panel-2: #161a23;
+  --panel-hover: #1b202b;
+  --border: rgba(255,255,255,.085);
+  --border-strong: rgba(255,255,255,.16);
+  --text: #e7ebf2;
+  --text-dim: #99a2b2;
+  --text-faint: #646d7d;
+  --link: color-mix(in oklab, var(--accent) 78%, white);
+  --accent-ink: #1a0c05;
+  --accent-soft: color-mix(in oklab, var(--accent) 16%, var(--bg));
+  --accent-line: color-mix(in oklab, var(--accent) 40%, transparent);
+  --shadow: 0 24px 60px -20px rgba(0,0,0,.7);
+  --shadow-sm: 0 8px 24px -12px rgba(0,0,0,.6);
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f7f7f4;
+  --bg-grid: rgba(10,12,16,.035);
+  --panel: #ffffff;
+  --panel-2: #f1f1ec;
+  --panel-hover: #f6f6f2;
+  --border: rgba(12,14,20,.10);
+  --border-strong: rgba(12,14,20,.20);
+  --text: #14171d;
+  --text-dim: #555c68;
+  --text-faint: #8a91a0;
+  --link: color-mix(in oklab, var(--accent) 72%, #3a1a0a);
+  --accent-ink: #1a0c05;
+  --accent-soft: color-mix(in oklab, var(--accent) 14%, var(--bg));
+  --accent-line: color-mix(in oklab, var(--accent) 45%, transparent);
+  --shadow: 0 24px 60px -26px rgba(20,30,50,.28);
+  --shadow-sm: 0 10px 28px -18px rgba(20,30,50,.25);
+  color-scheme: light;
+}

@@ -1,0 +1,13 @@
+{
+  "name": "naeem-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Build pipeline for the Naeem Portfolio WordPress theme.",
+  "scripts": {
+    "dev": "tailwindcss -i ./assets/src/tailwind.css -o ./assets/css/app.css --watch",
+    "build": "tailwindcss -i ./assets/src/tailwind.css -o ./assets/css/app.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.0"
+  }
+}
