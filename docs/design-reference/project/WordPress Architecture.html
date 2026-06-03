@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WordPress Theme Architecture — Naeem Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/theme.css?v=11" />
+<style>
+  body { padding-bottom: 80px; }
+  .doc-nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 16px var(--gutter);
+    background: color-mix(in oklab, var(--bg) 80%, transparent);
+    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .doc-nav .back { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-mono); font-size: 14px; color: var(--text-dim); transition: color .2s; }
+  .doc-nav .back:hover { color: var(--accent); }
+  .doc-nav .back svg { width: 16px; height: 16px; }
+  .doc-nav .tag { font-family: var(--font-mono); font-size: 12px; color: var(--text-faint); border: 1px solid var(--border); padding: 5px 11px; border-radius: 999px; }
+
+  .doc { max-width: 880px; margin-inline: auto; padding: clamp(40px, 7vw, 80px) var(--gutter) 0; }
+  .doc-hero h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(34px, 5vw, 54px); letter-spacing: -.03em; line-height: 1.04; margin: 14px 0 16px; text-wrap: balance; }
+  .doc-hero p { font-size: clamp(17px, 1.7vw, 20px); color: var(--text-dim); max-width: 60ch; margin: 0; text-wrap: pretty; }
+
+  .doc h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 3vw, 32px); letter-spacing: -.02em; margin: 0 0 6px; scroll-margin-top: 80px; }
+  .doc h3 { font-family: var(--font-display); font-weight: 600; font-size: 19px; letter-spacing: -.01em; margin: 26px 0 8px; }
+  .doc-section { padding-top: clamp(48px, 6vw, 72px); }
+  .doc-section > .kicker { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 10px; }
+  .doc p { color: var(--text-dim); font-size: 16.5px; margin: 12px 0; text-wrap: pretty; }
+  .doc p strong, .doc li strong { color: var(--text); font-weight: 600; }
+  .doc ul { color: var(--text-dim); font-size: 16.5px; padding-left: 22px; margin: 12px 0; display: flex; flex-direction: column; gap: 7px; }
+  .doc li { text-wrap: pretty; }
+  .doc a.inline { color: var(--link); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent-line); }
+
+  .verdict {
+    border: 1px solid var(--accent-line);
+    background: var(--accent-soft);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin: 18px 0;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .verdict .ico { width: 40px; height: 40px; border-radius: 10px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; flex-shrink: 0; }
+  .verdict .ico svg { width: 22px; height: 22px; }
+  .verdict h3 { margin: 2px 0 4px; font-size: 18px; }
+  .verdict p { margin: 0; color: var(--text); }
+
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .compare .col { border: 1px solid var(--border); border-radius: var(--radius); background: var(--panel); padding: 22px; }
+  .compare .col h4 { font-family: var(--font-mono); font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--text-dim); margin: 0 0 14px; display: flex; align-items: center; gap: 9px; }
+  .compare .col h4 .pick { font-size: 10px; color: var(--accent-ink); background: var(--accent); padding: 2px 8px; border-radius: 999px; }
+  .compare ul { margin: 0; font-size: 14.5px; }
+
+  pre {
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--text);
+    margin: 16px 0;
+  }
+  pre .c { color: var(--text-faint); }
+  pre .k { color: var(--accent); }
+  pre .s { color: color-mix(in oklab, var(--accent) 55%, var(--text)); }
+  pre .f { color: var(--link); }
+  code.inline { font-family: var(--font-mono); font-size: .9em; background: var(--panel-2); border: 1px solid var(--border); padding: 1px 7px; border-radius: 6px; color: var(--text); }
+
+  .tree { white-space: pre; }
+  .tree .d { color: var(--accent); }
+  .tree .cm { color: var(--text-faint); }
+
+  .steps { counter-reset: step; display: flex; flex-direction: column; gap: 14px; margin: 18px 0; }
+  .step { display: flex; gap: 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--panel); padding: 18px 20px; }
+  .step::before { counter-increment: step; content: counter(step); font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--accent); width: 30px; height: 30px; border-radius: 8px; background: var(--accent-soft); display: grid; place-items: center; flex-shrink: 0; }
+  .step .st-body { flex: 1; }
+  .step h3 { margin: 2px 0 4px; font-size: 17px; }
+  .step p { margin: 0; font-size: 15px; }
+  .step code.inline { font-size: 13px; }
+
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 0; }
+  .toc a { font-family: var(--font-mono); font-size: 13px; color: var(--text-dim); border: 1px solid var(--border); background: var(--panel); padding: 7px 13px; border-radius: 999px; transition: color .2s, border-color .2s; }
+  .toc a:hover { color: var(--accent); border-color: var(--accent-line); }
+
+  @media (max-width: 640px) { .compare { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="doc-nav">
+  <a class="back" href="Naeem Portfolio.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Back to portfolio
+  </a>
+  <span class="tag">Engineering handoff · v1</span>
+</nav>
+
+<div class="doc">
+  <div class="doc-hero">
+    <span class="eyebrow"><span class="num">DOC /</span> Theme architecture</span>
+    <h1>WordPress theme architecture &amp; handoff</h1>
+    <p>How this portfolio translates into a custom, production-ready WordPress theme — fully manageable from <code class="inline">wp-admin</code>, with no code edits to add a project or write a post.</p>
+    <div class="toc">
+      <a href="#recommendation">Recommendation</a>
+      <a href="#structure">File structure</a>
+      <a href="#content">Content modeling</a>
+      <a href="#customizer">Customizer</a>
+      <a href="#tailwind">Tailwind build</a>
+      <a href="#forms">Contact form</a>
+      <a href="#standards">Standards &amp; i18n</a>
+      <a href="#readme">Quick start</a>
+    </div>
+  </div>
+
+  <!-- recommendation -->
+  <section class="doc-section" id="recommendation">
+    <span class="kicker">01 — The call</span>
+    <h2>Classic theme + Tailwind</h2>
+    <div class="verdict">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div>
+        <h3>Recommendation: a custom classic theme (PHP templates + Tailwind).</h3>
+        <p>It gives Naeem full control over markup and the asset pipeline, maps cleanly onto the template hierarchy, and keeps the door open to register blocks later. A full FSE/block theme would trade that control for theme.json-driven editing he doesn't need for a single-author site.</p>
+      </div>
+    </div>
+    <div class="compare">
+      <div class="col">
+        <h4>Classic + Tailwind <span class="pick">CHOSEN</span></h4>
+        <ul>
+          <li>Total control over semantic markup &amp; ARIA</li>
+          <li>Tailwind compiled once, scoped, cached</li>
+          <li>Familiar PHP template hierarchy</li>
+          <li>Can still register Gutenberg blocks</li>
+          <li>Smallest runtime JS footprint</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Block theme (FSE)</h4>
+        <ul>
+          <li>Edit everything in the Site Editor</li>
+          <li><code class="inline">theme.json</code> design tokens</li>
+          <li>Less PHP to maintain</li>
+          <li>— Harder to hand-tune markup/perf</li>
+          <li>— Tailwind fights the block CSS layer</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- structure -->
+  <section class="doc-section" id="structure">
+    <span class="kicker">02 — Layout</span>
+    <h2>Theme file structure</h2>
+    <p>Follows the WordPress template hierarchy. Assets are compiled into <code class="inline">/assets/css</code> and enqueued — never hardcoded.</p>
+    <pre class="tree"><span class="d">naeem-portfolio/</span>
+├── style.css            <span class="cm"># theme header + (optional) compiled tailwind</span>
+├── functions.php        <span class="cm"># setup, enqueues, includes</span>
+├── header.php · footer.php
+├── front-page.php       <span class="cm"># the single-page layout (hero → contact)</span>
+├── index.php · home.php  <span class="cm"># blog listing</span>
+├── single.php           <span class="cm"># single post</span>
+├── page.php · page-resume.php
+├── archive.php · category.php · 404.php
+├── <span class="d">template-parts/</span>
+│   ├── hero.php · about.php · experience.php
+│   ├── projects.php · opensource.php
+│   ├── skills.php · blog.php · contact.php
+│   └── card-project.php · card-post.php
+├── <span class="d">inc/</span>
+│   ├── cpt.php           <span class="cm"># register project CPT + taxonomy</span>
+│   ├── customizer.php    <span class="cm"># hero, socials, skills, resume</span>
+│   └── enqueue.php
+├── <span class="d">assets/</span>
+│   ├── <span class="d">src/</span>tailwind.css · main.js
+│   └── <span class="d">css/</span>app.css   <span class="cm"># compiled, committed</span>
+├── tailwind.config.js · postcss.config.js
+├── package.json
+└── languages/naeem-portfolio.pot</pre>
+  </section>
+
+  <!-- content -->
+  <section class="doc-section" id="content">
+    <span class="kicker">03 — Data</span>
+    <h2>Content modeling, the WordPress way</h2>
+    <h3>Projects → custom post type</h3>
+    <p>Register a <code class="inline">project</code> CPT with a <code class="inline">tech</code> custom taxonomy for the filter tags. Live URL and GitHub URL are post meta. Use the <strong>native block editor</strong> for the description and the featured image for the thumbnail — only reach for ACF if Naeem wants a fixed, labelled meta box (a soft dependency worth noting).</p>
+    <pre><span class="k">register_post_type</span>( <span class="s">'project'</span>, [
+  <span class="s">'public'</span>       =&gt; <span class="k">true</span>,
+  <span class="s">'menu_icon'</span>    =&gt; <span class="s">'dashicons-portfolio'</span>,
+  <span class="s">'supports'</span>     =&gt; [ <span class="s">'title'</span>, <span class="s">'editor'</span>, <span class="s">'thumbnail'</span>, <span class="s">'excerpt'</span> ],
+  <span class="s">'show_in_rest'</span> =&gt; <span class="k">true</span>, <span class="c">// block editor + REST</span>
+  <span class="s">'rewrite'</span>      =&gt; [ <span class="s">'slug'</span> =&gt; <span class="s">'work'</span> ],
+] );
+
+<span class="k">register_taxonomy</span>( <span class="s">'tech'</span>, <span class="s">'project'</span>, [
+  <span class="s">'hierarchical'</span> =&gt; <span class="k">false</span>, <span class="c">// tag-like: PHP, Vue, MySQL…</span>
+  <span class="s">'show_in_rest'</span> =&gt; <span class="k">true</span>,
+] );</pre>
+    <h3>Open Source → a taxonomy on projects, not a second CPT</h3>
+    <p>Cleaner option: model the WordPress focus areas (Core, Plugins, Meta, Polyglots, Photos, EmDash) as a <code class="inline">contribution_area</code> taxonomy plus a Customizer-driven highlights block — rather than a whole second CPT. It keeps the admin simple while still giving the section the visual weight it deserves on the front end.</p>
+    <h3>Blog → native posts</h3>
+    <p>No custom anything. <code class="inline">home.php</code> lists posts, <code class="inline">single.php</code> renders one, <code class="inline">archive.php</code> / <code class="inline">category.php</code> handle taxonomies. Standard, SEO-friendly, Yoast/Rank Math compatible.</p>
+    <h3>Résumé → a page template</h3>
+    <p><code class="inline">page-resume.php</code> renders an inline web résumé and a <strong>Download PDF</strong> button. The PDF is uploaded via the Media Library and linked from a Customizer setting, so Naeem swaps it without touching code.</p>
+  </section>
+
+  <!-- customizer -->
+  <section class="doc-section" id="customizer">
+    <span class="kicker">04 — Editable</span>
+    <h2>Customizer settings</h2>
+    <p>Everything that isn't a project or a post lives in the Customizer, fully sanitized:</p>
+    <ul>
+      <li><strong>Hero</strong> — name, rotating role lines, one-liner, CTA labels &amp; links</li>
+      <li><strong>Social links</strong> — GitHub, LinkedIn, email</li>
+      <li><strong>Skills</strong> — grouped lists (Backend, Frontend, Databases, Tools/AI)</li>
+      <li><strong>Experience</strong> — repeatable timeline entries (or a lightweight CPT if Naeem prefers)</li>
+      <li><strong>Résumé PDF</strong> — Media Library file, linked from the hero &amp; résumé page</li>
+    </ul>
+    <pre><span class="vp">$wp_customize</span>-&gt;<span class="f">add_setting</span>( <span class="s">'naeem_hero_oneliner'</span>, [
+  <span class="s">'sanitize_callback'</span> =&gt; <span class="s">'wp_kses_post'</span>,
+  <span class="s">'transport'</span>         =&gt; <span class="s">'postMessage'</span>,
+] );</pre>
+  </section>
+
+  <!-- tailwind -->
+  <section class="doc-section" id="tailwind">
+    <span class="kicker">05 — Build</span>
+    <h2>Tailwind build step</h2>
+    <p>Tailwind compiles via the CLI into a committed stylesheet, scoped with a <code class="inline">prefix</code> and <code class="inline">important</code> root so it never bleeds into <code class="inline">wp-admin</code>. The compiled file is enqueued like any other asset.</p>
+    <pre><span class="c">// package.json</span>
+<span class="s">"scripts"</span>: {
+  <span class="s">"dev"</span>:   <span class="s">"tailwindcss -i assets/src/tailwind.css -o assets/css/app.css --watch"</span>,
+  <span class="s">"build"</span>: <span class="s">"tailwindcss -i assets/src/tailwind.css -o assets/css/app.css --minify"</span>
+}
+
+<span class="c">// functions.php — enqueue, never hardcode</span>
+<span class="k">add_action</span>( <span class="s">'wp_enqueue_scripts'</span>, <span class="k">function</span> () {
+  <span class="k">wp_enqueue_style</span>( <span class="s">'naeem-app'</span>, <span class="f">get_theme_file_uri</span>( <span class="s">'assets/css/app.css'</span> ), [], <span class="s">'1.0.0'</span> );
+  <span class="k">wp_enqueue_script</span>( <span class="s">'naeem-main'</span>, <span class="f">get_theme_file_uri</span>( <span class="s">'assets/src/main.js'</span> ), [], <span class="s">'1.0.0'</span>, <span class="k">true</span> );
+} );</pre>
+  </section>
+
+  <!-- forms -->
+  <section class="doc-section" id="forms">
+    <span class="kicker">06 — Contact</span>
+    <h2>Contact form: Fluent Forms</h2>
+    <p>Recommend <strong>Fluent Forms</strong> — it's lightweight, has clean markup the theme can style, and it's built by <strong>WPManageNinja</strong> (a nice, on-brand touch). Drop the form via shortcode in <code class="inline">template-parts/contact.php</code>; the theme styles it to match. Contact Form 7 / WPForms remain drop-in alternatives if a client prefers them.</p>
+  </section>
+
+  <!-- standards -->
+  <section class="doc-section" id="standards">
+    <span class="kicker">07 — Craft</span>
+    <h2>Standards, i18n &amp; SEO</h2>
+    <ul>
+      <li><strong>Escape &amp; sanitize everything</strong> — <code class="inline">esc_html()</code>, <code class="inline">esc_url()</code>, <code class="inline">wp_kses()</code> on output; nonces on the form.</li>
+      <li><strong>i18n-ready</strong> — every string wrapped in <code class="inline">__()</code> / <code class="inline">_e()</code> with the <code class="inline">naeem-portfolio</code> text domain (he contributes to Polyglots — keep it spotless).</li>
+      <li><strong>Theme supports</strong> — <code class="inline">title-tag</code>, <code class="inline">post-thumbnails</code>, <code class="inline">custom-logo</code>, <code class="inline">html5</code>; registered nav menus &amp; widget areas.</li>
+      <li><strong>SEO</strong> — clean semantic markup, schema-friendly structure, compatible with Yoast / Rank Math.</li>
+      <li><strong>Accessibility</strong> — semantic HTML, ARIA, keyboard nav, WCAG AA contrast (the light &amp; dark palettes in this design already clear it).</li>
+    </ul>
+  </section>
+
+  <!-- readme -->
+  <section class="doc-section" id="readme">
+    <span class="kicker">08 — Ship</span>
+    <h2>Quick start (README)</h2>
+    <div class="steps">
+      <div class="step"><div class="st-body"><h3>Install the theme</h3><p>Copy <code class="inline">naeem-portfolio/</code> into <code class="inline">wp-content/themes/</code> and activate it in <strong>Appearance → Themes</strong>.</p></div></div>
+      <div class="step"><div class="st-body"><h3>Build the styles</h3><p>Run <code class="inline">npm install</code> then <code class="inline">npm run build</code> (or <code class="inline">npm run dev</code> while editing). The compiled CSS is committed, so a fresh clone works without building.</p></div></div>
+      <div class="step"><div class="st-body"><h3>Add a project</h3><p><strong>Projects → Add New</strong>: title, description, featured image, set <em>Tech</em> terms, fill the Live URL &amp; GitHub meta. It appears in the grid automatically.</p></div></div>
+      <div class="step"><div class="st-body"><h3>Write a post</h3><p><strong>Posts → Add New</strong> as usual — it shows in the blog preview and the full blog listing.</p></div></div>
+      <div class="step"><div class="st-body"><h3>Update the résumé &amp; profile</h3><p><strong>Appearance → Customize</strong>: upload a new résumé PDF, edit hero copy, skills, and social links.</p></div></div>
+      <div class="step"><div class="st-body"><h3>Configure the contact form</h3><p>Install Fluent Forms, create the form, paste its shortcode into the contact section setting.</p></div></div>
+      <div class="step"><div class="st-body"><h3>Generate translations</h3><p>Run WP-CLI <code class="inline">wp i18n make-pot . languages/naeem-portfolio.pot</code> to regenerate the <code class="inline">.pot</code> for translators.</p></div></div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>

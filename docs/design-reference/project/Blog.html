@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Writing — Golam Sarwer Naeem</title>
+<meta name="description" content="Notes on WordPress, Laravel, open source, and the craft of shipping software — by Golam Sarwer Naeem." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/theme.css?v=11" />
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('naeem-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+  })();
+</script>
+<style>
+  .blog-page { padding-top: 92px; }
+  .blog-header { padding-bottom: clamp(28px, 4vw, 44px); }
+  .blog-header .section-title { font-size: clamp(38px, 6vw, 68px); margin-bottom: 14px; }
+  .blog-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+
+  .post-meta-foot { display: flex; align-items: center; gap: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--text-faint); padding-top: 14px; margin-top: auto; border-top: 1px solid var(--border); }
+  .post .more { margin-top: auto; }
+  .post.is-hidden { display: none; }
+
+  .blog-foot { text-align: center; margin-top: clamp(40px, 6vw, 70px); }
+  .blog-foot .note { font-family: var(--font-mono); font-size: 13px; color: var(--text-faint); }
+  .post .pmeta span { white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<!-- top bar -->
+<header class="nav scrolled" id="nav">
+  <a href="Naeem Portfolio.html" class="brand" aria-label="Back to portfolio">
+    <span class="mark">N</span>
+    <span>naeem<span class="dim">.dev</span></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="Naeem Portfolio.html#work"><span class="hash">#</span>work</a>
+    <a href="Naeem Portfolio.html#opensource"><span class="hash">#</span>open-source</a>
+    <a href="Naeem Portfolio.html#stack"><span class="hash">#</span>stack</a>
+    <a href="Blog.html" class="active"><span class="hash">#</span>writing</a>
+    <a href="Naeem Portfolio.html#contact"><span class="hash">#</span>contact</a>
+  </nav>
+  <div class="nav-right">
+    <a class="btn btn--ghost" href="Naeem Portfolio.html" style="padding:10px 16px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+      Portfolio
+    </a>
+    <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="blog-page">
+  <div class="wrap blog-header">
+    <p class="eyebrow"><span class="num">06 /</span> Writing</p>
+    <h1 class="section-title">Notes from the editor.</h1>
+    <p class="section-lead">Things I learn building WordPress products, contributing upstream, and keeping software clean — written down so I (and maybe you) remember them.</p>
+    <div class="blog-filter" id="filterBar" role="tablist" aria-label="Filter posts by topic">
+      <button class="filter-btn active" data-filter="all">all</button>
+      <button class="filter-btn" data-filter="wordpress">WordPress</button>
+      <button class="filter-btn" data-filter="workflow">Workflow</button>
+      <button class="filter-btn" data-filter="laravel">Laravel</button>
+      <button class="filter-btn" data-filter="opensource">Open Source</button>
+      <button class="filter-btn" data-filter="career">Career</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- uniform post grid — matches a standard WP loop (image-optional) -->
+    <div class="blog-grid" id="postGrid" style="margin-top:0;"></div>
+
+    <div class="blog-foot">
+      <p class="note">// you've reached the end of the feed — more shipping soon.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer" style="margin-top:60px;">
+  <div class="wrap footer-in">
+    <span class="copy">© <span id="year"></span> Golam Sarwer Naeem · <a href="Naeem Portfolio.html" style="color:var(--accent)">back to portfolio</a></span>
+    <div class="footer-links">
+      <a href="https://github.com/naeemHaque" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></a>
+      <a href="https://linkedin.com/in/golam-sarwer-8626101a3" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  $('#year').textContent = new Date().getFullYear();
+
+  // theme toggle
+  $('#themeToggle').addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('naeem-theme', next); } catch (e) {}
+  });
+
+  // posts data — newest first (mirrors a WP query, no per-post custom art)
+  var posts = [
+    { title: 'Building a CPT-driven portfolio the WordPress way', cat: 'WordPress', filter: 'wordpress', read: '8 min read', date: 'May 2026', excerpt: 'Why custom post types and taxonomies beat hardcoded HTML — and how to model projects so anyone can manage them from wp-admin without touching a template.' },
+    { title: 'How I fold AI into my daily dev workflow', cat: 'Workflow', filter: 'workflow', read: '6 min read', date: 'Apr 2026', excerpt: 'From research and feature planning to debugging — a practical look at where AI actually saves time, and where it doesn\u2019t.' },
+    { title: 'What competitive programming taught me about shipping', cat: 'Career', filter: 'career', read: '5 min read', date: 'Apr 2026', excerpt: 'Contest habits — reading edge cases first, thinking on your feet — that quietly made me a better product engineer.' },
+    { title: 'Designing REST APIs in Laravel that age well', cat: 'Laravel', filter: 'laravel', read: '7 min read', date: 'Mar 2026', excerpt: 'Resourceful routing, versioning, and the response shapes that keep a Vue front-end happy two years later.' },
+    { title: 'A starter guide to contributing on WordPress Polyglots', cat: 'Open Source', filter: 'opensource', read: '9 min read', date: 'Feb 2026', excerpt: 'How translation teams work, what a good string suggestion looks like, and how to make your first contribution stick.' },
+    { title: 'Scaling MySQL: the indexes I wish I\u2019d added sooner', cat: 'Workflow', filter: 'workflow', read: '6 min read', date: 'Jan 2026', excerpt: 'Reading EXPLAIN plans without fear, composite index ordering, and the queries that quietly melt under load.' },
+    { title: 'Vue + WordPress: a pragmatic integration', cat: 'WordPress', filter: 'wordpress', read: '7 min read', date: 'Dec 2025', excerpt: 'Mounting Vue islands inside a classic theme, talking to the REST API, and keeping the bundle small.' }
+  ];
+
+  var arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  var grid = $('#postGrid');
+  grid.innerHTML = posts.map(function (p) {
+    return '<a class="post" href="#" data-cat="' + p.filter + '">' +
+      '<div class="pmeta"><span class="cat">' + p.cat + '</span><span>·</span><span>' + p.read + '</span></div>' +
+      '<h3>' + p.title + '</h3>' +
+      '<p>' + p.excerpt + '</p>' +
+      '<div class="post-meta-foot"><span>' + p.date + '</span></div>' +
+      '<span class="more">Read post ' + arrow + '</span>' +
+    '</a>';
+  }).join('');
+
+  // topic filter
+  $('#filterBar').addEventListener('click', function (e) {
+    var btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    $$('.filter-btn', this).forEach(function (b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    var f = btn.getAttribute('data-filter');
+    $$('.post', grid).forEach(function (c) {
+      c.classList.toggle('is-hidden', f !== 'all' && c.getAttribute('data-cat') !== f);
+    });
+  });
+
+  // prototype: post links are placeholders
+  $$('a.post').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (a.getAttribute('href') === '#') {
+        e.preventDefault();
+        var n = document.createElement('div');
+        n.textContent = 'Single post (single.php) — wired in the WordPress build.';
+        n.style.cssText = 'position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:300;background:var(--panel);color:var(--text);border:1px solid var(--accent-line);border-radius:12px;padding:13px 20px;font:14px var(--font-mono);box-shadow:var(--shadow)';
+        document.body.appendChild(n);
+        setTimeout(function () { n.remove(); }, 2600);
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

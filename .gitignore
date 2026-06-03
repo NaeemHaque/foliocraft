@@ -1,0 +1,14 @@
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# ---- Node / build dependencies ----
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# NOTE: compiled assets (assets/css/app.css, assets/js/main.js) ARE committed,
+# so a fresh clone of the theme renders without running the build.
