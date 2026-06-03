@@ -16,3 +16,6 @@ require_once NAEEM_DIR . '/inc/Autoloader.php';
 
 \Naeem\Theme::init();
 \Naeem\Assets::init();
+\Naeem\PostTypes\Taxonomies::init();
+\Naeem\PostTypes\Project_CPT::init();
+\Naeem\PostTypes\Experience_CPT::init();
