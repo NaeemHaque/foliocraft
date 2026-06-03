@@ -7,4 +7,13 @@
 
 defined( 'ABSPATH' ) || exit;
 
-echo '<!doctype html><meta charset="utf-8"><title>Naeem Portfolio</title><p>Theme active.</p>';
+?><!doctype html>
+<html <?php language_attributes(); ?>>
+<head>
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
+<p>Theme active.</p>
+<?php wp_footer(); ?>

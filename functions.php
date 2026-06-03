@@ -14,6 +14,5 @@ define( 'NAEEM_URI', get_template_directory_uri() );
 require_once NAEEM_DIR . '/inc/Autoloader.php';
 \Naeem\Autoloader::register();
 
-// Service classes are booted in Task 4:
-// \Naeem\Theme::init();
-// \Naeem\Assets::init();
+\Naeem\Theme::init();
+\Naeem\Assets::init();
