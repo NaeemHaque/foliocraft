@@ -31,7 +31,7 @@ class Autoloader {
 		$relative = substr( $class, strlen( $prefix ) );
 		$path     = NAEEM_DIR . '/inc/' . str_replace( '\\', '/', $relative ) . '.php';
 		if ( is_readable( $path ) ) {
-			require $path;
+			require_once $path;
 		}
 	}
 }

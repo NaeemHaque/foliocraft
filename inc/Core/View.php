@@ -18,13 +18,27 @@ class View {
 	 * @param array  $data     Variables extracted into the template scope.
 	 */
 	public static function render( $template, array $data = array() ) {
+		// Template names are internal, relative slugs (e.g. 'front/hero').
+		// Reject empty, absolute, traversal, or null-byte values defensively.
+		if ( '' === $template
+			|| '/' === $template[0]
+			|| false !== strpos( $template, '..' )
+			|| false !== strpos( $template, "\0" )
+		) {
+			return;
+		}
+
 		$path = get_theme_file_path( 'template-parts/' . $template . '.php' );
 		if ( ! is_readable( $path ) ) {
 			return;
 		}
-		// phpcs:ignore WordPress.PHP.DontExtract.extract_extract -- controlled view context.
-		extract( $data, EXTR_SKIP );
-		require $path;
+
+		// Isolate the include scope so only the data context is exposed to the template.
+		( static function ( $__naeem_path, $__naeem_data ) {
+			// phpcs:ignore WordPress.PHP.DontExtract.extract_extract -- controlled view context.
+			extract( $__naeem_data, EXTR_SKIP );
+			require $__naeem_path;
+		} )( $path, $data );
 	}
 
 	/**
