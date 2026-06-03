@@ -1,19 +1,17 @@
 <?php
 /**
- * Fallback template (replaced with header/footer wiring in Task 5).
+ * Fallback template.
  *
  * @package Naeem_Portfolio
  */
 
 defined( 'ABSPATH' ) || exit;
 
-?><!doctype html>
-<html <?php language_attributes(); ?>>
-<head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<?php wp_head(); ?>
-</head>
-<body <?php body_class(); ?>>
-<p>Theme active.</p>
-<?php wp_footer(); ?>
+get_header();
+?>
+<main id="top" class="wrap section">
+	<h1 class="section-title"><?php esc_html_e( 'Naeem Portfolio', 'naeem-portfolio' ); ?></h1>
+	<p class="section-lead"><?php esc_html_e( 'Theme scaffold active. Front-page sections arrive in Phase 1.', 'naeem-portfolio' ); ?></p>
+</main>
+<?php
+get_footer();
