@@ -1,0 +1,11 @@
+/* Tailwind v4 entry for the Naeem Portfolio theme.
+   We import the UTILITIES layer only and deliberately SKIP Preflight, so the
+   prototype's hand-tuned base styles (in components.css) remain authoritative
+   and pixel-perfection is never disturbed by Tailwind's reset. */
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Design tokens (CSS custom properties; light/dark via [data-theme]). */
+@import "./tokens.css";
+
+/* Ported pixel-perfect component + base styles. */
+@import "./components.css";
