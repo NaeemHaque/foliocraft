@@ -7,6 +7,8 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
+</main>
+<?php \Naeem\Core\View::render( 'layout/footer' ); ?>
 <?php wp_footer(); ?>
 </body>
 </html>
