@@ -19,3 +19,4 @@ require_once NAEEM_DIR . '/inc/Autoloader.php';
 \Naeem\PostTypes\Taxonomies::init();
 \Naeem\PostTypes\Project_CPT::init();
 \Naeem\PostTypes\Experience_CPT::init();
+\Naeem\Meta\Project_Meta::init();
