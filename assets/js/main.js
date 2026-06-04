@@ -126,13 +126,15 @@
 
   /* ---------- typed role ---------- */
   var typed = $('#typed');
-  var roles = [
-    'Software Engineer',
-    'Open Source Contributor',
-    'WordPress Product Engineer',
-    'Laravel + Vue developer',
-    'Clean-architecture advocate'
-  ];
+  var roles = (window.NaeemData && window.NaeemData.roles && window.NaeemData.roles.length)
+    ? window.NaeemData.roles
+    : [
+        'Software Engineer',
+        'Open Source Contributor',
+        'WordPress Product Engineer',
+        'Laravel + Vue developer',
+        'Clean-architecture advocate'
+      ];
   if (typed) {
     if (prefersReduced) {
       typed.textContent = roles[0];
