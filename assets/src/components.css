@@ -187,6 +187,7 @@ button { font-family: inherit; }
 }
 .btn--primary:hover { box-shadow: 0 14px 34px -8px var(--accent); border-color: transparent; }
 .btn--ghost { background: transparent; }
+#contactTop { padding: 10px 16px; }
 
 /* ---------- hero ---------- */
 .hero {
@@ -739,7 +740,9 @@ html.reveal-on[data-motion="expressive"] [data-reveal] { transform: translateY(3
   .blog-header .section-title { font-size: clamp(30px, 10vw, 44px); }
   .terminal { font-size: 12px; }
   .hero-meta { gap: 14px 22px; }
-  #contactTop { font-size: 0; padding: 10px; }   /* icon-only Contact in the cramped nav */
+  /* Contact collapses to a square icon button matching the toggle/menu on small screens. */
+  #contactTop { width: 40px; height: 40px; padding: 0; display: grid; place-items: center; border-radius: 10px; background: var(--panel); font-size: 0; }
+  #contactTop svg { width: 18px; height: 18px; }
   .post-single, .resume, .page-body { padding-top: 96px; }
 }
 
