@@ -15,6 +15,12 @@ class Assets {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue' ) );
 	}
 
+	/** Cache-busting version from a theme-relative file's mtime (so CSS/JS changes propagate without a hard refresh). */
+	private static function ver( $rel ) {
+		$path = NAEEM_DIR . '/' . $rel;
+		return file_exists( $path ) ? (string) filemtime( $path ) : NAEEM_VERSION;
+	}
+
 	public static function enqueue() {
 		wp_enqueue_style(
 			'naeem-fonts',
@@ -27,14 +33,14 @@ class Assets {
 			'naeem-app',
 			NAEEM_URI . '/assets/css/app.css',
 			array( 'naeem-fonts' ),
-			NAEEM_VERSION
+			self::ver( 'assets/css/app.css' )
 		);
 
 		wp_enqueue_script(
 			'naeem-main',
 			NAEEM_URI . '/assets/js/main.js',
 			array(),
-			NAEEM_VERSION,
+			self::ver( 'assets/js/main.js' ),
 			true
 		);
 		wp_localize_script(
