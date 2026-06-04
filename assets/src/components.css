@@ -706,7 +706,7 @@ html.reveal-on[data-motion="expressive"] [data-reveal] { transform: translateY(3
   .about-grid, .os-grid, .contact-grid { grid-template-columns: 1fr; }
   /* Hero: size to content (no forced full-height gap); stack text first, terminal below. */
   .hero { min-height: auto; align-items: start; padding-top: 104px; padding-bottom: clamp(48px, 12vw, 72px); }
-  .hero-grid { display: flex; flex-direction: column; gap: clamp(30px, 7vw, 48px); }
+  .hero-grid { display: flex; flex-direction: column; align-items: stretch; gap: clamp(30px, 7vw, 48px); }
   .hero-aside { order: 2; }
   .scroll-cue { display: none; }
   .hero::after { right: 0; width: 72vw; }   /* keep the glow inside the viewport (no horizontal overflow) */
@@ -725,6 +725,7 @@ html.reveal-on[data-motion="expressive"] [data-reveal] { transform: translateY(3
   .section { padding-block: clamp(52px, 14vw, 76px); }
   .hero-meta { gap: 18px 26px; }
   .about-aside { flex-direction: column; }
+  .about-aside .pillar { flex: 0 0 auto; }   /* content height — not the 240px row-basis (which became min-height in a column) */
   .hero-cta { gap: 10px; }
   .hero-cta .btn { flex: 1 1 100%; justify-content: center; }
   .proj-head { gap: 18px; }
