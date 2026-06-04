@@ -708,6 +708,7 @@ html.reveal-on[data-motion="expressive"] [data-reveal] { transform: translateY(3
   /* Hero: size to content (no forced full-height gap); stack text first, terminal below. */
   .hero { min-height: auto; align-items: start; padding-top: 104px; padding-bottom: clamp(48px, 12vw, 72px); }
   .hero-grid { display: flex; flex-direction: column; align-items: stretch; gap: clamp(30px, 7vw, 48px); }
+  .hero-grid > * { min-width: 0; }   /* let flex items shrink so the pre-formatted terminal scrolls inside its card instead of overflowing the page */
   .hero-aside { order: 2; }
   .scroll-cue { display: none; }
   .hero::after { right: 0; width: 72vw; }   /* keep the glow inside the viewport (no horizontal overflow) */
@@ -741,7 +742,7 @@ html.reveal-on[data-motion="expressive"] [data-reveal] { transform: translateY(3
   .terminal { font-size: 12px; }
   .hero-meta { gap: 14px 22px; }
   /* Contact collapses to a square icon button matching the toggle/menu on small screens. */
-  #contactTop { width: 40px; height: 40px; padding: 0; display: grid; place-items: center; border-radius: 10px; background: var(--panel); font-size: 0; }
+  #contactTop { width: 40px; height: 40px; padding: 0; display: grid; place-items: center; border-radius: 10px; background: var(--panel); color: var(--text-dim); font-size: 0; }
   #contactTop svg { width: 18px; height: 18px; }
   .post-single, .resume, .page-body { padding-top: 96px; }
 }
