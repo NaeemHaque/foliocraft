@@ -6,11 +6,12 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+$profile = isset( $profile ) ? $profile : \Naeem\Models\Profile::all();
 ?>
 <header class="nav" id="nav">
   <a href="#top" class="brand" aria-label="Golam Sarwer Naeem — home">
     <span class="mark">N</span>
-    <span>naeem<span class="dim">.dev</span></span>
+    <span><?php echo esc_html( $profile['identity']['brand'] ); ?><span class="dim">.dev</span></span>
   </a>
   <nav class="nav-links" id="navLinks" aria-label="Primary">
     <a href="#about"><span class="hash">#</span>about</a>

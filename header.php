@@ -28,13 +28,19 @@ defined( 'ABSPATH' ) || exit;
   })();
 </script>
 <?php wp_head(); ?>
+<?php
+$naeem_profile = \Naeem\Models\Profile::all();
+if ( ! empty( $naeem_profile['accent'] ) && strtolower( $naeem_profile['accent'] ) !== '#e6926b' ) {
+	echo '<style>:root{--accent:' . esc_html( $naeem_profile['accent'] ) . ';}</style>';
+}
+?>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <a class="skip-link screen-reader-text" href="#top"><?php esc_html_e( 'Skip to content', 'naeem-portfolio' ); ?></a>
 <?php
 \Naeem\Core\View::render( 'layout/progress' );
-\Naeem\Core\View::render( 'layout/nav' );
+\Naeem\Core\View::render( 'layout/nav', array( 'profile' => $naeem_profile ) );
 \Naeem\Core\View::render( 'layout/mobile-menu' );
 ?>
 <main id="top">

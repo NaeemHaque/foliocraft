@@ -158,7 +158,7 @@ class Profile {
 			),
 			'headshot'   => array( 'url' => get_theme_mod( 'naeem_headshot', '' ) ),
 			'accent'     => get_theme_mod( 'naeem_accent', '#e6926b' ),
-			'footer'     => array( 'copy' => get_theme_mod( 'naeem_footer_copy', 'built with clean code & open source' ) ),
+			'footer'     => array( 'copy' => get_theme_mod( 'naeem_footer_copy', 'built with <span class="accent">clean code</span> & open source' ) ),
 		);
 	}
 
