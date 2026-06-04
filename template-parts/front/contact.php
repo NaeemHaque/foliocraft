@@ -33,7 +33,10 @@ $social  = isset( $profile['social'] ) ? $profile['social'] : \Naeem\Models\Prof
       </div>
 
       <?php if ( empty( $contact['fluent_shortcode'] ) ) : ?>
-      <form class="form" id="contactForm" novalidate data-reveal data-delay="2">
+      <form class="form" id="contactForm" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate data-reveal data-delay="2">
+        <input type="hidden" name="action" value="naeem_contact" />
+        <?php wp_nonce_field( 'naeem_contact', 'naeem_contact_nonce' ); ?>
+        <p class="naeem-hp" aria-hidden="true"><label>Website <input type="text" name="naeem_website" tabindex="-1" autocomplete="off" /></label></p>
         <div class="form-head">
           <h3><?php esc_html_e( 'Send a message', 'naeem-portfolio' ); ?></h3>
           <p><?php esc_html_e( '// usually replies within a day or two', 'naeem-portfolio' ); ?></p>
@@ -60,10 +63,13 @@ $social  = isset( $profile['social'] ) ? $profile['social'] : \Naeem\Models\Prof
           </button>
           <span class="form-note"><?php esc_html_e( 'Powered by Fluent Forms — by WPManageNinja.', 'naeem-portfolio' ); ?></span>
         </div>
-        <div class="form-ok" id="formOk">
+        <div class="form-ok<?php echo ( isset( $_GET['contact'] ) && 'sent' === $_GET['contact'] ) ? ' show' : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display-only flag ?>" id="formOk">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
           <span><?php esc_html_e( 'Thanks — your message is on its way. I\'ll get back to you soon.', 'naeem-portfolio' ); ?></span>
         </div>
+        <?php if ( isset( $_GET['contact'] ) && 'error' === $_GET['contact'] ) : // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
+        <div class="form-err"><?php esc_html_e( 'Something went wrong — please try again or email me directly.', 'naeem-portfolio' ); ?></div>
+        <?php endif; ?>
       </form>
       <?php else : ?>
       <div class="form"><?php echo do_shortcode( $contact['fluent_shortcode'] ); ?></div>

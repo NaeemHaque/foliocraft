@@ -232,13 +232,17 @@
       var btn = $('button[type="submit"]', form);
       btn.disabled = true;
       btn.style.opacity = '.6';
-      setTimeout(function () {
-        form.reset();
-        $('#formOk').classList.add('show');
-        btn.disabled = false;
-        btn.style.opacity = '';
-        setTimeout(function () { $('#formOk').classList.remove('show'); }, 6000);
-      }, 650);
+      var fd = new FormData(form);
+      fd.append('naeem_ajax', '1');
+      fetch(form.action, { method: 'POST', body: fd, credentials: 'same-origin' })
+        .then(function (r) { return r.json(); })
+        .then(function () {
+          form.reset();
+          $('#formOk').classList.add('show');
+          setTimeout(function () { $('#formOk').classList.remove('show'); }, 6000);
+        })
+        .catch(function () { form.submit(); })
+        .finally(function () { btn.disabled = false; btn.style.opacity = ''; });
     });
   }
 }());
