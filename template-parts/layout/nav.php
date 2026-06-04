@@ -10,7 +10,7 @@ $profile = isset( $profile ) ? $profile : \Naeem\Models\Profile::all();
 ?>
 <header class="nav" id="nav">
   <a href="#top" class="brand" aria-label="Golam Sarwer Naeem — home">
-    <span class="mark">N</span>
+    <span class="mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 8 4 4-4 4"/><path d="M13 16h4"/></svg></span>
     <span><?php echo esc_html( $profile['identity']['brand'] ); ?><span class="dim">.dev</span></span>
   </a>
   <nav class="nav-links" id="navLinks" aria-label="Primary">
