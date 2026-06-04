@@ -23,3 +23,7 @@ require_once NAEEM_DIR . '/inc/Autoloader.php';
 \Naeem\Meta\Experience_Meta::init();
 \Naeem\Customizer\Customizer::init();
 \Naeem\Forms\Contact::init();
+
+if ( is_admin() ) {
+	\Naeem\Admin\Menu::init();
+}
