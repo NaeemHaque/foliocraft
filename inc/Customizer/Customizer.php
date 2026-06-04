@@ -412,6 +412,214 @@ class Customizer {
 			'type'        => 'textarea',
 		) );
 
+		// --- Open Source ---
+		$wp_customize->add_setting( 'naeem_os_heading', array(
+			'default'           => 'Building the web in the open.',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_os_heading', array(
+			'label'   => __( 'Heading', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_os_lead', array(
+			'default'           => 'Contributing to the WordPress Open Source Project across five focus areas, plus EmDash CMS — fixing issues, shipping patches, and translating for a global community.',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
+		) );
+		$wp_customize->add_control( 'naeem_os_lead', array(
+			'label'   => __( 'Lead paragraph', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'textarea',
+		) );
+
+		$wp_customize->add_setting( 'naeem_os_areas', array(
+			'default'           => '',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_lines' ),
+		) );
+		$wp_customize->add_control( 'naeem_os_areas', array(
+			'label'       => __( 'Areas (one per line)', 'naeem-portfolio' ),
+			'section'     => 'naeem_opensource',
+			'type'        => 'textarea',
+		) );
+
+		$wp_customize->add_setting( 'naeem_oscard1_title', array(
+			'default'           => 'WP Core',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_oscard1_title', array(
+			'label'   => __( 'Card 1 title', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_oscard1_role', array(
+			'default'           => 'Patches & triage',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_oscard1_role', array(
+			'label'   => __( 'Card 1 role', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_oscard1_blurb', array(
+			'default'           => 'Bug fixes and issue triage on the platform that powers a huge share of the web.',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_oscard1_blurb', array(
+			'label'   => __( 'Card 1 blurb', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_oscard2_title', array(
+			'default'           => 'Polyglots',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_oscard2_title', array(
+			'label'   => __( 'Card 2 title', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_oscard2_role', array(
+			'default'           => 'Translation',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_oscard2_role', array(
+			'label'   => __( 'Card 2 role', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_oscard2_blurb', array(
+			'default'           => 'Translating WordPress so it speaks more languages — i18n done the right way.',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_oscard2_blurb', array(
+			'label'   => __( 'Card 2 blurb', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_oscard3_title', array(
+			'default'           => 'Photos & Meta',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_oscard3_title', array(
+			'label'   => __( 'Card 3 title', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_oscard3_role', array(
+			'default'           => 'Community',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_oscard3_role', array(
+			'label'   => __( 'Card 3 role', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_oscard3_blurb', array(
+			'default'           => 'Contributing to the Photo Directory and Meta tooling that keeps the project running.',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_oscard3_blurb', array(
+			'label'   => __( 'Card 3 blurb', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_oscard4_title', array(
+			'default'           => 'EmDash CMS',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_oscard4_title', array(
+			'label'   => __( 'Card 4 title', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_oscard4_role', array(
+			'default'           => 'Contributor',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_oscard4_role', array(
+			'label'   => __( 'Card 4 role', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_oscard4_blurb', array(
+			'default'           => 'Helping build a modern, developer-friendly CMS out in the open.',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_oscard4_blurb', array(
+			'label'   => __( 'Card 4 blurb', 'naeem-portfolio' ),
+			'section' => 'naeem_opensource',
+			'type'    => 'text',
+		) );
+
+		// --- Contact ---
+		$wp_customize->add_setting( 'naeem_contact_heading', array(
+			'default'           => "Let's build something.",
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_contact_heading', array(
+			'label'   => __( 'Heading', 'naeem-portfolio' ),
+			'section' => 'naeem_contact',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_contact_lead', array(
+			'default'           => 'Open to interesting open-source collaborations and product engineering work. The fastest way to reach me is the form — or any of these:',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
+		) );
+		$wp_customize->add_control( 'naeem_contact_lead', array(
+			'label'   => __( 'Lead paragraph', 'naeem-portfolio' ),
+			'section' => 'naeem_contact',
+			'type'    => 'textarea',
+		) );
+
+		$wp_customize->add_setting( 'naeem_contact_fluent', array(
+			'default'           => '',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_contact_fluent', array(
+			'label'   => __( 'Fluent Forms shortcode (optional)', 'naeem-portfolio' ),
+			'section' => 'naeem_contact',
+			'type'    => 'text',
+		) );
+
+		// --- Résumé ---
+		$wp_customize->add_setting( 'naeem_resume_label', array(
+			'default'           => 'Download Résumé',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_resume_label', array(
+			'label'   => __( 'Résumé button label', 'naeem-portfolio' ),
+			'section' => 'naeem_resume',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_resume_pdf', array( 'default' => 0, 'sanitize_callback' => 'absint' ) );
+		$wp_customize->add_control( new \WP_Customize_Media_Control( $wp_customize, 'naeem_resume_pdf', array(
+			'label'     => __( 'Résumé PDF', 'naeem-portfolio' ),
+			'section'   => 'naeem_resume',
+			'mime_type' => 'application/pdf',
+		) ) );
+
+		// --- Identity: headshot ---
+		$wp_customize->add_setting( 'naeem_headshot', array( 'default' => 0, 'sanitize_callback' => 'absint' ) );
+		$wp_customize->add_control( new \WP_Customize_Media_Control( $wp_customize, 'naeem_headshot', array(
+			'label'     => __( 'Headshot image', 'naeem-portfolio' ),
+			'section'   => 'naeem_identity',
+			'mime_type' => 'image',
+		) ) );
+
 		// --- Footer ---
 		$wp_customize->add_setting( 'naeem_footer_copy', array(
 			'default'           => 'built with <span class="accent">clean code</span> & open source',

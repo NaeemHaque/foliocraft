@@ -152,14 +152,34 @@ class Profile {
 				'lead'             => get_theme_mod( 'naeem_contact_lead', 'Open to interesting open-source collaborations and product engineering work. The fastest way to reach me is the form — or any of these:' ),
 				'fluent_shortcode' => get_theme_mod( 'naeem_contact_fluent', '' ),
 			),
-			'resume'     => array(
-				'url'   => get_theme_mod( 'naeem_resume_pdf', '' ),
-				'label' => get_theme_mod( 'naeem_resume_label', 'Download Résumé' ),
-			),
-			'headshot'   => array( 'url' => get_theme_mod( 'naeem_headshot', '' ) ),
+			'resume'     => self::resume_data(),
+			'headshot'   => self::headshot_data(),
 			'accent'     => get_theme_mod( 'naeem_accent', '#e6926b' ),
 			'footer'     => array( 'copy' => get_theme_mod( 'naeem_footer_copy', 'built with <span class="accent">clean code</span> & open source' ) ),
 		);
+	}
+
+	/**
+	 * Build the résumé data array, resolving the media attachment ID to a URL.
+	 *
+	 * @return array
+	 */
+	private static function resume_data() {
+		$rid = get_theme_mod( 'naeem_resume_pdf', 0 );
+		return array(
+			'url'   => $rid ? (string) wp_get_attachment_url( $rid ) : '',
+			'label' => get_theme_mod( 'naeem_resume_label', 'Download Résumé' ),
+		);
+	}
+
+	/**
+	 * Build the headshot data array, resolving the media attachment ID to a URL.
+	 *
+	 * @return array
+	 */
+	private static function headshot_data() {
+		$hid = get_theme_mod( 'naeem_headshot', 0 );
+		return array( 'url' => $hid ? (string) wp_get_attachment_url( $hid ) : '' );
 	}
 
 	/**

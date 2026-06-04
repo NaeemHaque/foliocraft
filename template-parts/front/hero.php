@@ -1,5 +1,7 @@
 <?php defined( 'ABSPATH' ) || exit;
-$hero = isset( $profile['hero'] ) ? $profile['hero'] : \Naeem\Models\Profile::all()['hero'];
+$hero     = isset( $profile['hero'] ) ? $profile['hero'] : \Naeem\Models\Profile::all()['hero'];
+$resume   = isset( $profile['resume'] ) ? $profile['resume'] : \Naeem\Models\Profile::all()['resume'];
+$headshot = isset( $profile['headshot'] ) ? $profile['headshot'] : \Naeem\Models\Profile::all()['headshot'];
 ?>
 
 <!-- ============ HERO ============ -->
@@ -15,7 +17,7 @@ $hero = isset( $profile['hero'] ) ? $profile['hero'] : \Naeem\Models\Profile::al
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
           <?php echo esc_html( $hero['cta_primary_label'] ); ?>
         </a>
-        <a href="#" class="btn" id="resumeHero">
+        <a href="<?php echo ! empty( $resume['url'] ) ? esc_url( $resume['url'] ) : '#'; ?>" class="btn" <?php echo ! empty( $resume['url'] ) ? 'target="_blank" rel="noopener"' : 'id="resumeHero"'; ?>>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           <?php echo esc_html( $hero['cta_resume_label'] ); ?>
         </a>
@@ -45,7 +47,11 @@ $hero = isset( $profile['hero'] ) ? $profile['hero'] : \Naeem\Models\Profile::al
   }
 }</div>
       </div>
+      <?php if ( ! empty( $headshot['url'] ) ) : ?>
+      <img class="headshot-slot" src="<?php echo esc_url( $headshot['url'] ); ?>" alt="<?php echo esc_attr( $profile['identity']['name'] ); ?>" />
+      <?php else : ?>
       <div class="headshot-slot" aria-hidden="true"></div>
+      <?php endif; ?>
     </div>
   </div>
   <div class="scroll-cue" aria-hidden="true"><span>scroll</span><span class="line"></span></div>
