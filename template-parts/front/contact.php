@@ -61,7 +61,7 @@ $social  = isset( $profile['social'] ) ? $profile['social'] : \Naeem\Models\Prof
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
             <?php esc_html_e( 'Send message', 'naeem-portfolio' ); ?>
           </button>
-          <span class="form-note"><?php esc_html_e( 'Powered by Fluent Forms — by WPManageNinja.', 'naeem-portfolio' ); ?></span>
+          <span class="form-note"><?php esc_html_e( 'Your message comes straight to my inbox.', 'naeem-portfolio' ); ?></span>
         </div>
         <div class="form-ok<?php echo ( isset( $_GET['contact'] ) && 'sent' === $_GET['contact'] ) ? ' show' : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display-only flag ?>" id="formOk">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
