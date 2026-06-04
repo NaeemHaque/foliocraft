@@ -1,6 +1,6 @@
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -709,6 +709,7 @@ html.reveal-on[data-motion="expressive"] [data-reveal] { transform: translateY(3
   .hero-grid { display: flex; flex-direction: column; gap: clamp(30px, 7vw, 48px); }
   .hero-aside { order: 2; }
   .scroll-cue { display: none; }
+  .hero::after { right: 0; width: 72vw; }   /* keep the glow inside the viewport (no horizontal overflow) */
   .os-grid { gap: 36px; }
   .about-aside { flex-direction: row; flex-wrap: wrap; }
   .about-aside .pillar { flex: 1 1 240px; }
