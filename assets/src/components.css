@@ -752,3 +752,20 @@ html.reveal-on[data-motion="expressive"] [data-reveal] { transform: translateY(3
   background: var(--accent); color: var(--accent-ink);
   border-radius: 10px; font-family: var(--font-mono); font-size: 13px;
 }
+
+/* ---------- blog listing ---------- */
+.blog-page { padding-top: 92px; }
+.blog-header { padding-bottom: clamp(28px, 4vw, 44px); }
+.blog-header .section-title { font-size: clamp(38px, 6vw, 68px); margin-bottom: 14px; }
+.blog-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.post-meta-foot { display: flex; align-items: center; gap: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--text-faint); padding-top: 14px; margin-top: auto; border-top: 1px solid var(--border); }
+.post .more { margin-top: auto; }
+.post.is-hidden { display: none; }
+.blog-foot { text-align: center; margin-top: clamp(40px, 6vw, 70px); }
+.blog-foot .note { font-family: var(--font-mono); font-size: 13px; color: var(--text-faint); }
+.post .pmeta span { white-space: nowrap; }
+.blog-page .pagination, .blog-page .navigation.pagination { display:flex; justify-content:center; margin-top:clamp(32px,5vw,56px); }
+.blog-page .nav-links { display:flex; gap:8px; flex-wrap:wrap; font-family:var(--font-mono); font-size:14px; }
+.blog-page .page-numbers { padding:9px 14px; border:1px solid var(--border); border-radius:10px; color:var(--text-dim); }
+.blog-page .page-numbers.current { background:var(--accent); color:var(--accent-ink); border-color:transparent; }
+.blog-page .page-numbers:hover { border-color:var(--border-strong); color:var(--text); }
