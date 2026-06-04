@@ -21,6 +21,7 @@ class Taxonomies {
 				'public'            => true,
 				'hierarchical'      => false,
 				'show_admin_column' => true,
+					'show_in_menu'      => false,
 				'show_in_rest'      => true,
 			)
 		);
@@ -35,6 +36,7 @@ class Taxonomies {
 				'public'            => true,
 				'hierarchical'      => false,
 				'show_admin_column' => true,
+					'show_in_menu'      => false,
 				'show_in_rest'      => true,
 			)
 		);
