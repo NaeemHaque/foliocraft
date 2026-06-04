@@ -745,7 +745,7 @@ html.reveal-on[data-motion="expressive"] [data-reveal] { transform: translateY(3
   .terminal { font-size: 12px; }
   .hero-meta { gap: 14px 22px; }
   /* Contact collapses to a square icon button matching the toggle/menu on small screens. */
-  #contactTop { width: 40px; height: 40px; padding: 0; display: grid; place-items: center; border-radius: 10px; background: var(--panel); color: var(--text-dim); font-size: 0; }
+  #contactTop { width: 40px; height: 40px; padding: 0; display: inline-flex; align-items: center; justify-content: center; gap: 0; border-radius: 10px; background: var(--panel); color: var(--text-dim); font-size: 0; }
   #contactTop svg { width: 18px; height: 18px; }
   .post-single, .resume, .page-body { padding-top: 96px; }
 }
