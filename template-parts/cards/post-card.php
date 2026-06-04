@@ -1,5 +1,5 @@
 <?php defined( 'ABSPATH' ) || exit; ?>
-<a href="<?php echo esc_url( $blog_url ); ?>" class="post" data-reveal>
+<a href="<?php echo esc_url( $url ); ?>" class="post" data-reveal>
 	<div class="pmeta"><span class="cat"><?php echo esc_html( $cat ); ?></span><span>·</span><span><?php echo esc_html( $read ); ?></span></div>
 	<h3><?php echo esc_html( $title ); ?></h3>
 	<p><?php echo esc_html( $excerpt ); ?></p>

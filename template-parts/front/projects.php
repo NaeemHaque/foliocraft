@@ -1,4 +1,7 @@
-<?php defined( 'ABSPATH' ) || exit; ?>
+<?php defined( 'ABSPATH' ) || exit;
+$terms    = isset( $terms ) ? $terms : array();
+$projects = isset( $projects ) ? $projects : array();
+?>
 
 <section class="section" id="work">
 	<div class="wrap">
@@ -7,15 +10,15 @@
 			<h2 class="section-title" data-reveal data-delay="1" style="margin:0;"><?php esc_html_e( "Things I've built.", 'naeem-portfolio' ); ?></h2>
 			<div class="filter-bar" data-reveal data-delay="2" id="filterBar" role="tablist" aria-label="Filter projects by technology">
 				<button class="filter-btn active" data-filter="all">all</button>
-				<button class="filter-btn" data-filter="wordpress">WordPress</button>
-				<button class="filter-btn" data-filter="laravel">Laravel</button>
-				<button class="filter-btn" data-filter="vue">Vue</button>
-				<button class="filter-btn" data-filter="php">PHP</button>
-				<button class="filter-btn" data-filter="mysql">MySQL</button>
+				<?php foreach ( $terms as $term ) : ?><button class="filter-btn" data-filter="<?php echo esc_attr( $term['slug'] ); ?>"><?php echo esc_html( $term['name'] ); ?></button><?php endforeach; ?>
 			</div>
 		</div>
 		<div class="proj-grid" id="projGrid">
-			<?php foreach ( $projects as $project ) { \Naeem\Core\View::render( 'cards/project-card', $project ); } ?>
+			<?php if ( empty( $projects ) ) : ?>
+			  <p class="section-lead"><?php esc_html_e( 'Projects coming soon.', 'naeem-portfolio' ); ?></p>
+			<?php else : ?>
+			  <?php foreach ( $projects as $project ) { \Naeem\Core\View::render( 'cards/project-card', $project ); } ?>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>
