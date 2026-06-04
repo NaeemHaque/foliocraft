@@ -22,7 +22,7 @@ $profile = isset( $profile ) ? $profile : \Naeem\Models\Profile::all();
     <a href="<?php echo is_front_page() ? '' : esc_url( home_url( '/' ) ); ?>#writing"><span class="hash">#</span>writing</a>
   </nav>
   <div class="nav-right">
-    <a class="btn btn--ghost" href="<?php echo is_front_page() ? '' : esc_url( home_url( '/' ) ); ?>#contact" id="contactTop" style="padding:10px 16px;">
+    <a class="btn btn--ghost" href="<?php echo is_front_page() ? '' : esc_url( home_url( '/' ) ); ?>#contact" id="contactTop">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg>
       <?php esc_html_e( 'Contact', 'naeem-portfolio' ); ?>
     </a>
