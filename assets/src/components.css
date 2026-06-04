@@ -705,10 +705,13 @@ html.reveal-on[data-motion="expressive"] [data-reveal] { transform: translateY(3
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
   .about-grid, .os-grid, .contact-grid { grid-template-columns: 1fr; }
-  /* Hero: size to content (no forced full-height gap); stack text first, terminal below. */
-  .hero { min-height: auto; align-items: start; padding-top: 104px; padding-bottom: clamp(48px, 12vw, 72px); }
+  /* Hero: size to content (no forced full-height gap); stack text first, terminal below.
+     display:block (not grid) so the single track can't size to the terminal's ~450px max-content and overflow the screen. */
+  .hero { display: block; min-height: auto; padding-top: 104px; padding-bottom: clamp(48px, 12vw, 72px); }
   .hero-grid { display: flex; flex-direction: column; align-items: stretch; gap: clamp(30px, 7vw, 48px); }
   .hero-grid > * { min-width: 0; }   /* let flex items shrink so the pre-formatted terminal scrolls inside its card instead of overflowing the page */
+  .hero-status { max-width: 100%; }  /* let the long status pill wrap instead of forcing width */
+  .terminal { max-width: 100%; }     /* terminal never exceeds its column; long code line scrolls inside */
   .hero-aside { order: 2; }
   .scroll-cue { display: none; }
   .hero::after { right: 0; width: 72vw; }   /* keep the glow inside the viewport (no horizontal overflow) */
