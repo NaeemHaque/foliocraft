@@ -49,8 +49,6 @@ $headshot = isset( $profile['headshot'] ) ? $profile['headshot'] : \Naeem\Models
       </div>
       <?php if ( ! empty( $headshot['url'] ) ) : ?>
       <img class="headshot-slot" src="<?php echo esc_url( $headshot['url'] ); ?>" alt="<?php echo esc_attr( $profile['identity']['name'] ); ?>" loading="lazy" decoding="async" />
-      <?php else : ?>
-      <div class="headshot-slot" aria-hidden="true"></div>
       <?php endif; ?>
     </div>
   </div>

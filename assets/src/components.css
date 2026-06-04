@@ -211,8 +211,8 @@ button { font-family: inherit; }
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.25fr .95fr;
-  gap: clamp(32px, 6vw, 80px);
+  grid-template-columns: 1.15fr 1.05fr;
+  gap: clamp(28px, 4vw, 56px);
   align-items: center;
   position: relative;
   z-index: 1;
@@ -324,7 +324,7 @@ button { font-family: inherit; }
   color: var(--text-faint);
   font-size: 12px;
 }
-.terminal-body { padding: 18px; line-height: 1.85; white-space: pre-wrap; }
+.terminal-body { padding: 18px; line-height: 1.85; white-space: pre; overflow-x: auto; }
 .t-comment { color: var(--text-faint); }
 .t-key { color: var(--accent); }
 .t-str { color: color-mix(in oklab, var(--accent) 55%, var(--text)); }
