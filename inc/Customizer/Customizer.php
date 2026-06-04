@@ -240,6 +240,178 @@ class Customizer {
 			'type'    => 'email',
 		) );
 
+		// --- About ---
+		$wp_customize->add_setting( 'naeem_about_heading', array(
+			'default'           => 'Engineering for scale, contributing in the open.',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_about_heading', array(
+			'label'   => __( 'Heading', 'naeem-portfolio' ),
+			'section' => 'naeem_about',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_about_p1', array(
+			'default'           => "I'm a software engineer and open-source contributor focused on building <strong>scalable products, developer tools, and web apps</strong>. At WPManageNinja, I work on WordPress product engineering, shipping software trusted by millions of users and businesses worldwide.",
+			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
+		) );
+		$wp_customize->add_control( 'naeem_about_p1', array(
+			'label'   => __( 'Paragraph 1', 'naeem-portfolio' ),
+			'section' => 'naeem_about',
+			'type'    => 'textarea',
+		) );
+
+		$wp_customize->add_setting( 'naeem_about_p2', array(
+			'default'           => 'I contribute to the <strong>WordPress Open Source Project</strong> (Core, Plugins, Meta, Polyglots, Photos) and <strong>EmDash CMS</strong>. AI is now a core part of my workflow for research, planning, and debugging; the rest of my time goes to backend systems with a focus on architecture and clean code. I studied CSE at <strong>Sylhet International University</strong>, where programming contests shaped how I think and solve problems.',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
+		) );
+		$wp_customize->add_control( 'naeem_about_p2', array(
+			'label'   => __( 'Paragraph 2', 'naeem-portfolio' ),
+			'section' => 'naeem_about',
+			'type'    => 'textarea',
+		) );
+
+		$wp_customize->add_setting( 'naeem_pillar1_title', array(
+			'default'           => 'Clean architecture',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_pillar1_title', array(
+			'label'   => __( 'Pillar 1 title', 'naeem-portfolio' ),
+			'section' => 'naeem_about',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_pillar1_desc', array(
+			'default'           => 'Maintainable, idiomatic code with structure that scales with the team and the product.',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_pillar1_desc', array(
+			'label'   => __( 'Pillar 1 description', 'naeem-portfolio' ),
+			'section' => 'naeem_about',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_pillar2_title', array(
+			'default'           => 'Open by default',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_pillar2_title', array(
+			'label'   => __( 'Pillar 2 title', 'naeem-portfolio' ),
+			'section' => 'naeem_about',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_pillar2_desc', array(
+			'default'           => 'Contributing upstream — issues, patches, translations — to the tools the web runs on.',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_pillar2_desc', array(
+			'label'   => __( 'Pillar 2 description', 'naeem-portfolio' ),
+			'section' => 'naeem_about',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_pillar3_title', array(
+			'default'           => 'Contest-grade detail',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_pillar3_title', array(
+			'label'   => __( 'Pillar 3 title', 'naeem-portfolio' ),
+			'section' => 'naeem_about',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_pillar3_desc', array(
+			'default'           => 'A competitive-programming background — fast under pressure, precise on the edge cases.',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_pillar3_desc', array(
+			'label'   => __( 'Pillar 3 description', 'naeem-portfolio' ),
+			'section' => 'naeem_about',
+			'type'    => 'text',
+		) );
+
+		// --- Skills ---
+		$wp_customize->add_setting( 'naeem_skillgroup1_label', array(
+			'default'           => 'Backend',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_skillgroup1_label', array(
+			'label'   => __( 'Group 1 label', 'naeem-portfolio' ),
+			'section' => 'naeem_skills',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_skillgroup1_pills', array(
+			'default'           => '',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_lines' ),
+		) );
+		$wp_customize->add_control( 'naeem_skillgroup1_pills', array(
+			'label'       => __( 'Group 1 pills (one per line)', 'naeem-portfolio' ),
+			'section'     => 'naeem_skills',
+			'type'        => 'textarea',
+		) );
+
+		$wp_customize->add_setting( 'naeem_skillgroup2_label', array(
+			'default'           => 'Frontend',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_skillgroup2_label', array(
+			'label'   => __( 'Group 2 label', 'naeem-portfolio' ),
+			'section' => 'naeem_skills',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_skillgroup2_pills', array(
+			'default'           => '',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_lines' ),
+		) );
+		$wp_customize->add_control( 'naeem_skillgroup2_pills', array(
+			'label'       => __( 'Group 2 pills (one per line)', 'naeem-portfolio' ),
+			'section'     => 'naeem_skills',
+			'type'        => 'textarea',
+		) );
+
+		$wp_customize->add_setting( 'naeem_skillgroup3_label', array(
+			'default'           => 'Databases',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_skillgroup3_label', array(
+			'label'   => __( 'Group 3 label', 'naeem-portfolio' ),
+			'section' => 'naeem_skills',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_skillgroup3_pills', array(
+			'default'           => '',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_lines' ),
+		) );
+		$wp_customize->add_control( 'naeem_skillgroup3_pills', array(
+			'label'       => __( 'Group 3 pills (one per line)', 'naeem-portfolio' ),
+			'section'     => 'naeem_skills',
+			'type'        => 'textarea',
+		) );
+
+		$wp_customize->add_setting( 'naeem_skillgroup4_label', array(
+			'default'           => 'Tools & AI',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+		) );
+		$wp_customize->add_control( 'naeem_skillgroup4_label', array(
+			'label'   => __( 'Group 4 label', 'naeem-portfolio' ),
+			'section' => 'naeem_skills',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'naeem_skillgroup4_pills', array(
+			'default'           => '',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_lines' ),
+		) );
+		$wp_customize->add_control( 'naeem_skillgroup4_pills', array(
+			'label'       => __( 'Group 4 pills (one per line)', 'naeem-portfolio' ),
+			'section'     => 'naeem_skills',
+			'type'        => 'textarea',
+		) );
+
 		// --- Footer ---
 		$wp_customize->add_setting( 'naeem_footer_copy', array(
 			'default'           => 'built with <span class="accent">clean code</span> & open source',
