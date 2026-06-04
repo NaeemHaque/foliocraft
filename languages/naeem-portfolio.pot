@@ -1,0 +1,590 @@
+# Copyright (C) 2026 Golam Sarwer Naeem
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Naeem Portfolio 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/naeem-portfolio\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-06-04T09:01:29+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.8.1\n"
+"X-Domain: naeem-portfolio\n"
+
+#. Theme Name of the theme
+msgid "Naeem Portfolio"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "https://github.com/naeemHaque/naeem-portfolio"
+msgstr ""
+
+#. Description of the theme
+msgid "Custom MVC + Tailwind portfolio theme for Golam Sarwer Naeem — software engineer & open source contributor."
+msgstr ""
+
+#. Author of the theme
+msgid "Golam Sarwer Naeem"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://github.com/naeemHaque"
+msgstr ""
+
+#: header.php:40
+msgid "Skip to content"
+msgstr ""
+
+#: inc/Controllers/Archive.php:23
+#: inc/Controllers/Blog.php:22
+#: template-parts/front/blog.php:7
+msgid "Writing"
+msgstr ""
+
+#: inc/Controllers/Archive.php:25
+msgid "Posts in this archive."
+msgstr ""
+
+#: inc/Controllers/Blog.php:23
+msgid "Notes from the editor."
+msgstr ""
+
+#: inc/Controllers/Blog.php:24
+msgid "Things I learn building WordPress products, contributing upstream, and keeping software clean — written down so I (and maybe you) remember them."
+msgstr ""
+
+#: inc/Customizer/Customizer.php:22
+msgid "Portfolio"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:27
+msgid "Identity"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:28
+msgid "Hero"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:29
+#: template-parts/front/about.php:8
+msgid "About"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:30
+msgid "Skills"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:31
+#: template-parts/front/opensource.php:9
+msgid "Open Source"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:32
+msgid "Social Links"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:33
+#: template-parts/front/contact.php:10
+#: template-parts/layout/nav.php:27
+#: template-parts/resume.php:37
+msgid "Contact"
+msgstr ""
+
+#. Template Name of the theme
+#: inc/Customizer/Customizer.php:34
+msgid "Résumé"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:35
+msgid "Footer"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:47
+msgid "Status pill text"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:57
+msgid "Name line 1"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:67
+msgid "Name line 2"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:77
+msgid "Typed roles (one role per line)"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:87
+#: inc/Customizer/Customizer.php:431
+#: inc/Customizer/Customizer.php:582
+msgid "Lead paragraph"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:97
+msgid "Primary CTA label"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:107
+msgid "Primary CTA URL"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:117
+#: inc/Customizer/Customizer.php:603
+msgid "Résumé button label"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:127
+msgid "Stat 1 number"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:137
+msgid "Stat 1 label"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:147
+msgid "Stat 2 number"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:157
+msgid "Stat 2 label"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:167
+msgid "Stat 3 number"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:177
+msgid "Stat 3 label"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:188
+msgid "Full name"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:198
+msgid "Brand slug"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:208
+msgid "Accent color"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:218
+#: inc/Meta/Project_Meta.php:59
+msgid "GitHub URL"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:228
+msgid "LinkedIn URL"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:238
+msgid "Contact email"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:249
+#: inc/Customizer/Customizer.php:421
+#: inc/Customizer/Customizer.php:572
+msgid "Heading"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:259
+msgid "Paragraph 1"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:269
+msgid "Paragraph 2"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:279
+msgid "Pillar 1 title"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:289
+msgid "Pillar 1 description"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:299
+msgid "Pillar 2 title"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:309
+msgid "Pillar 2 description"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:319
+msgid "Pillar 3 title"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:329
+msgid "Pillar 3 description"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:340
+msgid "Group 1 label"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:350
+msgid "Group 1 pills (one per line)"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:360
+msgid "Group 2 label"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:370
+msgid "Group 2 pills (one per line)"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:380
+msgid "Group 3 label"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:390
+msgid "Group 3 pills (one per line)"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:400
+msgid "Group 4 label"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:410
+msgid "Group 4 pills (one per line)"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:441
+msgid "Areas (one per line)"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:451
+msgid "Card 1 title"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:461
+msgid "Card 1 role"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:471
+msgid "Card 1 blurb"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:481
+msgid "Card 2 title"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:491
+msgid "Card 2 role"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:501
+msgid "Card 2 blurb"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:511
+msgid "Card 3 title"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:521
+msgid "Card 3 role"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:531
+msgid "Card 3 blurb"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:541
+msgid "Card 4 title"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:551
+msgid "Card 4 role"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:561
+msgid "Card 4 blurb"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:592
+msgid "Fluent Forms shortcode (optional)"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:610
+msgid "Résumé PDF"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:618
+msgid "Headshot image"
+msgstr ""
+
+#: inc/Customizer/Customizer.php:629
+msgid "Footer copy"
+msgstr ""
+
+#: inc/Forms/Contact.php:26
+msgid "Security check failed — please refresh and try again."
+msgstr ""
+
+#: inc/Forms/Contact.php:31
+msgid "Thanks — your message is on its way."
+msgstr ""
+
+#: inc/Forms/Contact.php:39
+msgid "Please add your name, a valid email, and a longer message."
+msgstr ""
+
+#. translators: %s: sender name.
+#: inc/Forms/Contact.php:44
+msgid "Portfolio contact from %s"
+msgstr ""
+
+#: inc/Forms/Contact.php:53
+#: template-parts/front/contact.php:68
+msgid "Thanks — your message is on its way. I'll get back to you soon."
+msgstr ""
+
+#: inc/Forms/Contact.php:54
+msgid "Sorry, something went wrong sending your message. Email me directly instead."
+msgstr ""
+
+#: inc/Meta/Experience_Meta.php:30
+msgid "Experience Details"
+msgstr ""
+
+#: inc/Meta/Experience_Meta.php:40
+msgid "Company"
+msgstr ""
+
+#: inc/Meta/Experience_Meta.php:45
+msgid "Date range"
+msgstr ""
+
+#: inc/Meta/Experience_Meta.php:51
+msgid "Current role (featured)"
+msgstr ""
+
+#: inc/Meta/Project_Meta.php:48
+msgid "Project Details"
+msgstr ""
+
+#: inc/Meta/Project_Meta.php:58
+msgid "Live URL"
+msgstr ""
+
+#: inc/Meta/Project_Meta.php:60
+msgid "Stars"
+msgstr ""
+
+#: inc/Meta/Project_Meta.php:61
+msgid "Language"
+msgstr ""
+
+#: inc/Models/Post.php:30
+#: template-parts/blog/single.php:5
+#: template-parts/cards/post-card-full.php:4
+msgid "Post"
+msgstr ""
+
+#. translators: %d: estimated reading time in minutes.
+#. translators: %d minutes
+#: inc/Models/Post.php:32
+#: template-parts/blog/single.php:13
+#: template-parts/cards/post-card-full.php:9
+msgid "%d min read"
+msgstr ""
+
+#: inc/PostTypes/Experience_CPT.php:17
+#: inc/PostTypes/Experience_CPT.php:18
+#: template-parts/front/experience.php:5
+#: template-parts/resume.php:18
+msgid "Experience"
+msgstr ""
+
+#: inc/PostTypes/Experience_CPT.php:19
+msgid "Add New Entry"
+msgstr ""
+
+#: inc/PostTypes/Project_CPT.php:17
+msgid "Projects"
+msgstr ""
+
+#: inc/PostTypes/Project_CPT.php:18
+msgid "Project"
+msgstr ""
+
+#: inc/PostTypes/Project_CPT.php:19
+msgid "Add New Project"
+msgstr ""
+
+#: inc/PostTypes/Taxonomies.php:18
+#: inc/PostTypes/Taxonomies.php:19
+msgid "Tech"
+msgstr ""
+
+#: inc/PostTypes/Taxonomies.php:32
+msgid "Contribution Areas"
+msgstr ""
+
+#: inc/PostTypes/Taxonomies.php:33
+msgid "Contribution Area"
+msgstr ""
+
+#: inc/Theme.php:32
+msgid "Primary Menu"
+msgstr ""
+
+#: template-parts/404.php:8
+msgid "Page not found."
+msgstr ""
+
+#: template-parts/404.php:9
+msgid "That page slipped through the cracks — let's get you back on track."
+msgstr ""
+
+#: template-parts/404.php:11
+msgid "Back home"
+msgstr ""
+
+#: template-parts/404.php:12
+#: template-parts/blog/single.php:11
+#: template-parts/front/blog.php:11
+msgid "All posts"
+msgstr ""
+
+#: template-parts/blog/listing.php:7
+msgid "Filter posts by topic"
+msgstr ""
+
+#: template-parts/blog/listing.php:9
+msgid "all"
+msgstr ""
+
+#: template-parts/blog/listing.php:22
+msgid "No posts yet."
+msgstr ""
+
+#: template-parts/blog/listing.php:29
+msgid "← Prev"
+msgstr ""
+
+#: template-parts/blog/listing.php:30
+msgid "Next →"
+msgstr ""
+
+#: template-parts/blog/listing.php:34
+msgid "// you've reached the end of the feed — more shipping soon."
+msgstr ""
+
+#: template-parts/cards/post-card-full.php:13
+#: template-parts/cards/post-card.php:6
+msgid "Read post"
+msgstr ""
+
+#: template-parts/cards/project-card.php:27
+msgid "Live site"
+msgstr ""
+
+#: template-parts/cards/project-card.php:28
+msgid "GitHub repo"
+msgstr ""
+
+#: template-parts/front/blog.php:8
+msgid "From the blog."
+msgstr ""
+
+#: template-parts/front/contact.php:16
+msgid "Direct lines"
+msgstr ""
+
+#: template-parts/front/contact.php:19
+#: template-parts/front/contact.php:50
+msgid "Email"
+msgstr ""
+
+#: template-parts/front/contact.php:24
+msgid "GitHub"
+msgstr ""
+
+#: template-parts/front/contact.php:29
+msgid "LinkedIn"
+msgstr ""
+
+#: template-parts/front/contact.php:41
+msgid "Send a message"
+msgstr ""
+
+#: template-parts/front/contact.php:42
+msgid "// usually replies within a day or two"
+msgstr ""
+
+#: template-parts/front/contact.php:45
+msgid "Name"
+msgstr ""
+
+#: template-parts/front/contact.php:46
+msgid "Your name"
+msgstr ""
+
+#: template-parts/front/contact.php:47
+msgid "Please enter your name."
+msgstr ""
+
+#: template-parts/front/contact.php:51
+msgid "you@company.com"
+msgstr ""
+
+#: template-parts/front/contact.php:52
+msgid "Please enter a valid email."
+msgstr ""
+
+#: template-parts/front/contact.php:55
+msgid "Message"
+msgstr ""
+
+#: template-parts/front/contact.php:56
+msgid "What are you building?"
+msgstr ""
+
+#: template-parts/front/contact.php:57
+msgid "A little more detail, please (10+ characters)."
+msgstr ""
+
+#: template-parts/front/contact.php:62
+msgid "Send message"
+msgstr ""
+
+#: template-parts/front/contact.php:64
+msgid "Powered by Fluent Forms — by WPManageNinja."
+msgstr ""
+
+#: template-parts/front/contact.php:71
+msgid "Something went wrong — please try again or email me directly."
+msgstr ""
+
+#: template-parts/front/experience.php:6
+msgid "Where I've shipped."
+msgstr ""
+
+#: template-parts/front/projects.php:8
+msgid "Selected Work"
+msgstr ""
+
+#: template-parts/front/projects.php:10
+msgid "Things I've built."
+msgstr ""
+
+#: template-parts/front/projects.php:18
+msgid "Projects coming soon."
+msgstr ""
+
+#: template-parts/front/skills.php:8
+#: template-parts/resume.php:25
+msgid "Tech Stack"
+msgstr ""
+
+#: template-parts/front/skills.php:9
+msgid "Tools I reach for."
+msgstr ""

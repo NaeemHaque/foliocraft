@@ -22,3 +22,4 @@ require_once NAEEM_DIR . '/inc/Autoloader.php';
 \Naeem\Meta\Project_Meta::init();
 \Naeem\Meta\Experience_Meta::init();
 \Naeem\Customizer\Customizer::init();
+\Naeem\Forms\Contact::init();
