@@ -16,14 +16,25 @@ $icon_dot    = '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy=
 ?>
 <article class="proj-card" data-filters="<?php echo esc_attr( implode( ' ', $filters ) ); ?>">
 	<div class="proj-top">
-		<div class="proj-icon"><?php echo $icons[ $icon ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?></div>
+		<div class="proj-icon"><?php
+			if ( ! empty( $thumb_id ) ) {
+				echo wp_get_attachment_image( $thumb_id, 'naeem-project', false, array( 'alt' => '' ) );
+			} else {
+				echo $icons['blocks']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG
+			}
+		?></div>
 		<div class="proj-links">
-			<a href="#" aria-label="<?php esc_attr_e( 'Live site', 'naeem-portfolio' ); ?>" title="<?php esc_attr_e( 'Live site', 'naeem-portfolio' ); ?>"><?php echo $icon_ext; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?></a>
-			<a href="#" aria-label="<?php esc_attr_e( 'GitHub repo', 'naeem-portfolio' ); ?>" title="GitHub"><?php echo $icon_github; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?></a>
+			<a href="<?php echo ! empty( $live_url ) ? esc_url( $live_url ) : '#'; ?>"<?php echo ! empty( $live_url ) ? ' target="_blank" rel="noopener"' : ''; ?> aria-label="<?php esc_attr_e( 'Live site', 'naeem-portfolio' ); ?>" title="<?php esc_attr_e( 'Live site', 'naeem-portfolio' ); ?>"><?php echo $icon_ext; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?></a>
+			<a href="<?php echo ! empty( $github_url ) ? esc_url( $github_url ) : '#'; ?>"<?php echo ! empty( $github_url ) ? ' target="_blank" rel="noopener"' : ''; ?> aria-label="<?php esc_attr_e( 'GitHub repo', 'naeem-portfolio' ); ?>" title="GitHub"><?php echo $icon_github; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?></a>
 		</div>
 	</div>
 	<h3><?php echo esc_html( $name ); ?></h3>
 	<p class="desc"><?php echo esc_html( $desc ); ?></p>
 	<div class="proj-tags"><?php foreach ( $tags as $t ) : ?><span class="chip"><?php echo esc_html( $t ); ?></span><?php endforeach; ?></div>
-	<div class="proj-meta"><span><?php echo $icon_star; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?><?php echo esc_html( $stars ); ?></span><span><?php echo $icon_dot; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?><?php echo esc_html( $lang ); ?></span></div>
+	<?php if ( ! empty( $stars ) || ! empty( $lang ) ) : ?>
+	<div class="proj-meta">
+		<?php if ( ! empty( $stars ) ) : ?><span><?php echo $icon_star; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $stars ); ?></span><?php endif; ?>
+		<?php if ( ! empty( $lang ) ) : ?><span><?php echo $icon_dot; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $lang ); ?></span><?php endif; ?>
+	</div>
+	<?php endif; ?>
 </article>
