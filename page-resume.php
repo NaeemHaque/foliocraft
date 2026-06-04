@@ -1,10 +1,10 @@
 <?php
 /**
- * Blog posts index.
+ * Template Name: Résumé
  *
  * @package Naeem_Portfolio
  */
 
 defined( 'ABSPATH' ) || exit;
 
-( new \Naeem\Controllers\Blog() )->render();
+( new \Naeem\Controllers\Resume() )->render();

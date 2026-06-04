@@ -20,9 +20,13 @@ class Front_Page {
 	public function render() {
 		get_header();
 
-		$profile = Profile::all();
+		$profile  = Profile::all();
+		$blog_url = get_permalink( get_option( 'page_for_posts' ) );
+		if ( ! $blog_url ) {
+			$blog_url = home_url( '/' );
+		}
 
-		$data = array( 'blog_url' => home_url( '/' ), 'profile' => $profile );
+		$data = array( 'blog_url' => $blog_url, 'profile' => $profile );
 
 		View::render( 'front/hero', $data );
 		View::render( 'front/about', $data );
@@ -30,7 +34,7 @@ class Front_Page {
 		View::render( 'front/projects', array( 'projects' => Project::all(), 'terms' => Project::tech_terms(), 'profile' => $profile ) );
 		View::render( 'front/opensource', $data );
 		View::render( 'front/skills', $data );
-		View::render( 'front/blog', array( 'posts' => Post::latest( 3 ), 'blog_url' => home_url( '/' ), 'profile' => $profile ) );
+		View::render( 'front/blog', array( 'posts' => Post::latest( 3 ), 'blog_url' => $blog_url, 'profile' => $profile ) );
 		View::render( 'front/contact', $data );
 
 		get_footer();

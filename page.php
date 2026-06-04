@@ -1,10 +1,10 @@
 <?php
 /**
- * Blog posts index.
+ * Generic page.
  *
  * @package Naeem_Portfolio
  */
 
 defined( 'ABSPATH' ) || exit;
 
-( new \Naeem\Controllers\Blog() )->render();
+( new \Naeem\Controllers\Page() )->render();
