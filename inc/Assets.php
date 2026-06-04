@@ -37,5 +37,10 @@ class Assets {
 			NAEEM_VERSION,
 			true
 		);
+		wp_localize_script(
+			'naeem-main',
+			'NaeemData',
+			array( 'roles' => \Naeem\Models\Profile::all()['hero']['roles'] )
+		);
 	}
 }
