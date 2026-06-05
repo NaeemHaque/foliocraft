@@ -13,13 +13,18 @@ $profile = isset( $profile ) ? $profile : \FolioCraft\Models\Profile::all();
     <span class="mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 8 4 4-4 4"/><path d="M13 16h4"/></svg></span>
     <span><?php echo esc_html( $profile['identity']['brand'] ); ?><span class="dim">.dev</span></span>
   </a>
-  <nav class="nav-links" id="navLinks" aria-label="Primary">
-    <a href="<?php echo is_front_page() ? '' : esc_url( home_url( '/' ) ); ?>#about"><span class="hash">#</span>about</a>
-    <a href="<?php echo is_front_page() ? '' : esc_url( home_url( '/' ) ); ?>#experience"><span class="hash">#</span>experience</a>
-    <a href="<?php echo is_front_page() ? '' : esc_url( home_url( '/' ) ); ?>#work"><span class="hash">#</span>work</a>
-    <a href="<?php echo is_front_page() ? '' : esc_url( home_url( '/' ) ); ?>#opensource"><span class="hash">#</span>open-source</a>
-    <a href="<?php echo is_front_page() ? '' : esc_url( home_url( '/' ) ); ?>#stack"><span class="hash">#</span>stack</a>
-    <a href="<?php echo is_front_page() ? '' : esc_url( home_url( '/' ) ); ?>#writing"><span class="hash">#</span>writing</a>
+  <nav class="nav-links" id="navLinks" aria-label="<?php esc_attr_e( 'Primary', 'foliocraft' ); ?>">
+    <?php
+    wp_nav_menu(
+      array(
+        'theme_location' => 'primary',
+        'container'      => false,
+        'menu_class'     => 'nav-menu',
+        'depth'          => 1,
+        'fallback_cb'    => 'foliocraft_default_nav',
+      )
+    );
+    ?>
   </nav>
   <div class="nav-right">
     <a class="btn btn--ghost" href="<?php echo is_front_page() ? '' : esc_url( home_url( '/' ) ); ?>#contact" id="contactTop">

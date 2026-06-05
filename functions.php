@@ -27,3 +27,22 @@ require_once FOLIOCRAFT_DIR . '/inc/Autoloader.php';
 if ( is_admin() ) {
 	\FolioCraft\Admin\Menu::init();
 }
+
+/**
+ * Fallback for the 'primary' nav location: the one-page anchor links rendered
+ * when no menu is assigned. Passed to wp_nav_menu() as fallback_cb.
+ */
+function foliocraft_default_nav() {
+	$base  = is_front_page() ? '' : home_url( '/' );
+	$items = array(
+		'#about'      => _x( 'about', 'nav item', 'foliocraft' ),
+		'#experience' => _x( 'experience', 'nav item', 'foliocraft' ),
+		'#work'       => _x( 'work', 'nav item', 'foliocraft' ),
+		'#opensource' => _x( 'open-source', 'nav item', 'foliocraft' ),
+		'#stack'      => _x( 'stack', 'nav item', 'foliocraft' ),
+		'#writing'    => _x( 'writing', 'nav item', 'foliocraft' ),
+	);
+	foreach ( $items as $anchor => $label ) {
+		echo '<a href="' . esc_url( $base . $anchor ) . '"><span class="hash">#</span>' . esc_html( $label ) . '</a>';
+	}
+}

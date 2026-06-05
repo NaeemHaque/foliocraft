@@ -136,6 +136,9 @@ button { font-family: inherit; }
 .nav-links a:hover { color: var(--text); background: var(--panel-2); }
 .nav-links a.active { color: var(--text); }
 .nav-links a.active .hash { opacity: 1; }
+/* An assigned menu (wp_nav_menu) flows its <li> in like the default flat links. */
+.nav-links ul.nav-menu, .mobile-menu ul.mobile-menu-list { display: contents; }
+.nav-links li, .mobile-menu li { list-style: none; }
 
 .nav-right { display: flex; align-items: center; gap: 10px; }
 
