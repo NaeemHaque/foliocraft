@@ -14,7 +14,7 @@ $icon_github = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48
 $icon_star   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17.8 6.6 20l1-6.1L3.2 9.5l6.1-.9z"/></svg>';
 $icon_dot    = '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>';
 ?>
-<article class="proj-card" data-filters="<?php echo esc_attr( implode( ' ', $filters ) ); ?>">
+<article <?php post_class( 'proj-card' ); ?> data-filters="<?php echo esc_attr( implode( ' ', $filters ) ); ?>">
 	<div class="proj-top">
 		<div class="proj-icon"><?php
 			if ( ! empty( $thumb_id ) ) {

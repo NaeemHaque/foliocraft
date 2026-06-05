@@ -3,7 +3,7 @@ defined( 'ABSPATH' ) || exit;
 $p    = $profile;
 $role = ! empty( $p['hero']['roles'] ) ? $p['hero']['roles'][0] : '';
 ?>
-<article class="resume wrap">
+<article <?php post_class( 'resume wrap' ); ?>>
 	<header class="resume-head">
 		<div>
 			<h1><?php echo esc_html( $p['identity']['name'] ); ?></h1>
