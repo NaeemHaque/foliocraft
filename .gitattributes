@@ -1,0 +1,13 @@
+# Build the distributable theme zip with:
+#   git archive --format=zip --prefix=foliocraft/ --output=foliocraft.zip HEAD
+# The paths below are stripped from that archive so the .org package stays clean
+# (no dev tooling, no .sh scripts, no version control, no OS cruft).
+
+/docs            export-ignore
+/tools           export-ignore
+/node_modules    export-ignore
+/.gitignore      export-ignore
+/.gitattributes  export-ignore
+/.editorconfig   export-ignore
+.DS_Store        export-ignore
+Thumbs.db        export-ignore
