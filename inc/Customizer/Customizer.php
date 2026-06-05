@@ -632,7 +632,7 @@ class Customizer {
 
 		// --- Footer ---
 		$wp_customize->add_setting( 'foliocraft_footer_copy', array(
-			'default'           => 'built with <a class="accent" href="https://github.com/NaeemHaque/foliocraft" target="_blank" rel="noopener">FolioCraft</a> — love this theme? own it <a class="accent" href="https://github.com/NaeemHaque/foliocraft" target="_blank" rel="noopener">here →</a>',
+			'default'           => 'built with <a class="accent" href="https://github.com/naeemhaque/foliocraft" target="_blank" rel="noopener">FolioCraft</a>',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_footer_copy', array(
