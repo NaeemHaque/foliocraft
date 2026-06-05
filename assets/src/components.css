@@ -672,6 +672,9 @@ button { font-family: inherit; }
 .form-ok.show { display: flex; }
 .form-ok svg { width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; }
 
+.contact-fallback { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.contact-fallback-lead { color: var(--text-dim); line-height: 1.6; margin: 0; }
+
 /* ---------- comments ---------- */
 .comments { max-width: 760px; margin-inline: auto; padding-block: 40px 64px; }
 .comments-title { font-size: 22px; margin-bottom: 24px; }

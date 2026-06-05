@@ -1,5 +1,5 @@
 <?php defined( 'ABSPATH' ) || exit; ?>
-<?php // Phase 3: contact copy + channels become Customizer-driven; Phase 5 wires the real form handler. ?>
+<?php // Contact copy + channels are Customizer-driven. The form slot renders a user-supplied form-plugin shortcode (e.g. Fluent Forms), falling back to an email CTA. ?>
 <?php
 $contact = isset( $profile['contact'] ) ? $profile['contact'] : \FolioCraft\Models\Profile::all()['contact'];
 $social  = isset( $profile['social'] ) ? $profile['social'] : \FolioCraft\Models\Profile::all()['social'];
@@ -37,47 +37,20 @@ $social  = isset( $profile['social'] ) ? $profile['social'] : \FolioCraft\Models
         </div>
       </div>
 
-      <?php if ( empty( $contact['fluent_shortcode'] ) ) : ?>
-      <form class="form" id="contactForm" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate data-reveal data-delay="2">
-        <input type="hidden" name="action" value="foliocraft_contact" />
-        <?php wp_nonce_field( 'foliocraft_contact', 'foliocraft_contact_nonce' ); ?>
-        <p class="foliocraft-hp" aria-hidden="true"><label>Website <input type="text" name="foliocraft_website" tabindex="-1" autocomplete="off" /></label></p>
+      <?php if ( ! empty( $contact['fluent_shortcode'] ) ) : ?>
+      <div class="form" data-reveal data-delay="2"><?php echo do_shortcode( $contact['fluent_shortcode'] ); ?></div>
+      <?php else : ?>
+      <div class="form contact-fallback" data-reveal data-delay="2">
         <div class="form-head">
           <h3><?php esc_html_e( 'Send a message', 'foliocraft' ); ?></h3>
           <p><?php esc_html_e( '// usually replies within a day or two', 'foliocraft' ); ?></p>
         </div>
-        <div class="field" id="f-name">
-          <label for="name"><?php esc_html_e( 'Name', 'foliocraft' ); ?> <span class="req">*</span></label>
-          <input type="text" id="name" name="name" placeholder="<?php esc_attr_e( 'Your name', 'foliocraft' ); ?>" autocomplete="name" />
-          <span class="err"><?php esc_html_e( 'Please enter your name.', 'foliocraft' ); ?></span>
-        </div>
-        <div class="field" id="f-email">
-          <label for="email"><?php esc_html_e( 'Email', 'foliocraft' ); ?> <span class="req">*</span></label>
-          <input type="email" id="email" name="email" placeholder="<?php esc_attr_e( 'you@company.com', 'foliocraft' ); ?>" autocomplete="email" />
-          <span class="err"><?php esc_html_e( 'Please enter a valid email.', 'foliocraft' ); ?></span>
-        </div>
-        <div class="field" id="f-message">
-          <label for="message"><?php esc_html_e( 'Message', 'foliocraft' ); ?> <span class="req">*</span></label>
-          <textarea id="message" name="message" placeholder="<?php esc_attr_e( 'What are you building?', 'foliocraft' ); ?>"></textarea>
-          <span class="err"><?php esc_html_e( 'A little more detail, please (10+ characters).', 'foliocraft' ); ?></span>
-        </div>
-        <div class="form-foot">
-          <button type="submit" class="btn btn--primary">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-            <?php esc_html_e( 'Send message', 'foliocraft' ); ?>
-          </button>
-          <span class="form-note"><?php esc_html_e( 'Your message comes straight to my inbox.', 'foliocraft' ); ?></span>
-        </div>
-        <div class="form-ok<?php echo ( isset( $_GET['contact'] ) && 'sent' === $_GET['contact'] ) ? ' show' : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display-only flag ?>" id="formOk">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          <span><?php esc_html_e( 'Thanks — your message is on its way. I\'ll get back to you soon.', 'foliocraft' ); ?></span>
-        </div>
-        <?php if ( isset( $_GET['contact'] ) && 'error' === $_GET['contact'] ) : // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
-        <div class="form-err"><?php esc_html_e( 'Something went wrong — please try again or email me directly.', 'foliocraft' ); ?></div>
-        <?php endif; ?>
-      </form>
-      <?php else : ?>
-      <div class="form"><?php echo do_shortcode( $contact['fluent_shortcode'] ); ?></div>
+        <p class="contact-fallback-lead"><?php esc_html_e( "The fastest way to reach me is email — drop me a line and I'll get back to you soon.", 'foliocraft' ); ?></p>
+        <a class="btn btn--primary" href="<?php echo esc_url( 'mailto:' . $social['email'] ); ?>">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <?php esc_html_e( 'Email me', 'foliocraft' ); ?>
+        </a>
+      </div>
       <?php endif; ?>
     </div>
   </div>

@@ -22,7 +22,6 @@ require_once FOLIOCRAFT_DIR . '/inc/Autoloader.php';
 \FolioCraft\Meta\Project_Meta::init();
 \FolioCraft\Meta\Experience_Meta::init();
 \FolioCraft\Customizer\Customizer::init();
-\FolioCraft\Forms\Contact::init();
 
 if ( is_admin() ) {
 	\FolioCraft\Admin\Menu::init();

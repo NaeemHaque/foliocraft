@@ -150,7 +150,7 @@ class Profile {
 			),
 			'contact'    => array(
 				'heading'          => get_theme_mod( 'foliocraft_contact_heading', "Let's build something." ),
-				'lead'             => get_theme_mod( 'foliocraft_contact_lead', 'Open to interesting open-source collaborations and product engineering work. The fastest way to reach me is the form — or any of these:' ),
+				'lead'             => get_theme_mod( 'foliocraft_contact_lead', 'Open to interesting open-source collaborations and product engineering work. The fastest way to reach me is email — or any of these:' ),
 				'fluent_shortcode' => get_theme_mod( 'foliocraft_contact_fluent', '' ),
 			),
 			'resume'     => self::resume_data(),

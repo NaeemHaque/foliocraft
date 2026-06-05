@@ -585,7 +585,7 @@ class Customizer {
 		) );
 
 		$wp_customize->add_setting( 'foliocraft_contact_lead', array(
-			'default'           => 'Open to interesting open-source collaborations and product engineering work. The fastest way to reach me is the form — or any of these:',
+			'default'           => 'Open to interesting open-source collaborations and product engineering work. The fastest way to reach me is email — or any of these:',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_contact_lead', array(
@@ -599,9 +599,10 @@ class Customizer {
 			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_contact_fluent', array(
-			'label'   => __( 'Fluent Forms shortcode (optional)', 'foliocraft' ),
-			'section' => 'foliocraft_contact',
-			'type'    => 'text',
+			'label'       => __( 'Contact form shortcode', 'foliocraft' ),
+			'description' => __( 'Optional — paste a form shortcode to replace the email button. Works with any form plugin, e.g. Fluent Forms: [fluentform id="1"].', 'foliocraft' ),
+			'section'     => 'foliocraft_contact',
+			'type'        => 'text',
 		) );
 
 		// --- Résumé ---
