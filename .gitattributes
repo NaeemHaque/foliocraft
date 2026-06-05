@@ -1,13 +1,18 @@
-# Build the distributable theme zip with:
+# Preferred: build the distributable zip with  ./build.sh  (it recompiles CSS too).
+# Alternatively, `git archive` honours the export-ignore rules below:
 #   git archive --format=zip --prefix=foliocraft/ --output=foliocraft.zip HEAD
-# The paths below are stripped from that archive so the .org package stays clean
-# (no dev tooling, no .sh scripts, no version control, no OS cruft).
+# Either way, only the files the theme needs to run + pass review are shipped.
 
-/docs            export-ignore
-/tools           export-ignore
-/node_modules    export-ignore
-/.gitignore      export-ignore
-/.gitattributes  export-ignore
-/.editorconfig   export-ignore
-.DS_Store        export-ignore
-Thumbs.db        export-ignore
+/docs              export-ignore
+/tools             export-ignore
+/node_modules      export-ignore
+/build.sh          export-ignore
+/README.md         export-ignore
+/package.json      export-ignore
+/package-lock.json export-ignore
+/.gitignore        export-ignore
+/.gitattributes    export-ignore
+/.editorconfig     export-ignore
+*.zip              export-ignore
+.DS_Store          export-ignore
+Thumbs.db          export-ignore

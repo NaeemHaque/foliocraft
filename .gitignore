@@ -10,5 +10,8 @@ node_modules/
 npm-debug.log*
 yarn-error.log*
 
+# ---- build output (produced by ./build.sh) ----
+/foliocraft.zip
+
 # NOTE: compiled assets (assets/css/app.css, assets/js/main.js) ARE committed,
 # so a fresh clone of the theme renders without running the build.
