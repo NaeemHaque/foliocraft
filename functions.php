@@ -18,9 +18,9 @@ require_once FOLIOCRAFT_DIR . '/inc/Autoloader.php';
 \FolioCraft\Assets::init();
 \FolioCraft\Customizer\Customizer::init();
 
-// NOTE: Projects/Experience post types, taxonomies, and editor meta live in the
-// companion "FolioCraft Portfolio" plugin (content/data is plugin territory, kept
-// independent of the active theme). The theme only renders that content.
+// Projects and Experience are managed via Customizer repeaters (the Portfolio
+// panel, read by the Project/Experience models) — no custom post types and no
+// companion plugin, so the theme is fully self-contained.
 
 /**
  * Fallback for the 'primary' nav location: the one-page anchor links rendered

@@ -24,20 +24,20 @@ Features:
 * Custom menu support, custom logo, featured images, and translation-ready strings (text domain: foliocraft).
 * Self-hosted fonts — no external requests, no user data sent to third parties.
 
-Projects and Experience are managed by the free companion plugin, **FolioCraft Portfolio**, which registers those content types so your data stays put even if you switch themes.
+Projects and Experience are managed right in the Customizer (Appearance > Customize > Portfolio) — add, edit, reorder, and attach images with a live preview.
 
 == Installation ==
 
 1. In your dashboard, go to Appearance > Themes > Add New > Upload Theme, choose the FolioCraft .zip, and click Install Now, then Activate.
 2. Go to Appearance > Customize to set your name, bio, social links, accent color, and the rest.
-3. (Recommended) Install the free **FolioCraft Portfolio** plugin to add and manage Projects and Experience entries.
+3. Add your Projects and Experience under Appearance > Customize > Portfolio.
 4. Create a Page for your front page and a Page for your posts, then set them under Settings > Reading.
 
 == Frequently Asked Questions ==
 
 = How do I add projects and experience? =
 
-Install and activate the free FolioCraft Portfolio companion plugin. It adds Projects and Experience post types under a single "Portfolio" admin menu. Keeping that content in a plugin means it survives a theme switch.
+Open Appearance > Customize > Portfolio and use the Projects and Experience sections. Each is a repeater where you add, edit, reorder, and (for projects) attach an image — all with a live preview.
 
 = How do I enable a contact form? =
 
