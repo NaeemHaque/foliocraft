@@ -2,12 +2,12 @@
 /**
  * Archive (category/tag/date) controller.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem\Controllers;
+namespace FolioCraft\Controllers;
 
-use Naeem\Core\View;
+use FolioCraft\Core\View;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -20,9 +20,9 @@ class Archive {
 			'blog/listing',
 			array(
 				'num'     => '06 /',
-				'eyebrow' => __( 'Writing', 'naeem-portfolio' ),
+				'eyebrow' => __( 'Writing', 'foliocraft' ),
 				'title'   => wp_strip_all_tags( get_the_archive_title() ),
-				'lead'    => $desc ? wp_strip_all_tags( $desc ) : __( 'Posts in this archive.', 'naeem-portfolio' ),
+				'lead'    => $desc ? wp_strip_all_tags( $desc ) : __( 'Posts in this archive.', 'foliocraft' ),
 			)
 		);
 		get_footer();

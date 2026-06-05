@@ -2,9 +2,9 @@
 /**
  * Front page.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
 defined( 'ABSPATH' ) || exit;
 
-( new \Naeem\Controllers\Front_Page() )->render();
+( new \FolioCraft\Controllers\Front_Page() )->render();

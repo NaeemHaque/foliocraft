@@ -1,5 +1,5 @@
 <?php
-namespace Naeem\PostTypes;
+namespace FolioCraft\PostTypes;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -15,8 +15,8 @@ class Taxonomies {
 			array( 'project', 'experience' ),
 			array(
 				'labels'            => array(
-					'name'          => __( 'Tech', 'naeem-portfolio' ),
-					'singular_name' => __( 'Tech', 'naeem-portfolio' ),
+					'name'          => __( 'Tech', 'foliocraft' ),
+					'singular_name' => __( 'Tech', 'foliocraft' ),
 				),
 				'public'            => true,
 				'hierarchical'      => false,
@@ -30,8 +30,8 @@ class Taxonomies {
 			array( 'project' ),
 			array(
 				'labels'            => array(
-					'name'          => __( 'Contribution Areas', 'naeem-portfolio' ),
-					'singular_name' => __( 'Contribution Area', 'naeem-portfolio' ),
+					'name'          => __( 'Contribution Areas', 'foliocraft' ),
+					'singular_name' => __( 'Contribution Area', 'foliocraft' ),
 				),
 				'public'            => true,
 				'hierarchical'      => false,

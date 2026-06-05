@@ -1,16 +1,16 @@
-# Naeem Portfolio
+# FolioCraft
 
-A custom **classic WordPress theme** built for Golam Sarwer Naeem — software engineer and open-source contributor. The theme implements a lightweight **PHP MVC** layer (Controllers / Models / Views under `inc/`) and a **Tailwind v4** CSS build, recreating a pixel-perfect portfolio and blog. It covers a front-page portfolio grid, blog listing / single / archive, a web résumé template, a contact form, and a 404 — all driven by Customizer settings and two custom post types (Projects, Experience). Requirements: **WordPress 6.4+**, **PHP 7.4+**, **Node 18+** (only needed when rebuilding CSS; compiled assets are committed).
+A custom **classic WordPress theme** built for Your Name — software engineer and open-source contributor. The theme implements a lightweight **PHP MVC** layer (Controllers / Models / Views under `inc/`) and a **Tailwind v4** CSS build, recreating a pixel-perfect portfolio and blog. It covers a front-page portfolio grid, blog listing / single / archive, a web résumé template, a contact form, and a 404 — all driven by Customizer settings and two custom post types (Projects, Experience). Requirements: **WordPress 6.4+**, **PHP 7.4+**, **Node 18+** (only needed when rebuilding CSS; compiled assets are committed).
 
 ---
 
 ## Install
 
-1. Copy (or clone) the `naeem-portfolio` folder into `wp-content/themes/`.
+1. Copy (or clone) the `foliocraft` folder into `wp-content/themes/`.
 2. Activate under **Appearance → Themes**, or via WP-CLI:
 
 ```bash
-wp theme activate naeem-portfolio
+wp theme activate foliocraft
 ```
 
 Compiled CSS (`assets/css/app.css`) and hand-written JS (`assets/js/main.js`) are committed, so a fresh clone renders without running any build step.
@@ -45,7 +45,7 @@ All three compile to `assets/css/app.css`. The `assets/js/main.js` file is hand-
    - **A static page** as your front page — select the page titled **Home** (or create one).
    - **Posts page** — select the page titled **Blog** (or create one).
 
-2. *(Optional)* Seed demo content — creates sample Projects, Experience entries, and Posts. The script is idempotent (guarded by a `naeem_seeded` option):
+2. *(Optional)* Seed demo content — creates sample Projects, Experience entries, and Posts. The script is idempotent (guarded by a `foliocraft_seeded` option):
 
 ```bash
 bash tools/seed-content.sh
@@ -133,13 +133,13 @@ When a shortcode is present the native form is hidden and the shortcode output i
 
 ## Translations
 
-The theme is translation-ready with text domain `naeem-portfolio`. Regenerate the POT after adding new strings:
+The theme is translation-ready with text domain `foliocraft`. Regenerate the POT after adding new strings:
 
 ```bash
-wp i18n make-pot . languages/naeem-portfolio.pot --domain=naeem-portfolio --exclude=node_modules,docs
+wp i18n make-pot . languages/foliocraft.pot --domain=foliocraft --exclude=node_modules,docs
 ```
 
-Place compiled `.po` / `.mo` files in `languages/` using the standard WordPress locale naming (`naeem-portfolio-{locale}.po`).
+Place compiled `.po` / `.mo` files in `languages/` using the standard WordPress locale naming (`foliocraft-{locale}.po`).
 
 ---
 
@@ -157,7 +157,7 @@ page-resume.php         ← entry point → Controllers/Resume.php
 404.php                 ← entry point → Controllers/Not_Found.php
 ```
 
-Each controller resolves the data it needs via a **Model** (`inc/Models/*`) and renders a view via `Naeem\Core\View`, which maps to a file under `template-parts/`. Business logic stays in models; markup stays in template-parts.
+Each controller resolves the data it needs via a **Model** (`inc/Models/*`) and renders a view via `FolioCraft\Core\View`, which maps to a file under `template-parts/`. Business logic stays in models; markup stays in template-parts.
 
 ```
 inc/

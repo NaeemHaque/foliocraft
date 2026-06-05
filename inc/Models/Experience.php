@@ -2,10 +2,10 @@
 /**
  * Experience data model.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem\Models;
+namespace FolioCraft\Models;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -26,9 +26,9 @@ class Experience {
 			$names = wp_get_post_terms( $p->ID, 'tech', array( 'fields' => 'names' ) );
 			$out[] = array(
 				'role'    => get_the_title( $p ),
-				'company' => (string) get_post_meta( $p->ID, '_naeem_company', true ),
-				'when'    => (string) get_post_meta( $p->ID, '_naeem_date_range', true ),
-				'current' => (bool) get_post_meta( $p->ID, '_naeem_is_current', true ),
+				'company' => (string) get_post_meta( $p->ID, '_foliocraft_company', true ),
+				'when'    => (string) get_post_meta( $p->ID, '_foliocraft_date_range', true ),
+				'current' => (bool) get_post_meta( $p->ID, '_foliocraft_is_current', true ),
 				'badge'   => '',
 				'desc'    => get_the_excerpt( $p ),
 				'tags'    => is_wp_error( $names ) ? array() : $names,

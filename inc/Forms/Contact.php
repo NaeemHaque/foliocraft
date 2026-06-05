@@ -2,16 +2,16 @@
 /**
  * Native contact form handler (admin-post), nonce + sanitize + wp_mail.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem\Forms;
+namespace FolioCraft\Forms;
 
 defined( 'ABSPATH' ) || exit;
 
 class Contact {
 
-	const ACTION = 'naeem_contact';
+	const ACTION = 'foliocraft_contact';
 
 	public static function init() {
 		add_action( 'admin_post_' . self::ACTION, array( __CLASS__, 'handle' ) );
@@ -19,16 +19,16 @@ class Contact {
 	}
 
 	public static function handle() {
-		$ajax  = ! empty( $_POST['naeem_ajax'] );
-		$nonce = isset( $_POST['naeem_contact_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['naeem_contact_nonce'] ) ) : '';
+		$ajax  = ! empty( $_POST['foliocraft_ajax'] );
+		$nonce = isset( $_POST['foliocraft_contact_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['foliocraft_contact_nonce'] ) ) : '';
 
 		if ( ! wp_verify_nonce( $nonce, self::ACTION ) ) {
-			self::respond( $ajax, false, __( 'Security check failed — please refresh and try again.', 'naeem-portfolio' ) );
+			self::respond( $ajax, false, __( 'Security check failed — please refresh and try again.', 'foliocraft' ) );
 		}
 
 		// Honeypot: a filled hidden field means a bot. Pretend success, send nothing.
-		if ( ! empty( $_POST['naeem_website'] ) ) {
-			self::respond( $ajax, true, __( 'Thanks — your message is on its way.', 'naeem-portfolio' ) );
+		if ( ! empty( $_POST['foliocraft_website'] ) ) {
+			self::respond( $ajax, true, __( 'Thanks — your message is on its way.', 'foliocraft' ) );
 		}
 
 		$name    = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
@@ -36,12 +36,12 @@ class Contact {
 		$message = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
 
 		if ( '' === $name || ! is_email( $email ) || strlen( $message ) < 10 ) {
-			self::respond( $ajax, false, __( 'Please add your name, a valid email, and a longer message.', 'naeem-portfolio' ) );
+			self::respond( $ajax, false, __( 'Please add your name, a valid email, and a longer message.', 'foliocraft' ) );
 		}
 
 		$to = get_option( 'admin_email' );
 		/* translators: %s: sender name. */
-		$subject = sprintf( __( 'Portfolio contact from %s', 'naeem-portfolio' ), $name );
+		$subject = sprintf( __( 'Portfolio contact from %s', 'foliocraft' ), $name );
 		$body    = sprintf( "Name: %s\nEmail: %s\n\n%s", $name, $email, $message );
 		$headers = array( 'Reply-To: ' . $name . ' <' . $email . '>' );
 		$sent    = wp_mail( $to, $subject, $body, $headers );
@@ -50,8 +50,8 @@ class Contact {
 			$ajax,
 			(bool) $sent,
 			$sent
-				? __( "Thanks — your message is on its way. I'll get back to you soon.", 'naeem-portfolio' )
-				: __( 'Sorry, something went wrong sending your message. Email me directly instead.', 'naeem-portfolio' )
+				? __( "Thanks — your message is on its way. I'll get back to you soon.", 'foliocraft' )
+				: __( 'Sorry, something went wrong sending your message. Email me directly instead.', 'foliocraft' )
 		);
 	}
 

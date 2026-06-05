@@ -2,11 +2,11 @@
 /**
  * Site footer.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
 defined( 'ABSPATH' ) || exit;
-$profile = isset( $profile ) ? $profile : \Naeem\Models\Profile::all();
+$profile = isset( $profile ) ? $profile : \FolioCraft\Models\Profile::all();
 ?>
 <footer class="footer">
   <div class="wrap footer-in">

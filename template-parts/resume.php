@@ -15,14 +15,14 @@ $role = ! empty( $p['hero']['roles'] ) ? $p['hero']['roles'][0] : '';
 	</header>
 
 	<section class="resume-section">
-		<h2><?php esc_html_e( 'Experience', 'naeem-portfolio' ); ?></h2>
+		<h2><?php esc_html_e( 'Experience', 'foliocraft' ); ?></h2>
 		<div class="timeline">
-			<?php foreach ( $experience as $item ) { \Naeem\Core\View::render( 'cards/timeline-item', $item ); } ?>
+			<?php foreach ( $experience as $item ) { \FolioCraft\Core\View::render( 'cards/timeline-item', $item ); } ?>
 		</div>
 	</section>
 
 	<section class="resume-section">
-		<h2><?php esc_html_e( 'Tech Stack', 'naeem-portfolio' ); ?></h2>
+		<h2><?php esc_html_e( 'Tech Stack', 'foliocraft' ); ?></h2>
 		<div class="skill-grid">
 			<?php foreach ( $p['skills']['groups'] as $group ) : ?>
 				<div class="skill-group">
@@ -34,7 +34,7 @@ $role = ! empty( $p['hero']['roles'] ) ? $p['hero']['roles'][0] : '';
 	</section>
 
 	<section class="resume-section">
-		<h2><?php esc_html_e( 'Contact', 'naeem-portfolio' ); ?></h2>
+		<h2><?php esc_html_e( 'Contact', 'foliocraft' ); ?></h2>
 		<p class="section-lead"><a href="<?php echo esc_url( 'mailto:' . $p['social']['email'] ); ?>"><?php echo esc_html( $p['social']['email'] ); ?></a> · <a href="<?php echo esc_url( $p['social']['github'] ); ?>" target="_blank" rel="noopener">GitHub</a> · <a href="<?php echo esc_url( $p['social']['linkedin'] ); ?>" target="_blank" rel="noopener">LinkedIn</a></p>
 	</section>
 </article>

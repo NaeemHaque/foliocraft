@@ -2,7 +2,7 @@
 /**
  * Theme header.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
   /* Set theme + enable reveal animations before paint (avoids FOUC). */
   (function () {
     try {
-      var t = localStorage.getItem('naeem-theme') || 'dark';
+      var t = localStorage.getItem('foliocraft-theme') || 'dark';
       document.documentElement.setAttribute('data-theme', t);
     } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
     try {
@@ -29,18 +29,18 @@ defined( 'ABSPATH' ) || exit;
 </script>
 <?php wp_head(); ?>
 <?php
-$naeem_profile = \Naeem\Models\Profile::all();
-if ( ! empty( $naeem_profile['accent'] ) && strtolower( $naeem_profile['accent'] ) !== '#e6926b' ) {
-	echo '<style>:root{--accent:' . esc_html( $naeem_profile['accent'] ) . ';}</style>';
+$foliocraft_profile = \FolioCraft\Models\Profile::all();
+if ( ! empty( $foliocraft_profile['accent'] ) && strtolower( $foliocraft_profile['accent'] ) !== '#e6926b' ) {
+	echo '<style>:root{--accent:' . esc_html( $foliocraft_profile['accent'] ) . ';}</style>';
 }
 ?>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<a class="skip-link screen-reader-text" href="#top"><?php esc_html_e( 'Skip to content', 'naeem-portfolio' ); ?></a>
+<a class="skip-link screen-reader-text" href="#top"><?php esc_html_e( 'Skip to content', 'foliocraft' ); ?></a>
 <?php
-\Naeem\Core\View::render( 'layout/progress' );
-\Naeem\Core\View::render( 'layout/nav', array( 'profile' => $naeem_profile ) );
-\Naeem\Core\View::render( 'layout/mobile-menu' );
+\FolioCraft\Core\View::render( 'layout/progress' );
+\FolioCraft\Core\View::render( 'layout/nav', array( 'profile' => $foliocraft_profile ) );
+\FolioCraft\Core\View::render( 'layout/mobile-menu' );
 ?>
 <main id="top">

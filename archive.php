@@ -2,9 +2,9 @@
 /**
  * Archive template (categories, tags, dates).
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
 defined( 'ABSPATH' ) || exit;
 
-( new \Naeem\Controllers\Archive() )->render();
+( new \FolioCraft\Controllers\Archive() )->render();

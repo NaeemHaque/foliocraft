@@ -834,7 +834,7 @@ html.reveal-on[data-motion="expressive"] [data-reveal] { transform: translateY(3
 .resume-section { margin:34px 0; }
 .resume-section h2 { font-family:var(--font-mono); font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-dim); margin:0 0 16px; }
 
-.naeem-hp { position:absolute !important; left:-9999px !important; width:1px; height:1px; overflow:hidden; }
+.foliocraft-hp { position:absolute !important; left:-9999px !important; width:1px; height:1px; overflow:hidden; }
 .form-err { display:flex; align-items:center; gap:11px; padding:14px 18px; border:1px solid #ff6b6b; background:color-mix(in oklab,#ff6b6b 12%,var(--bg)); border-radius:12px; font-size:14.5px; color:var(--text); margin-top:4px; }
 .resume-section .section-lead a { color:var(--link); }
 

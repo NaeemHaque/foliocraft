@@ -2,7 +2,7 @@
 /**
  * Mobile menu.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
 defined( 'ABSPATH' ) || exit;

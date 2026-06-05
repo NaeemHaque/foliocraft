@@ -2,7 +2,7 @@
 /**
  * Progress bar.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
 defined( 'ABSPATH' ) || exit;

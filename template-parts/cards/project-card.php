@@ -18,14 +18,14 @@ $icon_dot    = '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy=
 	<div class="proj-top">
 		<div class="proj-icon"><?php
 			if ( ! empty( $thumb_id ) ) {
-				echo wp_get_attachment_image( $thumb_id, 'naeem-project', false, array( 'alt' => '' ) );
+				echo wp_get_attachment_image( $thumb_id, 'foliocraft-project', false, array( 'alt' => '' ) );
 			} else {
 				echo $icons['blocks']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG
 			}
 		?></div>
 		<div class="proj-links">
-			<a href="<?php echo ! empty( $live_url ) ? esc_url( $live_url ) : '#'; ?>"<?php echo ! empty( $live_url ) ? ' target="_blank" rel="noopener"' : ''; ?> aria-label="<?php esc_attr_e( 'Live site', 'naeem-portfolio' ); ?>" title="<?php esc_attr_e( 'Live site', 'naeem-portfolio' ); ?>"><?php echo $icon_ext; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?></a>
-			<a href="<?php echo ! empty( $github_url ) ? esc_url( $github_url ) : '#'; ?>"<?php echo ! empty( $github_url ) ? ' target="_blank" rel="noopener"' : ''; ?> aria-label="<?php esc_attr_e( 'GitHub repo', 'naeem-portfolio' ); ?>" title="GitHub"><?php echo $icon_github; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?></a>
+			<a href="<?php echo ! empty( $live_url ) ? esc_url( $live_url ) : '#'; ?>"<?php echo ! empty( $live_url ) ? ' target="_blank" rel="noopener"' : ''; ?> aria-label="<?php esc_attr_e( 'Live site', 'foliocraft' ); ?>" title="<?php esc_attr_e( 'Live site', 'foliocraft' ); ?>"><?php echo $icon_ext; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?></a>
+			<a href="<?php echo ! empty( $github_url ) ? esc_url( $github_url ) : '#'; ?>"<?php echo ! empty( $github_url ) ? ' target="_blank" rel="noopener"' : ''; ?> aria-label="<?php esc_attr_e( 'GitHub repo', 'foliocraft' ); ?>" title="GitHub"><?php echo $icon_github; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?></a>
 		</div>
 	</div>
 	<h3><?php echo esc_html( $name ); ?></h3>

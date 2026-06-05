@@ -1,5 +1,5 @@
 <?php
-namespace Naeem\PostTypes;
+namespace FolioCraft\PostTypes;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -14,9 +14,9 @@ class Project_CPT {
 			'project',
 			array(
 				'labels'       => array(
-					'name'          => __( 'Projects', 'naeem-portfolio' ),
-					'singular_name' => __( 'Project', 'naeem-portfolio' ),
-					'add_new_item'  => __( 'Add New Project', 'naeem-portfolio' ),
+					'name'          => __( 'Projects', 'foliocraft' ),
+					'singular_name' => __( 'Project', 'foliocraft' ),
+					'add_new_item'  => __( 'Add New Project', 'foliocraft' ),
 				),
 				'public'            => true,
 				'show_in_menu'      => false,

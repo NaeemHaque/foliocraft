@@ -2,9 +2,9 @@
 /**
  * Single post.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
 defined( 'ABSPATH' ) || exit;
 
-( new \Naeem\Controllers\Single_Post() )->render();
+( new \FolioCraft\Controllers\Single_Post() )->render();

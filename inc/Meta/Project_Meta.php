@@ -2,20 +2,20 @@
 /**
  * Project meta box: live URL, GitHub URL, stars, language.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem\Meta;
+namespace FolioCraft\Meta;
 
 defined( 'ABSPATH' ) || exit;
 
 class Project_Meta {
 
 	const FIELDS = array(
-		'_naeem_live_url'   => 'url',
-		'_naeem_github_url' => 'url',
-		'_naeem_stars'      => 'text',
-		'_naeem_lang'       => 'text',
+		'_foliocraft_live_url'   => 'url',
+		'_foliocraft_github_url' => 'url',
+		'_foliocraft_stars'      => 'text',
+		'_foliocraft_lang'       => 'text',
 	);
 
 	public static function init() {
@@ -44,8 +44,8 @@ class Project_Meta {
 
 	public static function add_box() {
 		add_meta_box(
-			'naeem_project_details',
-			__( 'Project Details', 'naeem-portfolio' ),
+			'foliocraft_project_details',
+			__( 'Project Details', 'foliocraft' ),
 			array( __CLASS__, 'box' ),
 			'project',
 			'side'
@@ -53,12 +53,12 @@ class Project_Meta {
 	}
 
 	public static function box( $post ) {
-		wp_nonce_field( 'naeem_project_save', 'naeem_project_nonce' );
+		wp_nonce_field( 'foliocraft_project_save', 'foliocraft_project_nonce' );
 		$labels = array(
-			'_naeem_live_url'   => array( __( 'Live URL', 'naeem-portfolio' ), 'url' ),
-			'_naeem_github_url' => array( __( 'GitHub URL', 'naeem-portfolio' ), 'url' ),
-			'_naeem_stars'      => array( __( 'Stars', 'naeem-portfolio' ), 'text' ),
-			'_naeem_lang'       => array( __( 'Language', 'naeem-portfolio' ), 'text' ),
+			'_foliocraft_live_url'   => array( __( 'Live URL', 'foliocraft' ), 'url' ),
+			'_foliocraft_github_url' => array( __( 'GitHub URL', 'foliocraft' ), 'url' ),
+			'_foliocraft_stars'      => array( __( 'Stars', 'foliocraft' ), 'text' ),
+			'_foliocraft_lang'       => array( __( 'Language', 'foliocraft' ), 'text' ),
 		);
 		foreach ( $labels as $key => $meta ) {
 			$val = get_post_meta( $post->ID, $key, true );
@@ -76,7 +76,7 @@ class Project_Meta {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
 		}
-		if ( ! isset( $_POST['naeem_project_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['naeem_project_nonce'] ) ), 'naeem_project_save' ) ) {
+		if ( ! isset( $_POST['foliocraft_project_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['foliocraft_project_nonce'] ) ), 'foliocraft_project_save' ) ) {
 			return;
 		}
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {

@@ -2,10 +2,10 @@
 /**
  * Theme setup: supports, menus, image sizes, text domain.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem;
+namespace FolioCraft;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -16,7 +16,7 @@ class Theme {
 	}
 
 	public static function setup() {
-		load_theme_textdomain( 'naeem-portfolio', NAEEM_DIR . '/languages' );
+		load_theme_textdomain( 'foliocraft', FOLIOCRAFT_DIR . '/languages' );
 
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
@@ -29,10 +29,10 @@ class Theme {
 		);
 
 		register_nav_menus(
-			array( 'primary' => __( 'Primary Menu', 'naeem-portfolio' ) )
+			array( 'primary' => __( 'Primary Menu', 'foliocraft' ) )
 		);
 
-		add_image_size( 'naeem-project', 800, 600, true );
-		add_image_size( 'naeem-post', 720, 480, true );
+		add_image_size( 'foliocraft-project', 800, 600, true );
+		add_image_size( 'foliocraft-post', 720, 480, true );
 	}
 }

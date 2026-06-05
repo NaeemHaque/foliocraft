@@ -2,9 +2,9 @@
 /**
  * 404 template.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
 defined( 'ABSPATH' ) || exit;
 
-( new \Naeem\Controllers\Not_Found() )->render();
+( new \FolioCraft\Controllers\Not_Found() )->render();

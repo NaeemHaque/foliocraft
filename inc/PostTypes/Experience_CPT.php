@@ -1,5 +1,5 @@
 <?php
-namespace Naeem\PostTypes;
+namespace FolioCraft\PostTypes;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -14,9 +14,9 @@ class Experience_CPT {
 			'experience',
 			array(
 				'labels'       => array(
-					'name'          => __( 'Experience', 'naeem-portfolio' ),
-					'singular_name' => __( 'Experience', 'naeem-portfolio' ),
-					'add_new_item'  => __( 'Add New Entry', 'naeem-portfolio' ),
+					'name'          => __( 'Experience', 'foliocraft' ),
+					'singular_name' => __( 'Experience', 'foliocraft' ),
+					'add_new_item'  => __( 'Add New Entry', 'foliocraft' ),
 				),
 				'public'            => false,
 				'show_ui'           => true,

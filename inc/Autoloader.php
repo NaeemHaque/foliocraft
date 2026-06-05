@@ -1,11 +1,11 @@
 <?php
 /**
- * PSR-4-style autoloader mapping the Naeem\ namespace to inc/.
+ * PSR-4-style autoloader mapping the FolioCraft\ namespace to inc/.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem;
+namespace FolioCraft;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -17,19 +17,19 @@ class Autoloader {
 	}
 
 	/**
-	 * Load a class file for the Naeem\ namespace.
+	 * Load a class file for the FolioCraft\ namespace.
 	 *
-	 * Naeem\Core\View -> inc/Core/View.php
+	 * FolioCraft\Core\View -> inc/Core/View.php
 	 *
 	 * @param string $class Fully-qualified class name.
 	 */
 	public static function load( $class ) {
-		$prefix = 'Naeem\\';
+		$prefix = 'FolioCraft\\';
 		if ( 0 !== strpos( $class, $prefix ) ) {
 			return;
 		}
 		$relative = substr( $class, strlen( $prefix ) );
-		$path     = NAEEM_DIR . '/inc/' . str_replace( '\\', '/', $relative ) . '.php';
+		$path     = FOLIOCRAFT_DIR . '/inc/' . str_replace( '\\', '/', $relative ) . '.php';
 		if ( is_readable( $path ) ) {
 			require_once $path;
 		}

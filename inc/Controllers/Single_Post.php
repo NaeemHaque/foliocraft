@@ -2,12 +2,12 @@
 /**
  * Single post controller.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem\Controllers;
+namespace FolioCraft\Controllers;
 
-use Naeem\Core\View;
+use FolioCraft\Core\View;
 
 defined( 'ABSPATH' ) || exit;
 
