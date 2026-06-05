@@ -13,6 +13,7 @@ class Customizer {
 
 	public static function init() {
 		add_action( 'customize_register', array( __CLASS__, 'register' ) );
+		add_action( 'customize_controls_enqueue_scripts', array( __CLASS__, 'enqueue_controls' ) );
 	}
 
 	public static function register( $wp_customize ) {
@@ -27,6 +28,7 @@ class Customizer {
 			'foliocraft_identity'   => __( 'Identity', 'foliocraft' ),
 			'foliocraft_hero'       => __( 'Hero', 'foliocraft' ),
 			'foliocraft_about'      => __( 'About', 'foliocraft' ),
+			'foliocraft_projects'   => __( 'Projects', 'foliocraft' ),
 			'foliocraft_skills'     => __( 'Skills', 'foliocraft' ),
 			'foliocraft_opensource' => __( 'Open Source', 'foliocraft' ),
 			'foliocraft_social'     => __( 'Social Links', 'foliocraft' ),
@@ -37,6 +39,37 @@ class Customizer {
 		foreach ( $sections as $id => $title ) {
 			$wp_customize->add_section( $id, array( 'title' => $title, 'panel' => 'foliocraft' ) );
 		}
+
+		// --- Projects (repeater) ---
+		$wp_customize->add_setting(
+			'foliocraft_projects',
+			array(
+				'default'           => wp_json_encode( \FolioCraft\Models\Project::demo() ),
+				'sanitize_callback' => array( __CLASS__, 'sanitize_projects' ),
+			)
+		);
+		$wp_customize->add_control(
+			new Repeater_Control(
+				$wp_customize,
+				'foliocraft_projects',
+				array(
+					'label'        => __( 'Projects', 'foliocraft' ),
+					'description'  => __( 'The cards in the Selected Work grid. Drag to reorder; the filter pills come from the Tech field.', 'foliocraft' ),
+					'section'      => 'foliocraft_projects',
+					'button_label' => __( 'Add project', 'foliocraft' ),
+					'fields'       => array(
+						array( 'key' => 'title', 'label' => __( 'Title', 'foliocraft' ), 'type' => 'text' ),
+						array( 'key' => 'desc', 'label' => __( 'Description', 'foliocraft' ), 'type' => 'textarea' ),
+						array( 'key' => 'image', 'label' => __( 'Image', 'foliocraft' ), 'type' => 'media' ),
+						array( 'key' => 'tech', 'label' => __( 'Tech (comma-separated)', 'foliocraft' ), 'type' => 'text' ),
+						array( 'key' => 'live_url', 'label' => __( 'Live URL', 'foliocraft' ), 'type' => 'url' ),
+						array( 'key' => 'github_url', 'label' => __( 'GitHub URL', 'foliocraft' ), 'type' => 'url' ),
+						array( 'key' => 'stars', 'label' => __( 'Stars', 'foliocraft' ), 'type' => 'text' ),
+						array( 'key' => 'lang', 'label' => __( 'Language', 'foliocraft' ), 'type' => 'text' ),
+					),
+				)
+			)
+		);
 
 		// --- Hero ---
 		$wp_customize->add_setting( 'foliocraft_hero_status', array(
@@ -649,4 +682,61 @@ class Customizer {
 	public static function sanitize_email_field( $v ) { return sanitize_email( $v ); }
 	public static function sanitize_lines( $v ) { return sanitize_textarea_field( $v ); }
 	public static function sanitize_hex( $v ) { return sanitize_hex_color( $v ); }
+
+	/** Validate + re-encode the repeater JSON (projects). */
+	public static function sanitize_projects( $value ) {
+		$items = json_decode( (string) $value, true );
+		if ( ! is_array( $items ) ) {
+			return '';
+		}
+		$clean = array();
+		foreach ( $items as $it ) {
+			if ( ! is_array( $it ) ) {
+				continue;
+			}
+			$clean[] = array(
+				'title'      => sanitize_text_field( isset( $it['title'] ) ? $it['title'] : '' ),
+				'desc'       => sanitize_textarea_field( isset( $it['desc'] ) ? $it['desc'] : '' ),
+				'image'      => absint( isset( $it['image'] ) ? $it['image'] : 0 ),
+				'tech'       => sanitize_text_field( isset( $it['tech'] ) ? $it['tech'] : '' ),
+				'live_url'   => esc_url_raw( isset( $it['live_url'] ) ? $it['live_url'] : '' ),
+				'github_url' => esc_url_raw( isset( $it['github_url'] ) ? $it['github_url'] : '' ),
+				'stars'      => sanitize_text_field( isset( $it['stars'] ) ? $it['stars'] : '' ),
+				'lang'       => sanitize_text_field( isset( $it['lang'] ) ? $it['lang'] : '' ),
+			);
+		}
+		return wp_json_encode( $clean );
+	}
+
+	/** Enqueue the repeater control's script/style in the Customizer pane. */
+	public static function enqueue_controls() {
+		wp_enqueue_media();
+		wp_enqueue_script(
+			'foliocraft-customizer-repeater',
+			FOLIOCRAFT_URI . '/assets/js/customizer-repeater.js',
+			array( 'jquery', 'jquery-ui-sortable', 'customize-controls', 'wp-util' ),
+			FOLIOCRAFT_VERSION,
+			true
+		);
+		wp_localize_script(
+			'foliocraft-customizer-repeater',
+			'fcRep',
+			array(
+				'i18n' => array(
+					'select'   => __( 'Select image', 'foliocraft' ),
+					'change'   => __( 'Change image', 'foliocraft' ),
+					'remove'   => __( 'Remove', 'foliocraft' ),
+					'use'      => __( 'Use image', 'foliocraft' ),
+					'untitled' => __( '(untitled)', 'foliocraft' ),
+					'drag'     => __( 'Drag to reorder', 'foliocraft' ),
+				),
+			)
+		);
+		wp_enqueue_style(
+			'foliocraft-customizer-repeater',
+			FOLIOCRAFT_URI . '/assets/css/customizer-repeater.css',
+			array(),
+			FOLIOCRAFT_VERSION
+		);
+	}
 }

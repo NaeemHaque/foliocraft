@@ -1,0 +1,19 @@
+/* FolioCraft Customizer repeater control */
+.fc-rep-rows { margin-bottom: 8px; }
+.fc-rep-row { border: 1px solid #dcdcde; border-radius: 4px; margin-bottom: 6px; background: #fff; }
+.fc-rep-row-head { display: flex; align-items: center; gap: 6px; padding: 8px 10px; cursor: pointer; }
+.fc-rep-handle { cursor: grab; color: #787c82; }
+.fc-rep-row-title { flex: 1 1 auto; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fc-rep-remove { color: #b32d2e !important; text-decoration: none; display: inline-flex; }
+.fc-rep-remove .dashicons { font-size: 18px; width: 18px; height: 18px; }
+.fc-rep-toggle { color: #787c82; transition: transform .15s ease; }
+.fc-rep-row.open .fc-rep-toggle { transform: rotate( 180deg ); }
+.fc-rep-row-body { display: none; padding: 0 10px 12px; border-top: 1px solid #f0f0f1; }
+.fc-rep-row.open .fc-rep-row-body { display: block; }
+.fc-rep-field { display: block; margin-top: 10px; }
+.fc-rep-field > span { display: block; margin-bottom: 4px; font-weight: 600; font-size: 12px; color: #50575e; }
+.fc-rep-input { width: 100%; }
+.fc-rep-media-preview img { display: block; width: auto; max-width: 100%; max-height: 110px; height: auto; border-radius: 4px; margin-bottom: 6px; }
+.fc-rep-add { width: 100%; text-align: center; }
+.fc-rep-row.ui-sortable-helper { box-shadow: 0 2px 10px rgba( 0, 0, 0, .15 ); }
+.fc-rep-row.ui-sortable-placeholder { visibility: visible !important; border: 1px dashed #c3c4c7; background: #f6f7f7; }

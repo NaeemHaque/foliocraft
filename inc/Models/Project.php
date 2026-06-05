@@ -1,6 +1,7 @@
 <?php
 /**
- * Project data model.
+ * Project data model — reads the project list from the Customizer repeater
+ * (a single JSON theme_mod), falling back to the bundled demo set.
  *
  * @package FolioCraft
  */
@@ -13,59 +14,66 @@ class Project {
 
 	/** @return array<int,array<string,mixed>> */
 	public static function all() {
-		$q   = new \WP_Query(
-			array(
-				'post_type'      => 'project',
-				'post_status'    => 'publish',
-				'posts_per_page' => -1,
-				'orderby'        => array( 'menu_order' => 'ASC', 'date' => 'DESC' ),
-			)
-		);
-		$out = array();
-		foreach ( $q->posts as $p ) {
-			$names = wp_get_post_terms( $p->ID, 'tech', array( 'fields' => 'names' ) );
-			$slugs = wp_get_post_terms( $p->ID, 'tech', array( 'fields' => 'slugs' ) );
-			$out[] = array(
-				'name'       => get_the_title( $p ),
-				'desc'       => get_the_excerpt( $p ),
-				'live_url'   => (string) get_post_meta( $p->ID, '_foliocraft_live_url', true ),
-				'github_url' => (string) get_post_meta( $p->ID, '_foliocraft_github_url', true ),
-				'stars'      => (string) get_post_meta( $p->ID, '_foliocraft_stars', true ),
-				'lang'       => (string) get_post_meta( $p->ID, '_foliocraft_lang', true ),
-				'tags'       => is_wp_error( $names ) ? array() : $names,
-				'filters'    => is_wp_error( $slugs ) ? array() : $slugs,
-				'thumb_id'   => (int) get_post_thumbnail_id( $p->ID ),
-			);
-		}
-		wp_reset_postdata();
-		return $out;
+		return array_map( array( __CLASS__, 'shape' ), self::items() );
 	}
 
-	/** Tech terms attached to published projects, for the filter pills. @return array<int,array<string,string>> */
+	/** Unique tech terms across all projects, for the filter pills. @return array<int,array<string,string>> */
 	public static function tech_terms() {
-		$ids = get_posts(
-			array(
-				'post_type'      => 'project',
-				'post_status'    => 'publish',
-				'posts_per_page' => -1,
-				'fields'         => 'ids',
-			)
-		);
-		if ( empty( $ids ) ) {
-			return array();
-		}
-		$terms = wp_get_object_terms( $ids, 'tech' );
-		$out   = array();
-		$seen  = array();
-		if ( ! is_wp_error( $terms ) ) {
-			foreach ( $terms as $t ) {
-				if ( isset( $seen[ $t->slug ] ) ) {
+		$seen = array();
+		$out  = array();
+		foreach ( self::items() as $it ) {
+			foreach ( self::split_tech( $it ) as $name ) {
+				$slug = sanitize_title( $name );
+				if ( '' === $slug || isset( $seen[ $slug ] ) ) {
 					continue;
 				}
-				$seen[ $t->slug ] = true;
-				$out[]            = array( 'slug' => $t->slug, 'name' => $t->name );
+				$seen[ $slug ] = true;
+				$out[]         = array( 'slug' => $slug, 'name' => $name );
 			}
 		}
 		return $out;
+	}
+
+	/** Decoded rows from the theme_mod, or the demo set when unset/empty. @return array<int,array<string,mixed>> */
+	private static function items() {
+		$items = json_decode( (string) get_theme_mod( 'foliocraft_projects', '' ), true );
+		if ( ! is_array( $items ) || empty( $items ) ) {
+			$items = self::demo();
+		}
+		return $items;
+	}
+
+	/** @return array<int,string> */
+	private static function split_tech( $it ) {
+		$raw = isset( $it['tech'] ) ? (string) $it['tech'] : '';
+		return array_values( array_filter( array_map( 'trim', explode( ',', $raw ) ) ) );
+	}
+
+	/** Map a stored row to the shape the card template expects. */
+	private static function shape( $it ) {
+		$tech = self::split_tech( $it );
+		return array(
+			'name'       => isset( $it['title'] ) ? (string) $it['title'] : '',
+			'desc'       => isset( $it['desc'] ) ? (string) $it['desc'] : '',
+			'live_url'   => isset( $it['live_url'] ) ? (string) $it['live_url'] : '',
+			'github_url' => isset( $it['github_url'] ) ? (string) $it['github_url'] : '',
+			'stars'      => isset( $it['stars'] ) ? (string) $it['stars'] : '',
+			'lang'       => isset( $it['lang'] ) ? (string) $it['lang'] : '',
+			'tags'       => $tech,
+			'filters'    => array_map( 'sanitize_title', $tech ),
+			'thumb_id'   => isset( $it['image'] ) ? (int) $it['image'] : 0,
+		);
+	}
+
+	/** Demo projects shown until the user adds their own; also the Customizer default. @return array<int,array<string,mixed>> */
+	public static function demo() {
+		return array(
+			array( 'title' => 'Open Dashboard', 'desc' => 'A team productivity dashboard surfacing PRs, deploys, and CI health in real time. API back-end, Vue front-end, MySQL.', 'image' => 0, 'tech' => 'Laravel, Vue, MySQL, PHP', 'live_url' => '', 'github_url' => 'https://github.com/yourusername/open-dashboard', 'stars' => '312', 'lang' => 'PHP' ),
+			array( 'title' => 'Schema Helper', 'desc' => 'WordPress plugin that auto-generates schema.org structured data — Yoast/Rank Math friendly, zero config.', 'image' => 0, 'tech' => 'WordPress, PHP', 'live_url' => '', 'github_url' => 'https://github.com/yourusername/schema-helper', 'stars' => '1.2k', 'lang' => 'PHP' ),
+			array( 'title' => 'Query Inspector', 'desc' => 'Slow-query analyzer for MySQL with a web UI — visualizes EXPLAIN plans and suggests indexes.', 'image' => 0, 'tech' => 'PHP, MySQL', 'live_url' => '', 'github_url' => 'https://github.com/yourusername/query-inspector', 'stars' => '486', 'lang' => 'PHP' ),
+			array( 'title' => 'Block Starter Kit', 'desc' => 'A collection of reusable Vue-powered blocks and components for WordPress projects.', 'image' => 0, 'tech' => 'Vue, WordPress', 'live_url' => '', 'github_url' => 'https://github.com/yourusername/block-starter-kit', 'stars' => '740', 'lang' => 'Vue' ),
+			array( 'title' => 'App Starter Kit', 'desc' => 'Opinionated Laravel starter with auth, queues, and a Vue + Tailwind front-end wired for clean architecture.', 'image' => 0, 'tech' => 'Laravel, Vue, MySQL, PHP', 'live_url' => '', 'github_url' => 'https://github.com/yourusername/app-starter-kit', 'stars' => '928', 'lang' => 'PHP' ),
+			array( 'title' => 'Translation Tool', 'desc' => 'A contributor tool for software translators — speeds up string review and translation suggestions.', 'image' => 0, 'tech' => 'WordPress, Vue, PHP', 'live_url' => '', 'github_url' => 'https://github.com/yourusername/translation-tool', 'stars' => '203', 'lang' => 'JavaScript' ),
+		);
 	}
 }
