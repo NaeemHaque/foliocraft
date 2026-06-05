@@ -672,6 +672,31 @@ button { font-family: inherit; }
 .form-ok.show { display: flex; }
 .form-ok svg { width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; }
 
+/* ---------- comments ---------- */
+.comments { max-width: 760px; margin-inline: auto; padding-block: 40px 64px; }
+.comments-title { font-size: 22px; margin-bottom: 24px; }
+.comment-list { list-style: none; margin: 0 0 32px; padding: 0; }
+.comment-list ol.children { list-style: none; margin: 0 0 0 28px; padding: 0; }
+.comment-body { padding: 18px 0; border-top: 1px solid var(--border); }
+.comment-author { display: flex; align-items: center; gap: 10px; }
+.comment-author .avatar { border-radius: 50%; }
+.comment-author .fn { font-weight: 600; font-style: normal; color: var(--text); }
+.comment-metadata { font-size: 12.5px; color: var(--text-faint); margin: 4px 0 10px; }
+.comment-metadata a { color: var(--text-faint); }
+.comment-content { color: var(--text-dim); line-height: 1.6; }
+.comment-content a { color: var(--link); }
+.reply { margin-top: 8px; font-size: 13px; }
+.reply a { color: var(--accent); }
+.comment-respond { margin-top: 8px; padding: 24px; border: 1px solid var(--border); border-radius: 14px; background: var(--panel); }
+.comment-reply-title { font-size: 18px; margin-bottom: 14px; }
+.comment-form label { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 6px; }
+.comment-form input[type="text"], .comment-form input[type="email"], .comment-form input[type="url"], .comment-form textarea {
+  width: 100%; padding: 11px 13px; background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font: inherit; margin-bottom: 14px;
+}
+.comment-form textarea { min-height: 120px; resize: vertical; }
+.comment-form .form-submit input[type="submit"] { padding: 11px 20px; border: 0; border-radius: 10px; background: var(--accent); color: var(--accent-ink); font: inherit; font-weight: 600; cursor: pointer; }
+.no-comments { color: var(--text-faint); font-size: 14px; }
+
 /* ---------- footer ---------- */
 .footer { border-top: 1px solid var(--border); padding-block: 40px; }
 .footer-in { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }

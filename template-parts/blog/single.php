@@ -17,3 +17,4 @@ $mins       = max( 1, (int) ceil( $words / 200 ) );
 	<?php wp_link_pages( array( 'before' => '<nav class="page-links" aria-label="' . esc_attr__( 'Post pages', 'foliocraft' ) . '">' . esc_html__( 'Pages:', 'foliocraft' ) . ' ', 'after' => '</nav>' ) ); ?>
 	<?php the_post_navigation( array( 'prev_text' => '&larr; %title', 'next_text' => '%title &rarr;' ) ); ?>
 </article>
+<?php comments_template(); ?>

@@ -48,5 +48,9 @@ class Assets {
 			'FolioCraftData',
 			array( 'roles' => \FolioCraft\Models\Profile::all()['hero']['roles'] )
 		);
+
+		if ( is_singular() && comments_open() && (int) get_option( 'thread_comments' ) ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
 	}
 }
