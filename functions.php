@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'FOLIOCRAFT_VERSION', '0.1.0' );
+define( 'FOLIOCRAFT_VERSION', '1.0.0' );
 define( 'FOLIOCRAFT_DIR', get_template_directory() );
 define( 'FOLIOCRAFT_URI', get_template_directory_uri() );
 
