@@ -6,16 +6,16 @@
  * show_in_menu => false (no auto top-level menus); this gathers them — plus
  * Add-New links and the Customizer panel — under a single "Portfolio" menu.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem\Admin;
+namespace FolioCraft\Admin;
 
 defined( 'ABSPATH' ) || exit;
 
 class Menu {
 
-	const SLUG = 'naeem-portfolio';
+	const SLUG = 'foliocraft';
 
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'register' ) );
@@ -24,8 +24,8 @@ class Menu {
 
 	public static function register() {
 		add_menu_page(
-			__( 'Portfolio', 'naeem-portfolio' ),
-			__( 'Portfolio', 'naeem-portfolio' ),
+			__( 'Portfolio', 'foliocraft' ),
+			__( 'Portfolio', 'foliocraft' ),
 			'edit_posts',
 			self::SLUG,
 			array( __CLASS__, 'landing' ),
@@ -35,13 +35,13 @@ class Menu {
 
 		// label, capability, target page — order here is the submenu order.
 		$items = array(
-			array( __( 'Projects', 'naeem-portfolio' ), 'edit_posts', 'edit.php?post_type=project' ),
-			array( __( 'Add Project', 'naeem-portfolio' ), 'edit_posts', 'post-new.php?post_type=project' ),
-			array( __( 'Experience', 'naeem-portfolio' ), 'edit_posts', 'edit.php?post_type=experience' ),
-			array( __( 'Add Experience', 'naeem-portfolio' ), 'edit_posts', 'post-new.php?post_type=experience' ),
-			array( __( 'Tech', 'naeem-portfolio' ), 'manage_categories', 'edit-tags.php?taxonomy=tech&post_type=project' ),
-			array( __( 'Contribution Areas', 'naeem-portfolio' ), 'manage_categories', 'edit-tags.php?taxonomy=contribution_area&post_type=project' ),
-			array( __( 'Customize', 'naeem-portfolio' ), 'edit_theme_options', 'customize.php?autofocus[panel]=naeem_portfolio' ),
+			array( __( 'Projects', 'foliocraft' ), 'edit_posts', 'edit.php?post_type=project' ),
+			array( __( 'Add Project', 'foliocraft' ), 'edit_posts', 'post-new.php?post_type=project' ),
+			array( __( 'Experience', 'foliocraft' ), 'edit_posts', 'edit.php?post_type=experience' ),
+			array( __( 'Add Experience', 'foliocraft' ), 'edit_posts', 'post-new.php?post_type=experience' ),
+			array( __( 'Tech', 'foliocraft' ), 'manage_categories', 'edit-tags.php?taxonomy=tech&post_type=project' ),
+			array( __( 'Contribution Areas', 'foliocraft' ), 'manage_categories', 'edit-tags.php?taxonomy=contribution_area&post_type=project' ),
+			array( __( 'Customize', 'foliocraft' ), 'edit_theme_options', 'customize.php?autofocus[panel]=foliocraft' ),
 		);
 		foreach ( $items as $item ) {
 			add_submenu_page( self::SLUG, $item[0], $item[0], $item[1], $item[2] );

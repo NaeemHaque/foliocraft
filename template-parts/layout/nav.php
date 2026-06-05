@@ -2,14 +2,14 @@
 /**
  * Primary navigation header.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
 defined( 'ABSPATH' ) || exit;
-$profile = isset( $profile ) ? $profile : \Naeem\Models\Profile::all();
+$profile = isset( $profile ) ? $profile : \FolioCraft\Models\Profile::all();
 ?>
 <header class="nav" id="nav">
-  <a href="#top" class="brand" aria-label="Golam Sarwer Naeem — home">
+  <a href="#top" class="brand" aria-label="Your Name — home">
     <span class="mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 8 4 4-4 4"/><path d="M13 16h4"/></svg></span>
     <span><?php echo esc_html( $profile['identity']['brand'] ); ?><span class="dim">.dev</span></span>
   </a>
@@ -24,7 +24,7 @@ $profile = isset( $profile ) ? $profile : \Naeem\Models\Profile::all();
   <div class="nav-right">
     <a class="btn btn--ghost" href="<?php echo is_front_page() ? '' : esc_url( home_url( '/' ) ); ?>#contact" id="contactTop">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg>
-      <?php esc_html_e( 'Contact', 'naeem-portfolio' ); ?>
+      <?php esc_html_e( 'Contact', 'foliocraft' ); ?>
     </a>
     <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle color theme">
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>

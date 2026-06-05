@@ -2,9 +2,9 @@
 /**
  * Blog posts index.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
 defined( 'ABSPATH' ) || exit;
 
-( new \Naeem\Controllers\Blog() )->render();
+( new \FolioCraft\Controllers\Blog() )->render();

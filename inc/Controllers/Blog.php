@@ -2,12 +2,12 @@
 /**
  * Blog listing controller.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem\Controllers;
+namespace FolioCraft\Controllers;
 
-use Naeem\Core\View;
+use FolioCraft\Core\View;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -19,9 +19,9 @@ class Blog {
 			'blog/listing',
 			array(
 				'num'     => '06 /',
-				'eyebrow' => __( 'Writing', 'naeem-portfolio' ),
-				'title'   => __( 'Notes from the editor.', 'naeem-portfolio' ),
-				'lead'    => __( 'Things I learn building WordPress products, contributing upstream, and keeping software clean — written down so I (and maybe you) remember them.', 'naeem-portfolio' ),
+				'eyebrow' => __( 'Writing', 'foliocraft' ),
+				'title'   => __( 'Notes from the editor.', 'foliocraft' ),
+				'lead'    => __( 'Things I learn building WordPress products, contributing upstream, and keeping software clean — written down so I (and maybe you) remember them.', 'foliocraft' ),
 			)
 		);
 		get_footer();

@@ -2,10 +2,10 @@
 /**
  * Blog post data model.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem\Models;
+namespace FolioCraft\Models;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -27,9 +27,9 @@ class Post {
 			$words = str_word_count( wp_strip_all_tags( $p->post_content ) );
 			$mins  = max( 1, (int) ceil( $words / 200 ) );
 			$out[] = array(
-				'cat'     => ! empty( $cats ) ? $cats[0]->name : __( 'Post', 'naeem-portfolio' ),
+				'cat'     => ! empty( $cats ) ? $cats[0]->name : __( 'Post', 'foliocraft' ),
 				/* translators: %d: estimated reading time in minutes. */
-				'read'    => sprintf( __( '%d min read', 'naeem-portfolio' ), $mins ),
+				'read'    => sprintf( __( '%d min read', 'foliocraft' ), $mins ),
 				'title'   => get_the_title( $p ),
 				'excerpt' => get_the_excerpt( $p ),
 				'url'     => get_permalink( $p ),

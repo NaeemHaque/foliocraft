@@ -2,10 +2,10 @@
 /**
  * Project data model.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem\Models;
+namespace FolioCraft\Models;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -28,10 +28,10 @@ class Project {
 			$out[] = array(
 				'name'       => get_the_title( $p ),
 				'desc'       => get_the_excerpt( $p ),
-				'live_url'   => (string) get_post_meta( $p->ID, '_naeem_live_url', true ),
-				'github_url' => (string) get_post_meta( $p->ID, '_naeem_github_url', true ),
-				'stars'      => (string) get_post_meta( $p->ID, '_naeem_stars', true ),
-				'lang'       => (string) get_post_meta( $p->ID, '_naeem_lang', true ),
+				'live_url'   => (string) get_post_meta( $p->ID, '_foliocraft_live_url', true ),
+				'github_url' => (string) get_post_meta( $p->ID, '_foliocraft_github_url', true ),
+				'stars'      => (string) get_post_meta( $p->ID, '_foliocraft_stars', true ),
+				'lang'       => (string) get_post_meta( $p->ID, '_foliocraft_lang', true ),
 				'tags'       => is_wp_error( $names ) ? array() : $names,
 				'filters'    => is_wp_error( $slugs ) ? array() : $slugs,
 				'thumb_id'   => (int) get_post_thumbnail_id( $p->ID ),

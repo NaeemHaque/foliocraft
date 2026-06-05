@@ -1,12 +1,12 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 // Phase 3: Customizer-driven.
-$os = isset( $profile['opensource'] ) ? $profile['opensource'] : \Naeem\Models\Profile::all()['opensource'];
+$os = isset( $profile['opensource'] ) ? $profile['opensource'] : \FolioCraft\Models\Profile::all()['opensource'];
 ?>
 
 <section class="section os" id="opensource">
 	<div class="wrap">
-		<p class="eyebrow" data-reveal><span class="num">04 /</span> <?php esc_html_e( 'Open Source', 'naeem-portfolio' ); ?></p>
+		<p class="eyebrow" data-reveal><span class="num">04 /</span> <?php esc_html_e( 'Open Source', 'foliocraft' ); ?></p>
 		<div class="os-grid">
 			<div data-reveal data-delay="1">
 				<h2 class="section-title"><?php echo esc_html( $os['heading'] ); ?></h2>

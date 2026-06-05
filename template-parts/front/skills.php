@@ -1,12 +1,12 @@
 <?php defined( 'ABSPATH' ) || exit;
 // Phase 3: Customizer-driven.
 ?>
-<?php $skills = isset( $profile['skills'] ) ? $profile['skills'] : \Naeem\Models\Profile::all()['skills']; ?>
+<?php $skills = isset( $profile['skills'] ) ? $profile['skills'] : \FolioCraft\Models\Profile::all()['skills']; ?>
 
 <section class="section" id="stack">
 	<div class="wrap">
-		<p class="eyebrow" data-reveal><span class="num">05 /</span> <?php esc_html_e( 'Tech Stack', 'naeem-portfolio' ); ?></p>
-		<h2 class="section-title" data-reveal data-delay="1"><?php esc_html_e( 'Tools I reach for.', 'naeem-portfolio' ); ?></h2>
+		<p class="eyebrow" data-reveal><span class="num">05 /</span> <?php esc_html_e( 'Tech Stack', 'foliocraft' ); ?></p>
+		<h2 class="section-title" data-reveal data-delay="1"><?php esc_html_e( 'Tools I reach for.', 'foliocraft' ); ?></h2>
 		<div class="skill-grid">
 			<?php
 			$group_icons = array(

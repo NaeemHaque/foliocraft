@@ -2,13 +2,13 @@
 /**
  * Theme footer.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
 </main>
-<?php \Naeem\Core\View::render( 'layout/footer', array( 'profile' => \Naeem\Models\Profile::all() ) ); ?>
+<?php \FolioCraft\Core\View::render( 'layout/footer', array( 'profile' => \FolioCraft\Models\Profile::all() ) ); ?>
 <?php wp_footer(); ?>
 </body>
 </html>

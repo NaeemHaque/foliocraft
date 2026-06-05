@@ -2,16 +2,16 @@
 /**
  * Front page controller — assembles section data and renders the views.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem\Controllers;
+namespace FolioCraft\Controllers;
 
-use Naeem\Core\View;
-use Naeem\Models\Project;
-use Naeem\Models\Experience;
-use Naeem\Models\Post;
-use Naeem\Models\Profile;
+use FolioCraft\Core\View;
+use FolioCraft\Models\Project;
+use FolioCraft\Models\Experience;
+use FolioCraft\Models\Post;
+use FolioCraft\Models\Profile;
 
 defined( 'ABSPATH' ) || exit;
 

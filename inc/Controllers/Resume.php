@@ -2,12 +2,12 @@
 /**
  * Résumé page controller.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem\Controllers;
+namespace FolioCraft\Controllers;
 
-use Naeem\Core\View;
+use FolioCraft\Core\View;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -18,8 +18,8 @@ class Resume {
 		View::render(
 			'resume',
 			array(
-				'profile'    => \Naeem\Models\Profile::all(),
-				'experience' => \Naeem\Models\Experience::all(),
+				'profile'    => \FolioCraft\Models\Profile::all(),
+				'experience' => \FolioCraft\Models\Experience::all(),
 			)
 		);
 		get_footer();

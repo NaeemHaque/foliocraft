@@ -2,10 +2,10 @@
 /**
  * Presentation-only view renderer.
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
-namespace Naeem\Core;
+namespace FolioCraft\Core;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -34,10 +34,10 @@ class View {
 		}
 
 		// Isolate the include scope so only the data context is exposed to the template.
-		( static function ( $__naeem_path, $__naeem_data ) {
+		( static function ( $__foliocraft_path, $__foliocraft_data ) {
 			// phpcs:ignore WordPress.PHP.DontExtract.extract_extract -- controlled view context.
-			extract( $__naeem_data, EXTR_SKIP );
-			require $__naeem_path;
+			extract( $__foliocraft_data, EXTR_SKIP );
+			require $__foliocraft_path;
 		} )( $path, $data );
 	}
 

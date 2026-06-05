@@ -1,7 +1,7 @@
 <?php defined( 'ABSPATH' ) || exit;
-$hero     = isset( $profile['hero'] ) ? $profile['hero'] : \Naeem\Models\Profile::all()['hero'];
-$resume   = isset( $profile['resume'] ) ? $profile['resume'] : \Naeem\Models\Profile::all()['resume'];
-$headshot = isset( $profile['headshot'] ) ? $profile['headshot'] : \Naeem\Models\Profile::all()['headshot'];
+$hero     = isset( $profile['hero'] ) ? $profile['hero'] : \FolioCraft\Models\Profile::all()['hero'];
+$resume   = isset( $profile['resume'] ) ? $profile['resume'] : \FolioCraft\Models\Profile::all()['resume'];
+$headshot = isset( $profile['headshot'] ) ? $profile['headshot'] : \FolioCraft\Models\Profile::all()['headshot'];
 ?>
 
 <!-- ============ HERO ============ -->
@@ -33,7 +33,7 @@ $headshot = isset( $profile['headshot'] ) ? $profile['headshot'] : \Naeem\Models
       <div class="terminal" aria-hidden="true">
         <div class="terminal-bar">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="file">~/naeem/profile.php</span>
+          <span class="file">~/foliocraft/profile.php</span>
         </div>
         <div class="terminal-body"><span class="t-comment">// who am i</span>
 <span class="t-key">class</span> <span class="t-fn">Engineer</span> {

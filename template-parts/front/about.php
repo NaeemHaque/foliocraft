@@ -1,11 +1,11 @@
 <?php defined( 'ABSPATH' ) || exit; ?>
 <?php // Phase 3: this copy becomes Customizer-driven. ?>
-<?php $about = isset( $profile['about'] ) ? $profile['about'] : \Naeem\Models\Profile::all()['about']; ?>
+<?php $about = isset( $profile['about'] ) ? $profile['about'] : \FolioCraft\Models\Profile::all()['about']; ?>
 
 <!-- ============ ABOUT ============ -->
 <section class="section" id="about">
   <div class="wrap">
-    <p class="eyebrow" data-reveal><span class="num">01 /</span> <?php esc_html_e( 'About', 'naeem-portfolio' ); ?></p>
+    <p class="eyebrow" data-reveal><span class="num">01 /</span> <?php esc_html_e( 'About', 'foliocraft' ); ?></p>
     <div class="about-grid">
       <div class="about-body" data-reveal data-delay="1">
         <h2 class="section-title"><?php echo esc_html( $about['heading'] ); ?></h2>

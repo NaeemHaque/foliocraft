@@ -2,9 +2,9 @@
 /**
  * Template Name: Résumé
  *
- * @package Naeem_Portfolio
+ * @package FolioCraft
  */
 
 defined( 'ABSPATH' ) || exit;
 
-( new \Naeem\Controllers\Resume() )->render();
+( new \FolioCraft\Controllers\Resume() )->render();

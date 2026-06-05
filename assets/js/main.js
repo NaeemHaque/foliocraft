@@ -1,5 +1,5 @@
 /* ============================================================
-   main.js — Naeem Portfolio theme interactions (vanilla)
+   main.js — FolioCraft theme interactions (vanilla)
    Ported from docs/design-reference/project/assets/site.js.
    Projects block removed (server-rendered via PHP/CPT).
    ============================================================ */
@@ -17,7 +17,7 @@
   var toggle = $('#themeToggle');
   function setTheme(t) {
     document.documentElement.setAttribute('data-theme', t);
-    try { localStorage.setItem('naeem-theme', t); } catch (e) {}
+    try { localStorage.setItem('foliocraft-theme', t); } catch (e) {}
   }
   if (toggle) {
     toggle.addEventListener('click', function () {
@@ -126,8 +126,8 @@
 
   /* ---------- typed role ---------- */
   var typed = $('#typed');
-  var roles = (window.NaeemData && window.NaeemData.roles && window.NaeemData.roles.length)
-    ? window.NaeemData.roles
+  var roles = (window.FolioCraftData && window.FolioCraftData.roles && window.FolioCraftData.roles.length)
+    ? window.FolioCraftData.roles
     : [
         'Software Engineer',
         'Open Source Contributor',
@@ -233,7 +233,7 @@
       btn.disabled = true;
       btn.style.opacity = '.6';
       var fd = new FormData(form);
-      fd.append('naeem_ajax', '1');
+      fd.append('foliocraft_ajax', '1');
       fetch(form.action, { method: 'POST', body: fd, credentials: 'same-origin' })
         .then(function (r) { return r.json(); })
         .then(function () {
