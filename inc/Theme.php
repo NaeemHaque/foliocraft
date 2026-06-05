@@ -34,5 +34,9 @@ class Theme {
 
 		add_image_size( 'foliocraft-project', 800, 600, true );
 		add_image_size( 'foliocraft-post', 720, 480, true );
+
+		if ( ! isset( $GLOBALS['content_width'] ) ) {
+			$GLOBALS['content_width'] = 800;
+		}
 	}
 }

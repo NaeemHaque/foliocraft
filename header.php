@@ -26,12 +26,7 @@ defined( 'ABSPATH' ) || exit;
   })();
 </script>
 <?php wp_head(); ?>
-<?php
-$foliocraft_profile = \FolioCraft\Models\Profile::all();
-if ( ! empty( $foliocraft_profile['accent'] ) && strtolower( $foliocraft_profile['accent'] ) !== '#e6926b' ) {
-	echo '<style>:root{--accent:' . esc_html( $foliocraft_profile['accent'] ) . ';}</style>';
-}
-?>
+<?php $foliocraft_profile = \FolioCraft\Models\Profile::all(); ?>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>

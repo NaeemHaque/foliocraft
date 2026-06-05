@@ -36,6 +36,11 @@ class Assets {
 			self::ver( 'assets/css/app.css' )
 		);
 
+		$foliocraft_accent = sanitize_hex_color( (string) get_theme_mod( 'foliocraft_accent', '#e6926b' ) );
+		if ( $foliocraft_accent && '#e6926b' !== strtolower( $foliocraft_accent ) ) {
+			wp_add_inline_style( 'foliocraft-app', ':root{--accent:' . $foliocraft_accent . ';}' );
+		}
+
 		wp_enqueue_script(
 			'foliocraft-main',
 			FOLIOCRAFT_URI . '/assets/js/main.js',
