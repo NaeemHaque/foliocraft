@@ -28,6 +28,7 @@ class Customizer {
 			'foliocraft_identity'   => __( 'Identity', 'foliocraft' ),
 			'foliocraft_hero'       => __( 'Hero', 'foliocraft' ),
 			'foliocraft_about'      => __( 'About', 'foliocraft' ),
+			'foliocraft_experience' => __( 'Experience', 'foliocraft' ),
 			'foliocraft_projects'   => __( 'Projects', 'foliocraft' ),
 			'foliocraft_skills'     => __( 'Skills', 'foliocraft' ),
 			'foliocraft_opensource' => __( 'Open Source', 'foliocraft' ),
@@ -66,6 +67,35 @@ class Customizer {
 						array( 'key' => 'github_url', 'label' => __( 'GitHub URL', 'foliocraft' ), 'type' => 'url' ),
 						array( 'key' => 'stars', 'label' => __( 'Stars', 'foliocraft' ), 'type' => 'text' ),
 						array( 'key' => 'lang', 'label' => __( 'Language', 'foliocraft' ), 'type' => 'text' ),
+					),
+				)
+			)
+		);
+
+		// --- Experience (repeater) ---
+		$wp_customize->add_setting(
+			'foliocraft_experience',
+			array(
+				'default'           => wp_json_encode( \FolioCraft\Models\Experience::demo() ),
+				'sanitize_callback' => array( __CLASS__, 'sanitize_experience' ),
+			)
+		);
+		$wp_customize->add_control(
+			new Repeater_Control(
+				$wp_customize,
+				'foliocraft_experience',
+				array(
+					'label'        => __( 'Experience', 'foliocraft' ),
+					'description'  => __( 'The timeline entries. Drag to reorder; mark one as current to highlight it.', 'foliocraft' ),
+					'section'      => 'foliocraft_experience',
+					'button_label' => __( 'Add entry', 'foliocraft' ),
+					'fields'       => array(
+						array( 'key' => 'title', 'label' => __( 'Role / Title', 'foliocraft' ), 'type' => 'text' ),
+						array( 'key' => 'company', 'label' => __( 'Company', 'foliocraft' ), 'type' => 'text' ),
+						array( 'key' => 'date_range', 'label' => __( 'Date range', 'foliocraft' ), 'type' => 'text' ),
+						array( 'key' => 'is_current', 'label' => __( 'Current / highlighted', 'foliocraft' ), 'type' => 'checkbox' ),
+						array( 'key' => 'tech', 'label' => __( 'Tech (comma-separated)', 'foliocraft' ), 'type' => 'text' ),
+						array( 'key' => 'desc', 'label' => __( 'Description', 'foliocraft' ), 'type' => 'textarea' ),
 					),
 				)
 			)
@@ -703,6 +733,29 @@ class Customizer {
 				'github_url' => esc_url_raw( isset( $it['github_url'] ) ? $it['github_url'] : '' ),
 				'stars'      => sanitize_text_field( isset( $it['stars'] ) ? $it['stars'] : '' ),
 				'lang'       => sanitize_text_field( isset( $it['lang'] ) ? $it['lang'] : '' ),
+			);
+		}
+		return wp_json_encode( $clean );
+	}
+
+	/** Validate + re-encode the repeater JSON (experience). */
+	public static function sanitize_experience( $value ) {
+		$items = json_decode( (string) $value, true );
+		if ( ! is_array( $items ) ) {
+			return '';
+		}
+		$clean = array();
+		foreach ( $items as $it ) {
+			if ( ! is_array( $it ) ) {
+				continue;
+			}
+			$clean[] = array(
+				'title'      => sanitize_text_field( isset( $it['title'] ) ? $it['title'] : '' ),
+				'company'    => sanitize_text_field( isset( $it['company'] ) ? $it['company'] : '' ),
+				'date_range' => sanitize_text_field( isset( $it['date_range'] ) ? $it['date_range'] : '' ),
+				'is_current' => empty( $it['is_current'] ) ? 0 : 1,
+				'tech'       => sanitize_text_field( isset( $it['tech'] ) ? $it['tech'] : '' ),
+				'desc'       => sanitize_textarea_field( isset( $it['desc'] ) ? $it['desc'] : '' ),
 			);
 		}
 		return wp_json_encode( $clean );

@@ -39,6 +39,10 @@
 				'<button type="button" class="button-link fc-rep-media-remove"' + ( has ? '' : ' style="display:none"' ) + '>' + esc( t.remove ) + '</button>' +
 				'</div>';
 		}
+		if ( field.type === 'checkbox' ) {
+			var on = ( val === 1 || val === '1' || val === true ) ? ' checked' : '';
+			return '<label class="fc-rep-field fc-rep-check"><input type="checkbox" class="fc-rep-input" data-key="' + key + '"' + on + ' /> <span>' + label + '</span></label>';
+		}
 		var type = field.type === 'url' ? 'url' : 'text';
 		return '<label class="fc-rep-field"><span>' + label + '</span>' +
 			'<input type="' + type + '" class="fc-rep-input" data-key="' + key + '" value="' + escAttr( val ) + '" /></label>';
@@ -90,7 +94,10 @@
 			var out = [];
 			$rows.children( '.fc-rep-row' ).each( function () {
 				var $r = $( this ), o = {};
-				$r.find( '.fc-rep-input' ).each( function () { o[ $( this ).data( 'key' ) ] = $( this ).val(); } );
+				$r.find( '.fc-rep-input' ).each( function () {
+					var $f = $( this );
+					o[ $f.data( 'key' ) ] = $f.is( ':checkbox' ) ? ( $f.prop( 'checked' ) ? 1 : 0 ) : $f.val();
+				} );
 				$r.find( '.fc-rep-media' ).each( function () { o[ $( this ).data( 'key' ) ] = $( this ).find( '.fc-rep-media-id' ).val(); } );
 				out.push( o );
 			} );

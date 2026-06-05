@@ -13,6 +13,9 @@
 .fc-rep-field { display: block; margin-top: 10px; }
 .fc-rep-field > span { display: block; margin-bottom: 4px; font-weight: 600; font-size: 12px; color: #50575e; }
 .fc-rep-input { width: 100%; }
+.fc-rep-check { display: flex; align-items: center; gap: 8px; }
+.fc-rep-check > span { margin: 0; }
+.fc-rep-check input[type="checkbox"] { width: auto; margin: 0; }
 .fc-rep-media-preview img { display: block; width: auto; max-width: 100%; max-height: 110px; height: auto; border-radius: 4px; margin-bottom: 6px; }
 .fc-rep-add { width: 100%; text-align: center; }
 .fc-rep-row.ui-sortable-helper { box-shadow: 0 2px 10px rgba( 0, 0, 0, .15 ); }
