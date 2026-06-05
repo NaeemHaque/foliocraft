@@ -16,16 +16,11 @@ require_once FOLIOCRAFT_DIR . '/inc/Autoloader.php';
 
 \FolioCraft\Theme::init();
 \FolioCraft\Assets::init();
-\FolioCraft\PostTypes\Taxonomies::init();
-\FolioCraft\PostTypes\Project_CPT::init();
-\FolioCraft\PostTypes\Experience_CPT::init();
-\FolioCraft\Meta\Project_Meta::init();
-\FolioCraft\Meta\Experience_Meta::init();
 \FolioCraft\Customizer\Customizer::init();
 
-if ( is_admin() ) {
-	\FolioCraft\Admin\Menu::init();
-}
+// NOTE: Projects/Experience post types, taxonomies, and editor meta live in the
+// companion "FolioCraft Portfolio" plugin (content/data is plugin territory, kept
+// independent of the active theme). The theme only renders that content.
 
 /**
  * Fallback for the 'primary' nav location: the one-page anchor links rendered
