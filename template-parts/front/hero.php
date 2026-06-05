@@ -38,7 +38,7 @@ $headshot = isset( $profile['headshot'] ) ? $profile['headshot'] : \FolioCraft\M
         <div class="terminal-body"><span class="t-comment">// who am i</span>
 <span class="t-key">class</span> <span class="t-fn">Engineer</span> {
   <span class="t-key">public</span> <span class="t-prop">$role</span>      = <span class="t-str">'Software Engineer'</span>;
-  <span class="t-key">public</span> <span class="t-prop">$company</span>   = <span class="t-str">'WPManageNinja'</span>;
+  <span class="t-key">public</span> <span class="t-prop">$company</span>   = <span class="t-str">'Acme Inc.'</span>;
   <span class="t-key">public</span> <span class="t-prop">$stack</span>     = [<span class="t-str">'PHP'</span>, <span class="t-str">'Laravel'</span>, <span class="t-str">'Vue'</span>, <span class="t-str">'WP'</span>];
   <span class="t-key">public</span> <span class="t-prop">$openSource</span> = <span class="t-key">true</span>;
 

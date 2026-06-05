@@ -40,7 +40,7 @@ class Profile {
 						'Clean-architecture advocate',
 					)
 				),
-				'lead'              => get_theme_mod( 'foliocraft_hero_lead', 'I build scalable products, developer tools, and web apps — and contribute to the open-source projects that power the web. Currently engineering WordPress products at <strong style="color:var(--text)">WPManageNinja</strong>, used by millions worldwide.' ),
+				'lead'              => get_theme_mod( 'foliocraft_hero_lead', 'I build scalable products, developer tools, and web apps — and contribute to the open-source projects that power the web. Currently engineering WordPress products at <strong style="color:var(--text)">Acme Inc.</strong>, used by teams worldwide.' ),
 				'cta_primary_label' => get_theme_mod( 'foliocraft_hero_cta_label', 'View Projects' ),
 				'cta_primary_url'   => get_theme_mod( 'foliocraft_hero_cta_url', '#work' ),
 				'cta_resume_label'  => get_theme_mod( 'foliocraft_hero_resume_label', 'Download Résumé' ),
@@ -62,8 +62,8 @@ class Profile {
 			'about'      => array(
 				'heading'    => get_theme_mod( 'foliocraft_about_heading', 'Engineering for scale, contributing in the open.' ),
 				'paragraphs' => array(
-					get_theme_mod( 'foliocraft_about_p1', "I'm a software engineer and open-source contributor focused on building <strong>scalable products, developer tools, and web apps</strong>. At WPManageNinja, I work on WordPress product engineering, shipping software trusted by millions of users and businesses worldwide." ),
-					get_theme_mod( 'foliocraft_about_p2', 'I contribute to the <strong>WordPress Open Source Project</strong> (Core, Plugins, Meta, Polyglots, Photos) and <strong>EmDash CMS</strong>. AI is now a core part of my workflow for research, planning, and debugging; the rest of my time goes to backend systems with a focus on architecture and clean code. I studied CSE at <strong>Sylhet International University</strong>, where programming contests shaped how I think and solve problems.' ),
+					get_theme_mod( 'foliocraft_about_p1', "I'm a software engineer and open-source contributor focused on building <strong>scalable products, developer tools, and web apps</strong>. At Acme Inc., I work on WordPress product engineering, shipping software trusted by teams and businesses worldwide." ),
+					get_theme_mod( 'foliocraft_about_p2', 'I contribute to the <strong>WordPress Open Source Project</strong> (Core, Plugins, Meta, Polyglots, Photos) and <strong>Acme CMS</strong>. AI is now a core part of my workflow for research, planning, and debugging; the rest of my time goes to backend systems with a focus on architecture and clean code. I studied CSE at <strong>Example University</strong>, where programming contests shaped how I think and solve problems.' ),
 				),
 				'pillars'    => array(
 					array(
@@ -114,10 +114,10 @@ class Profile {
 			),
 			'opensource' => array(
 				'heading' => get_theme_mod( 'foliocraft_os_heading', 'Building the web in the open.' ),
-				'lead'    => get_theme_mod( 'foliocraft_os_lead', 'Contributing to the WordPress Open Source Project across five focus areas, plus EmDash CMS — fixing issues, shipping patches, and translating for a global community.' ),
+				'lead'    => get_theme_mod( 'foliocraft_os_lead', 'Contributing to the WordPress Open Source Project across five focus areas, plus Acme CMS — fixing issues, shipping patches, and translating for a global community.' ),
 				'areas'   => self::lines(
 					'foliocraft_os_areas',
-					array( 'Core', 'Plugins', 'Meta', 'Polyglots', 'Photos', 'EmDash CMS' )
+					array( 'Core', 'Plugins', 'Meta', 'Polyglots', 'Photos', 'Acme CMS' )
 				),
 				'cards'   => array(
 					array(
@@ -136,7 +136,7 @@ class Profile {
 						'blurb' => get_theme_mod( 'foliocraft_oscard3_blurb', 'Contributing to the Photo Directory and Meta tooling that keeps the project running.' ),
 					),
 					array(
-						'title' => get_theme_mod( 'foliocraft_oscard4_title', 'EmDash CMS' ),
+						'title' => get_theme_mod( 'foliocraft_oscard4_title', 'Acme CMS' ),
 						'role'  => get_theme_mod( 'foliocraft_oscard4_role', 'Contributor' ),
 						'blurb' => get_theme_mod( 'foliocraft_oscard4_blurb', 'Helping build a modern, developer-friendly CMS out in the open.' ),
 					),
@@ -145,6 +145,7 @@ class Profile {
 			'social'     => array(
 				'github'   => get_theme_mod( 'foliocraft_social_github', 'https://github.com/yourusername' ),
 				'linkedin' => get_theme_mod( 'foliocraft_social_linkedin', 'https://linkedin.com/in/yourusername' ),
+				'x'        => get_theme_mod( 'foliocraft_social_x', 'https://x.com/yourusername' ),
 				'email'    => get_theme_mod( 'foliocraft_social_email', 'hello@example.com' ),
 			),
 			'contact'    => array(
@@ -155,7 +156,7 @@ class Profile {
 			'resume'     => self::resume_data(),
 			'headshot'   => self::headshot_data(),
 			'accent'     => get_theme_mod( 'foliocraft_accent', '#e6926b' ),
-			'footer'     => array( 'copy' => get_theme_mod( 'foliocraft_footer_copy', 'built with <span class="accent">clean code</span> & open source' ) ),
+			'footer'     => array( 'copy' => get_theme_mod( 'foliocraft_footer_copy', 'built with <a class="accent" href="https://github.com/NaeemHaque/foliocraft" target="_blank" rel="noopener">FolioCraft</a> — love this theme? own it <a class="accent" href="https://github.com/NaeemHaque/foliocraft" target="_blank" rel="noopener">here →</a>' ) ),
 		);
 	}
 

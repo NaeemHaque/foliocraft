@@ -80,7 +80,7 @@ class Customizer {
 		) );
 
 		$wp_customize->add_setting( 'foliocraft_hero_lead', array(
-			'default'           => 'I build scalable products, developer tools, and web apps — and contribute to the open-source projects that power the web. Currently engineering WordPress products at <strong style="color:var(--text)">WPManageNinja</strong>, used by millions worldwide.',
+			'default'           => 'I build scalable products, developer tools, and web apps — and contribute to the open-source projects that power the web. Currently engineering WordPress products at <strong style="color:var(--text)">Acme Inc.</strong>, used by teams worldwide.',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_hero_lead', array(
@@ -230,7 +230,17 @@ class Customizer {
 			'type'    => 'url',
 		) );
 
-		$wp_customize->add_setting( 'foliocraft_social_email', array(
+		$wp_customize->add_setting( 'foliocraft_social_x', array(
+				'default'           => 'https://x.com/yourusername',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_url' ),
+			) );
+			$wp_customize->add_control( 'foliocraft_social_x', array(
+				'label'   => __( 'X (Twitter) URL', 'foliocraft' ),
+				'section' => 'foliocraft_social',
+				'type'    => 'url',
+			) );
+
+			$wp_customize->add_setting( 'foliocraft_social_email', array(
 			'default'           => 'hello@example.com',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_email_field' ),
 		) );
@@ -252,7 +262,7 @@ class Customizer {
 		) );
 
 		$wp_customize->add_setting( 'foliocraft_about_p1', array(
-			'default'           => "I'm a software engineer and open-source contributor focused on building <strong>scalable products, developer tools, and web apps</strong>. At WPManageNinja, I work on WordPress product engineering, shipping software trusted by millions of users and businesses worldwide.",
+			'default'           => "I'm a software engineer and open-source contributor focused on building <strong>scalable products, developer tools, and web apps</strong>. At Acme Inc., I work on WordPress product engineering, shipping software trusted by teams and businesses worldwide.",
 			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_about_p1', array(
@@ -262,7 +272,7 @@ class Customizer {
 		) );
 
 		$wp_customize->add_setting( 'foliocraft_about_p2', array(
-			'default'           => 'I contribute to the <strong>WordPress Open Source Project</strong> (Core, Plugins, Meta, Polyglots, Photos) and <strong>EmDash CMS</strong>. AI is now a core part of my workflow for research, planning, and debugging; the rest of my time goes to backend systems with a focus on architecture and clean code. I studied CSE at <strong>Sylhet International University</strong>, where programming contests shaped how I think and solve problems.',
+			'default'           => 'I contribute to the <strong>WordPress Open Source Project</strong> (Core, Plugins, Meta, Polyglots, Photos) and <strong>Acme CMS</strong>. AI is now a core part of my workflow for research, planning, and debugging; the rest of my time goes to backend systems with a focus on architecture and clean code. I studied CSE at <strong>Example University</strong>, where programming contests shaped how I think and solve problems.',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_about_p2', array(
@@ -424,7 +434,7 @@ class Customizer {
 		) );
 
 		$wp_customize->add_setting( 'foliocraft_os_lead', array(
-			'default'           => 'Contributing to the WordPress Open Source Project across five focus areas, plus EmDash CMS — fixing issues, shipping patches, and translating for a global community.',
+			'default'           => 'Contributing to the WordPress Open Source Project across five focus areas, plus Acme CMS — fixing issues, shipping patches, and translating for a global community.',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_os_lead', array(
@@ -534,7 +544,7 @@ class Customizer {
 		) );
 
 		$wp_customize->add_setting( 'foliocraft_oscard4_title', array(
-			'default'           => 'EmDash CMS',
+			'default'           => 'Acme CMS',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_oscard4_title', array(
@@ -622,7 +632,7 @@ class Customizer {
 
 		// --- Footer ---
 		$wp_customize->add_setting( 'foliocraft_footer_copy', array(
-			'default'           => 'built with <span class="accent">clean code</span> & open source',
+			'default'           => 'built with <a class="accent" href="https://github.com/NaeemHaque/foliocraft" target="_blank" rel="noopener">FolioCraft</a> — love this theme? own it <a class="accent" href="https://github.com/NaeemHaque/foliocraft" target="_blank" rel="noopener">here →</a>',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_footer_copy', array(

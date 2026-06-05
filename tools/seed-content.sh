@@ -43,18 +43,18 @@ post_entry() { # title | category | excerpt | content
 }
 
 echo "Seeding projects…"
-project "DevPulse" "A team productivity dashboard surfacing PRs, deploys, and CI health in real time. Laravel API, Vue front-end, MySQL." "Laravel|Vue|MySQL|PHP" "312" "PHP" "https://github.com/yourusername/devpulse"
-project "WP Schema Pilot" "WordPress plugin that auto-generates schema.org structured data — Yoast/Rank Math friendly, zero config." "WordPress|PHP" "1.2k" "PHP" "https://github.com/yourusername/wp-schema-pilot"
-project "QueryLens" "Slow-query analyzer for MySQL with a web UI — visualizes EXPLAIN plans and suggests indexes." "PHP|MySQL" "486" "PHP" "https://github.com/yourusername/querylens"
-project "Fluent Blocks Kit" "A collection of reusable Vue-powered blocks and components for WordPress and EmDash CMS projects." "Vue|WordPress" "740" "Vue" "https://github.com/yourusername/fluent-blocks-kit"
-project "LaravelKit Starter" "Opinionated Laravel starter with auth, queues, and a Vue + Tailwind front-end wired for clean architecture." "Laravel|Vue|MySQL|PHP" "928" "PHP" "https://github.com/yourusername/laravelkit-starter"
-project "Polyglot Helper" "A contributor tool for WordPress Polyglots — speeds up string review and translation suggestions." "WordPress|Vue|PHP" "203" "JavaScript" "https://github.com/yourusername/polyglot-helper"
+project "Open Dashboard" "A team productivity dashboard surfacing PRs, deploys, and CI health in real time. Laravel API, Vue front-end, MySQL." "Laravel|Vue|MySQL|PHP" "312" "PHP" "https://github.com/yourusername/open-dashboard"
+project "Schema Helper" "WordPress plugin that auto-generates schema.org structured data — Yoast/Rank Math friendly, zero config." "WordPress|PHP" "1.2k" "PHP" "https://github.com/yourusername/schema-helper"
+project "Query Inspector" "Slow-query analyzer for MySQL with a web UI — visualizes EXPLAIN plans and suggests indexes." "PHP|MySQL" "486" "PHP" "https://github.com/yourusername/query-inspector"
+project "Block Starter Kit" "A collection of reusable Vue-powered blocks and components for WordPress and Acme CMS projects." "Vue|WordPress" "740" "Vue" "https://github.com/yourusername/block-starter-kit"
+project "App Starter Kit" "Opinionated Laravel starter with auth, queues, and a Vue + Tailwind front-end wired for clean architecture." "Laravel|Vue|MySQL|PHP" "928" "PHP" "https://github.com/yourusername/app-starter-kit"
+project "Translation Tool" "A contributor tool for WordPress Polyglots — speeds up string review and translation suggestions." "WordPress|Vue|PHP" "203" "JavaScript" "https://github.com/yourusername/translation-tool"
 
 echo "Seeding experience…"
-experience "Software Engineer" "WPManageNinja" "2022 — Present" "1" "1" "PHP|WordPress|Vue.js|REST APIs|MySQL" "Product engineering on WordPress software used by millions of users and businesses worldwide. Building scalable features, developer-facing tooling, and the architecture behind it — from data models to REST APIs to front-end with Vue."
+experience "Software Engineer" "Acme Inc." "2022 — Present" "1" "1" "PHP|WordPress|Vue.js|REST APIs|MySQL" "Product engineering on WordPress software used by teams and businesses worldwide. Building scalable features, developer-facing tooling, and the architecture behind it — from data models to REST APIs to front-end with Vue."
 experience "Full-Stack Developer" "Product & web app work" "2020 — 2022" "0" "2" "Laravel|MySQL|Vue.js|REST APIs" "Built and maintained scalable web apps and backend systems with PHP, Laravel, and MySQL — designing clean data models and REST APIs, and pairing them with Vue.js front-ends."
-experience "Open Source Contributor" "WordPress Project · EmDash CMS" "2019 — Present" "0" "3" "Core|Polyglots|Meta|Photos" "Ongoing contributions across WordPress Core, Plugins, Meta, Polyglots, and Photos, plus EmDash CMS — fixing issues, reviewing, and translating with the global community."
-experience "Computer Science & Engineering" "Sylhet International University" "B.Sc. CSE" "0" "4" "Algorithms|Data Structures|Competitive Programming" "Studied CSE and competed heavily in programming contests — the foundation for detail-oriented, fast problem-solving that still shapes how I engineer today."
+experience "Open Source Contributor" "WordPress Project · Acme CMS" "2019 — Present" "0" "3" "Core|Polyglots|Meta|Photos" "Ongoing contributions across WordPress Core, Plugins, Meta, Polyglots, and Photos, plus Acme CMS — fixing issues, reviewing, and translating with the global community."
+experience "Computer Science & Engineering" "Example University" "B.Sc. CSE" "0" "4" "Algorithms|Data Structures|Competitive Programming" "Studied CSE and competed heavily in programming contests — the foundation for detail-oriented, fast problem-solving that still shapes how I engineer today."
 
 echo "Seeding posts…"
 post_entry "Building a CPT-driven portfolio the WordPress way" "WordPress" "Why custom post types and taxonomies beat hardcoded HTML, and how to model projects so anyone can manage them from wp-admin." "Custom post types and taxonomies are the WordPress-native way to model structured content like a project portfolio. Instead of hardcoding HTML, register a project CPT with a tech taxonomy and a couple of meta fields, and the whole grid becomes editable from wp-admin with no code changes."
