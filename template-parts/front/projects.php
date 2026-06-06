@@ -5,9 +5,9 @@ $projects = isset( $projects ) ? $projects : array();
 
 <section class="section" id="work">
 	<div class="wrap">
-		<p class="eyebrow" data-reveal><span class="num">03 /</span> <?php esc_html_e( 'Selected Work', 'foliocraft' ); ?></p>
+		<?php foliocraft_eyebrow( 'work' ); ?>
 		<div class="proj-head">
-			<h2 class="section-title" data-reveal data-delay="1" style="margin:0;"><?php esc_html_e( "Things I've built.", 'foliocraft' ); ?></h2>
+			<?php if ( ! foliocraft_blank( $profile['titles']['work']['heading'] ) ) : ?><h2 class="section-title" data-reveal data-delay="1" style="margin:0;"><?php echo esc_html( $profile['titles']['work']['heading'] ); ?></h2><?php endif; ?>
 			<div class="filter-bar" data-reveal data-delay="2" id="filterBar" role="tablist" aria-label="Filter projects by technology">
 				<button class="filter-btn active" data-filter="all">all</button>
 				<?php foreach ( $terms as $term ) : ?><button class="filter-btn" data-filter="<?php echo esc_attr( $term['slug'] ); ?>"><?php echo esc_html( $term['name'] ); ?></button><?php endforeach; ?>

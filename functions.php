@@ -122,3 +122,22 @@ function foliocraft_blank( $value ) {
 function foliocraft_url_label( $url ) {
 	return rtrim( preg_replace( '#^https?://(www\.)?#i', '', (string) $url ), '/' );
 }
+
+/**
+ * Print a section eyebrow ("01 / About") from the Customizer-driven titles.
+ * Hidden when the label is blank.
+ *
+ * @param string $id Section id (about|experience|work|opensource|stack|writing|contact).
+ * @return void
+ */
+function foliocraft_eyebrow( $id ) {
+	$titles = \FolioCraft\Models\Profile::all()['titles'];
+	if ( empty( $titles[ $id ] ) || foliocraft_blank( $titles[ $id ]['eyebrow'] ) ) {
+		return;
+	}
+	printf(
+		'<p class="eyebrow" data-reveal><span class="num">%s /</span> %s</p>',
+		esc_html( $titles[ $id ]['num'] ),
+		esc_html( $titles[ $id ]['eyebrow'] )
+	);
+}

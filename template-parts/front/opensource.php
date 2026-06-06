@@ -6,7 +6,7 @@ $os = isset( $profile['opensource'] ) ? $profile['opensource'] : \FolioCraft\Mod
 
 <section class="section os" id="opensource">
 	<div class="wrap">
-		<p class="eyebrow" data-reveal><span class="num">04 /</span> <?php esc_html_e( 'Open Source', 'foliocraft' ); ?></p>
+		<?php foliocraft_eyebrow( 'opensource' ); ?>
 		<div class="os-grid">
 			<div data-reveal data-delay="1">
 				<?php if ( ! foliocraft_blank( $os['heading'] ) ) : ?>

@@ -31,6 +31,15 @@ class Profile {
 				'name'  => get_theme_mod( 'foliocraft_name', 'Your Name' ),
 				'brand' => get_theme_mod( 'foliocraft_brand', 'foliocraft' ),
 			),
+			'titles'     => array(
+				'about'      => array( 'num' => '01', 'eyebrow' => get_theme_mod( 'foliocraft_eyebrow_about', 'About' ),           'heading' => get_theme_mod( 'foliocraft_about_heading', 'Engineering for scale, contributing in the open.' ) ),
+				'experience' => array( 'num' => '02', 'eyebrow' => get_theme_mod( 'foliocraft_eyebrow_experience', 'Experience' ), 'heading' => get_theme_mod( 'foliocraft_experience_heading', "Where I've shipped." ) ),
+				'work'       => array( 'num' => '03', 'eyebrow' => get_theme_mod( 'foliocraft_eyebrow_work', 'Selected Work' ),    'heading' => get_theme_mod( 'foliocraft_projects_heading', "Things I've built." ) ),
+				'opensource' => array( 'num' => '04', 'eyebrow' => get_theme_mod( 'foliocraft_eyebrow_opensource', 'Open Source' ), 'heading' => get_theme_mod( 'foliocraft_os_heading', 'Building the web in the open.' ) ),
+				'stack'      => array( 'num' => '05', 'eyebrow' => get_theme_mod( 'foliocraft_eyebrow_stack', 'Tech Stack' ),      'heading' => get_theme_mod( 'foliocraft_skills_heading', 'Tools I reach for.' ) ),
+				'writing'    => array( 'num' => '06', 'eyebrow' => get_theme_mod( 'foliocraft_eyebrow_writing', 'Writing' ),       'heading' => get_theme_mod( 'foliocraft_blog_heading', 'From the blog.' ) ),
+				'contact'    => array( 'num' => '07', 'eyebrow' => get_theme_mod( 'foliocraft_eyebrow_contact', 'Contact' ),       'heading' => get_theme_mod( 'foliocraft_contact_heading', "Let's build something." ) ),
+			),
 			'hero'       => array(
 				'status'            => get_theme_mod( 'foliocraft_hero_status', 'Open to interesting open-source & product work' ),
 				'name_line1'        => get_theme_mod( 'foliocraft_hero_name1', 'Your' ),

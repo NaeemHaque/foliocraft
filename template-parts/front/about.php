@@ -5,7 +5,7 @@
 <!-- ============ ABOUT ============ -->
 <section class="section" id="about">
   <div class="wrap">
-    <p class="eyebrow" data-reveal><span class="num">01 /</span> <?php esc_html_e( 'About', 'foliocraft' ); ?></p>
+    <?php foliocraft_eyebrow( 'about' ); ?>
     <div class="about-grid">
       <div class="about-body" data-reveal data-delay="1">
         <?php if ( ! foliocraft_blank( $about['heading'] ) ) : ?>

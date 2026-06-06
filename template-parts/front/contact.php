@@ -8,7 +8,7 @@ $fc_channels = ! foliocraft_blank( $social['email'] ) || ! foliocraft_blank( $so
 <!-- ============ CONTACT ============ -->
 <section class="section contact" id="contact">
   <div class="wrap">
-    <p class="eyebrow" data-reveal><span class="num">07 /</span> <?php esc_html_e( 'Contact', 'foliocraft' ); ?></p>
+    <?php foliocraft_eyebrow( 'contact' ); ?>
     <div class="contact-grid">
       <div class="contact-left" data-reveal data-delay="1">
         <?php if ( ! foliocraft_blank( $contact['heading'] ) ) : ?>

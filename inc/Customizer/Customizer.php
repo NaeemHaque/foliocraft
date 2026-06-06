@@ -32,6 +32,7 @@ class Customizer {
 			'foliocraft_projects'   => __( 'Projects', 'foliocraft' ),
 			'foliocraft_skills'     => __( 'Skills', 'foliocraft' ),
 			'foliocraft_opensource' => __( 'Open Source', 'foliocraft' ),
+			'foliocraft_writing'    => __( 'Writing', 'foliocraft' ),
 			'foliocraft_social'     => __( 'Social Links', 'foliocraft' ),
 			'foliocraft_contact'    => __( 'Contact', 'foliocraft' ),
 			'foliocraft_resume'     => __( 'Résumé', 'foliocraft' ),
@@ -39,6 +40,37 @@ class Customizer {
 		);
 		foreach ( $sections as $id => $title ) {
 			$wp_customize->add_section( $id, array( 'title' => $title, 'panel' => 'foliocraft' ) );
+		}
+
+		// --- Section labels (eyebrow) + the headings not already registered in their own block ---
+		$fc_section_titles = array(
+			'about'      => array( 'section' => 'foliocraft_about',      'eyebrow' => __( 'About', 'foliocraft' ),         'heading_key' => '',                              'heading' => '' ),
+			'experience' => array( 'section' => 'foliocraft_experience', 'eyebrow' => __( 'Experience', 'foliocraft' ),    'heading_key' => 'foliocraft_experience_heading', 'heading' => "Where I've shipped." ),
+			'work'       => array( 'section' => 'foliocraft_projects',   'eyebrow' => __( 'Selected Work', 'foliocraft' ), 'heading_key' => 'foliocraft_projects_heading',   'heading' => "Things I've built." ),
+			'opensource' => array( 'section' => 'foliocraft_opensource', 'eyebrow' => __( 'Open Source', 'foliocraft' ),   'heading_key' => '',                              'heading' => '' ),
+			'stack'      => array( 'section' => 'foliocraft_skills',     'eyebrow' => __( 'Tech Stack', 'foliocraft' ),    'heading_key' => 'foliocraft_skills_heading',     'heading' => 'Tools I reach for.' ),
+			'writing'    => array( 'section' => 'foliocraft_writing',    'eyebrow' => __( 'Writing', 'foliocraft' ),       'heading_key' => 'foliocraft_blog_heading',       'heading' => 'From the blog.' ),
+			'contact'    => array( 'section' => 'foliocraft_contact',    'eyebrow' => __( 'Contact', 'foliocraft' ),       'heading_key' => '',                              'heading' => '' ),
+		);
+		foreach ( $fc_section_titles as $sid => $cfg ) {
+			$wp_customize->add_setting(
+				'foliocraft_eyebrow_' . $sid,
+				array( 'default' => $cfg['eyebrow'], 'sanitize_callback' => array( __CLASS__, 'sanitize_text' ) )
+			);
+			$wp_customize->add_control(
+				'foliocraft_eyebrow_' . $sid,
+				array( 'label' => __( 'Section label', 'foliocraft' ), 'section' => $cfg['section'], 'type' => 'text', 'priority' => 4 )
+			);
+			if ( '' !== $cfg['heading_key'] ) {
+				$wp_customize->add_setting(
+					$cfg['heading_key'],
+					array( 'default' => $cfg['heading'], 'sanitize_callback' => array( __CLASS__, 'sanitize_text' ) )
+				);
+				$wp_customize->add_control(
+					$cfg['heading_key'],
+					array( 'label' => __( 'Heading', 'foliocraft' ), 'section' => $cfg['section'], 'type' => 'text', 'priority' => 5 )
+				);
+			}
 		}
 
 		// --- Projects (repeater) ---

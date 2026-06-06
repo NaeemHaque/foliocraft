@@ -4,8 +4,8 @@
 	<div class="wrap">
 		<div class="proj-head">
 			<div>
-				<p class="eyebrow" data-reveal><span class="num">06 /</span> <?php esc_html_e( 'Writing', 'foliocraft' ); ?></p>
-				<h2 class="section-title" data-reveal data-delay="1" style="margin:0;"><?php esc_html_e( 'From the blog.', 'foliocraft' ); ?></h2>
+				<?php foliocraft_eyebrow( 'writing' ); ?>
+				<?php if ( ! foliocraft_blank( $profile['titles']['writing']['heading'] ) ) : ?><h2 class="section-title" data-reveal data-delay="1" style="margin:0;"><?php echo esc_html( $profile['titles']['writing']['heading'] ); ?></h2><?php endif; ?>
 			</div>
 			<a href="<?php echo esc_url( $blog_url ); ?>" class="btn btn--ghost" data-reveal data-delay="2">
 				<?php esc_html_e( 'All posts', 'foliocraft' ); ?>

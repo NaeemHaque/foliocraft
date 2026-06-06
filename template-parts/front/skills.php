@@ -5,8 +5,8 @@
 
 <section class="section" id="stack">
 	<div class="wrap">
-		<p class="eyebrow" data-reveal><span class="num">05 /</span> <?php esc_html_e( 'Tech Stack', 'foliocraft' ); ?></p>
-		<h2 class="section-title" data-reveal data-delay="1"><?php esc_html_e( 'Tools I reach for.', 'foliocraft' ); ?></h2>
+		<?php foliocraft_eyebrow( 'stack' ); ?>
+		<?php if ( ! foliocraft_blank( $profile['titles']['stack']['heading'] ) ) : ?><h2 class="section-title" data-reveal data-delay="1"><?php echo esc_html( $profile['titles']['stack']['heading'] ); ?></h2><?php endif; ?>
 		<div class="skill-grid">
 			<?php
 			$group_icons = array(
