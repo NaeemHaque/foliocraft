@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 $profile = isset( $profile ) ? $profile : \FolioCraft\Models\Profile::all();
 ?>
 <header class="nav" id="nav">
-  <a href="#top" class="brand" aria-label="Your Name — home">
+  <a href="<?php echo is_front_page() ? '#top' : esc_url( home_url( '/' ) ); ?>" class="brand" aria-label="<?php echo esc_attr( sprintf( __( '%s — home', 'foliocraft' ), $profile['identity']['brand'] ) ); ?>">
     <span class="mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 8 4 4-4 4"/><path d="M13 16h4"/></svg></span>
     <span><?php echo esc_html( $profile['identity']['brand'] ); ?><span class="dim">.dev</span></span>
   </a>
