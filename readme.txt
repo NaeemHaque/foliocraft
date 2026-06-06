@@ -7,7 +7,7 @@ Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Tags: portfolio, blog, custom-colors, custom-logo, custom-menu, featured-images, theme-options, threaded-comments, translation-ready, full-width-template
+Tags: portfolio, profile, resume, blog, portfolio-template
 
 A fast, MVC-structured portfolio and blog theme with a Tailwind-built design, light/dark modes, and full Customizer control.
 
@@ -32,6 +32,20 @@ Projects and Experience are managed right in the Customizer (Appearance > Custom
 2. Go to Appearance > Customize to set your name, bio, social links, accent color, and the rest.
 3. Add your Projects and Experience under Appearance > Customize > Portfolio.
 4. Create a Page for your front page and a Page for your posts, then set them under Settings > Reading.
+
+== Customizing ==
+
+Everything on the front page is editable under Appearance > Customize > Portfolio — no code required:
+
+* Identity — name, brand, accent color, and headshot.
+* Hero — status, name, typed roles, lead, call-to-action buttons, stats, and the side visual (a code terminal, an image/GIF, or hidden).
+* Section titles — every section's eyebrow label (the "01 / About" tag) and its heading.
+* About, Skills, and Open Source — headings, copy, pillars, skill groups, focus areas, and cards.
+* Projects and Experience — repeaters where you add, edit, reorder, and attach images, with a live preview.
+* Social Links and Contact — profile URLs, contact copy, and an optional contact-form shortcode.
+* Résumé and Footer — the résumé PDF and its button label, and the footer credit line.
+
+Tip: leave any field blank to hide it. Clearing a whole section — or removing every row from the Projects/Experience repeaters — hides that section and its menu link, so the page shows only what you have filled in.
 
 == Frequently Asked Questions ==
 
