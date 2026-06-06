@@ -833,3 +833,17 @@ html.reveal-on [data-reveal][data-delay="4"] { transition-delay: .28s; }
 .notfound form { display:flex; gap:8px; }
 .notfound input[type="search"] { flex:1; font-family:var(--font-body); background:var(--bg); border:1px solid var(--border); border-radius:11px; padding:11px 14px; color:var(--text); }
 .notfound input[type="submit"] { font-family:var(--font-mono); background:var(--panel); border:1px solid var(--border); border-radius:11px; padding:0 16px; color:var(--text); cursor:pointer; }
+
+/* ---------- WordPress core content classes (alignment, captions, galleries) ---------- */
+.alignleft   { float: left;  margin: .3em 1.6em 1.2em 0; }
+.alignright  { float: right; margin: .3em 0 1.2em 1.6em; }
+.aligncenter { display: block; margin-inline: auto; }
+.alignnone   { margin: 0 0 1.2em; }
+img.alignleft, img.alignright, img.aligncenter, img.alignnone { height: auto; }
+figure.alignleft, figure.alignright, figure.aligncenter, .wp-caption { max-width: 100%; }
+.post-content .alignwide { max-width: min(1080px, 92vw); margin-left: 50%; transform: translateX(-50%); }
+.post-content .alignfull { max-width: 100vw; margin-left: 50%; transform: translateX(-50%); }
+.wp-caption img { display: block; margin: 0 auto; height: auto; }
+.wp-caption-text, .gallery-caption, .wp-element-caption { margin: 8px 0 0; font-family: var(--font-mono); font-size: 13px; color: var(--text-faint); text-align: center; line-height: 1.5; }
+.sticky       { display: block; }
+.bypostauthor { display: block; }

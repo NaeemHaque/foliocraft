@@ -27,6 +27,10 @@ class Theme {
 			'html5',
 			array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' )
 		);
+		add_theme_support( 'align-wide' );
+		add_theme_support( 'wp-block-styles' );
+		add_theme_support( 'editor-styles' );
+		add_editor_style( 'assets/css/editor.css' );
 
 		register_nav_menus(
 			array( 'primary' => __( 'Primary Menu', 'foliocraft' ) )

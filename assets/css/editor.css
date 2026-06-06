@@ -1,0 +1,51 @@
+/*
+ * editor.css — block & classic editor content styles.
+ * Loaded via add_editor_style(); WordPress scopes these selectors to the editor
+ * canvas, so the editor content roughly matches the front-end (fonts, accent, captions).
+ */
+body {
+	font-family: "IBM Plex Sans", system-ui, sans-serif;
+	font-size: 18px;
+	line-height: 1.8;
+	color: #2a2f3a;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Space Grotesk", "Sora", system-ui, sans-serif;
+	font-weight: 600;
+	line-height: 1.2;
+	letter-spacing: -0.015em;
+	color: #14171d;
+}
+
+a { color: #e6926b; }
+
+code, pre, kbd {
+	font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+pre {
+	background: #f1f1ee;
+	border: 1px solid rgba( 12, 14, 20, 0.10 );
+	border-radius: 12px;
+	padding: 16px 18px;
+}
+
+blockquote {
+	border-left: 3px solid #e6926b;
+	padding-left: 1.1em;
+	margin-left: 0;
+	color: #555c68;
+}
+
+.alignleft  { float: left;  margin: 0.3em 1.6em 1.2em 0; }
+.alignright { float: right; margin: 0.3em 0 1.2em 1.6em; }
+.aligncenter { display: block; margin-inline: auto; }
+
+.wp-caption-text,
+figcaption {
+	font-family: "IBM Plex Mono", ui-monospace, monospace;
+	font-size: 13px;
+	color: #646d7d;
+	text-align: center;
+}
