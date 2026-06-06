@@ -17,6 +17,7 @@ require_once FOLIOCRAFT_DIR . '/inc/Autoloader.php';
 \FolioCraft\Theme::init();
 \FolioCraft\Assets::init();
 \FolioCraft\Customizer\Customizer::init();
+\FolioCraft\Blocks::init();
 
 // Projects and Experience are managed via Customizer repeaters (the Portfolio
 // panel, read by the Project/Experience models) — no custom post types and no

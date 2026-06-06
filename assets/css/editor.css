@@ -49,3 +49,8 @@ figcaption {
 	color: #646d7d;
 	text-align: center;
 }
+
+/* block styles (editor preview) */
+.wp-block-button.is-style-foliocraft-outline .wp-block-button__link { background: transparent; border: 1px solid #e6926b; color: #e6926b; }
+.wp-block-quote.is-style-foliocraft-accent { border-left: 3px solid #e6926b; padding-left: 1.1em; font-style: normal; }
+.wp-block-image.is-style-foliocraft-frame img { border: 1px solid rgba( 12, 14, 20, 0.10 ); border-radius: 14px; padding: 6px; background: #fff; }

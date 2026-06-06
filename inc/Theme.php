@@ -14,6 +14,7 @@ class Theme {
 	public static function init() {
 		add_action( 'after_setup_theme', array( __CLASS__, 'setup' ) );
 		add_action( 'widgets_init', array( __CLASS__, 'widgets' ) );
+		add_action( 'wp_head', array( __CLASS__, 'no_fouc_script' ), 1 );
 	}
 
 	public static function setup() {
@@ -32,6 +33,17 @@ class Theme {
 		add_theme_support( 'wp-block-styles' );
 		add_theme_support( 'editor-styles' );
 		add_editor_style( 'assets/css/editor.css' );
+		add_theme_support(
+			'custom-header',
+			array(
+				'width'       => 1600,
+				'height'      => 400,
+				'flex-width'  => true,
+				'flex-height' => true,
+				'header-text' => false,
+			)
+		);
+		add_theme_support( 'custom-background', array( 'default-color' => '' ) );
 
 		register_nav_menus(
 			array( 'primary' => __( 'Primary Menu', 'foliocraft' ) )
@@ -58,5 +70,20 @@ class Theme {
 				'after_title'   => '</h2>',
 			)
 		);
+	}
+
+	/**
+	 * Print the pre-paint theme + reveal bootstrap inline in <head>.
+	 *
+	 * Hooked early on wp_head (so it runs before stylesheets, avoiding a flash)
+	 * via an enqueue-style hook rather than a raw <script> tag in header.php.
+	 */
+	public static function no_fouc_script() {
+		$js = '(function(){try{var t=localStorage.getItem("foliocraft-theme")||"dark";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}try{if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("reveal-on");}}catch(e){}})();';
+		if ( function_exists( 'wp_print_inline_script_tag' ) ) {
+			wp_print_inline_script_tag( $js );
+		} else {
+			echo '<script>' . $js . '</script>'; // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript, WordPress.Security.EscapeOutput.OutputNotEscaped -- inline no-FOUC bootstrap.
+		}
 	}
 }

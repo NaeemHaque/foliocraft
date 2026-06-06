@@ -860,3 +860,11 @@ figure.alignleft, figure.alignright, figure.aligncenter, .wp-caption { max-width
 .footer-widget ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
 .footer-widget a { color: var(--text-dim); }
 .footer-widget a:hover { color: var(--accent); }
+
+/* ---------- custom header image (only renders when set in the Customizer) ---------- */
+.site-header-image img { display: block; width: 100%; height: auto; }
+
+/* ---------- block styles ---------- */
+.wp-block-button.is-style-foliocraft-outline .wp-block-button__link { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+.wp-block-quote.is-style-foliocraft-accent { border-left: 3px solid var(--accent); padding-left: 1.1em; font-style: normal; }
+.wp-block-image.is-style-foliocraft-frame img { border: 1px solid var(--border); border-radius: var(--radius); padding: 6px; background: var(--panel); }
