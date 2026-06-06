@@ -21,7 +21,12 @@ class Profile {
 	 * @return array
 	 */
 	public static function all() {
-		return array(
+		static $cache = null;
+		if ( null !== $cache ) {
+			return $cache;
+		}
+
+		$cache = array(
 			'identity'   => array(
 				'name'  => get_theme_mod( 'foliocraft_name', 'Your Name' ),
 				'brand' => get_theme_mod( 'foliocraft_brand', 'foliocraft' ),
@@ -157,6 +162,8 @@ class Profile {
 			'headshot'   => self::headshot_data(),
 			'footer'     => array( 'copy' => get_theme_mod( 'foliocraft_footer_copy', 'built with <a class="accent" href="https://github.com/naeemhaque/foliocraft" target="_blank" rel="noopener">FolioCraft</a>' ) ),
 		);
+
+		return $cache;
 	}
 
 	/**

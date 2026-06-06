@@ -30,16 +30,73 @@ require_once FOLIOCRAFT_DIR . '/inc/Autoloader.php';
 function foliocraft_default_nav() {
 	$base  = is_front_page() ? '' : home_url( '/' );
 	$items = array(
-		'#about'      => _x( 'about', 'nav item', 'foliocraft' ),
-		'#experience' => _x( 'experience', 'nav item', 'foliocraft' ),
-		'#work'       => _x( 'work', 'nav item', 'foliocraft' ),
-		'#opensource' => _x( 'open-source', 'nav item', 'foliocraft' ),
-		'#stack'      => _x( 'stack', 'nav item', 'foliocraft' ),
-		'#writing'    => _x( 'writing', 'nav item', 'foliocraft' ),
+		'about'      => array( '#about', _x( 'about', 'nav item', 'foliocraft' ) ),
+		'experience' => array( '#experience', _x( 'experience', 'nav item', 'foliocraft' ) ),
+		'work'       => array( '#work', _x( 'work', 'nav item', 'foliocraft' ) ),
+		'opensource' => array( '#opensource', _x( 'open-source', 'nav item', 'foliocraft' ) ),
+		'stack'      => array( '#stack', _x( 'stack', 'nav item', 'foliocraft' ) ),
+		'writing'    => array( '#writing', _x( 'writing', 'nav item', 'foliocraft' ) ),
 	);
-	foreach ( $items as $anchor => $label ) {
-		echo '<a href="' . esc_url( $base . $anchor ) . '"><span class="hash">#</span>' . esc_html( $label ) . '</a>';
+	foreach ( $items as $id => $item ) {
+		if ( ! foliocraft_section_visible( $id ) ) {
+			continue;
+		}
+		echo '<a href="' . esc_url( $base . $item[0] ) . '"><span class="hash">#</span>' . esc_html( $item[1] ) . '</a>';
 	}
+}
+
+/**
+ * Whether a front-page section has any content to show.
+ *
+ * Lets empty sections — and their nav links — be hidden when every Customizer
+ * field that feeds the section is blank (or, for the repeaters, has no rows).
+ *
+ * @param string $id Section id: about|experience|work|opensource|stack|writing.
+ * @return bool
+ */
+function foliocraft_section_visible( $id ) {
+	$p = \FolioCraft\Models\Profile::all();
+	switch ( $id ) {
+		case 'about':
+			if ( ! foliocraft_blank( $p['about']['heading'] ) ) {
+				return true;
+			}
+			foreach ( $p['about']['paragraphs'] as $para ) {
+				if ( ! foliocraft_blank( $para ) ) {
+					return true;
+				}
+			}
+			foreach ( $p['about']['pillars'] as $pillar ) {
+				if ( ! foliocraft_blank( $pillar['title'] ) || ! foliocraft_blank( $pillar['desc'] ) ) {
+					return true;
+				}
+			}
+			return false;
+		case 'experience':
+			return (bool) \FolioCraft\Models\Experience::all();
+		case 'work':
+			return (bool) \FolioCraft\Models\Project::all();
+		case 'opensource':
+			if ( ! foliocraft_blank( $p['opensource']['heading'] ) || ! foliocraft_blank( $p['opensource']['lead'] ) || ! empty( $p['opensource']['areas'] ) ) {
+				return true;
+			}
+			foreach ( $p['opensource']['cards'] as $card ) {
+				if ( ! foliocraft_blank( $card['title'] ) || ! foliocraft_blank( $card['role'] ) || ! foliocraft_blank( $card['blurb'] ) ) {
+					return true;
+				}
+			}
+			return false;
+		case 'stack':
+			foreach ( $p['skills']['groups'] as $group ) {
+				if ( ! foliocraft_blank( $group['label'] ) || ! empty( $group['pills'] ) ) {
+					return true;
+				}
+			}
+			return false;
+		case 'writing':
+			return (bool) \FolioCraft\Models\Post::latest( 1 );
+	}
+	return true;
 }
 
 /**

@@ -34,13 +34,26 @@ class Project {
 		return $out;
 	}
 
-	/** Decoded rows from the theme_mod, or the demo set when unset/empty. @return array<int,array<string,mixed>> */
+	/**
+	 * Saved project rows (memoized). Falls back to the demo set ONLY when the mod
+	 * was never set; once saved, a cleared repeater yields no rows so the section
+	 * is hidden rather than re-showing demo data.
+	 *
+	 * @return array<int,array<string,mixed>>
+	 */
 	private static function items() {
-		$items = json_decode( (string) get_theme_mod( 'foliocraft_projects', '' ), true );
-		if ( ! is_array( $items ) || empty( $items ) ) {
-			$items = self::demo();
+		static $cache = null;
+		if ( null !== $cache ) {
+			return $cache;
 		}
-		return $items;
+		$raw = get_theme_mod( 'foliocraft_projects', null );
+		if ( null === $raw ) {
+			$cache = self::demo();
+		} else {
+			$decoded = json_decode( (string) $raw, true );
+			$cache   = is_array( $decoded ) ? $decoded : array();
+		}
+		return $cache;
 	}
 
 	/** @return array<int,string> */

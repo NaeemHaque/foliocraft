@@ -29,12 +29,34 @@ class Front_Page {
 		$data = array( 'blog_url' => $blog_url, 'profile' => $profile );
 
 		View::render( 'front/hero', $data );
-		View::render( 'front/about', $data );
-		View::render( 'front/experience', array( 'items' => Experience::all(), 'profile' => $profile ) );
-		View::render( 'front/projects', array( 'projects' => Project::all(), 'terms' => Project::tech_terms(), 'profile' => $profile ) );
-		View::render( 'front/opensource', $data );
-		View::render( 'front/skills', $data );
-		View::render( 'front/blog', array( 'posts' => Post::latest( 3 ), 'blog_url' => $blog_url, 'profile' => $profile ) );
+
+		if ( foliocraft_section_visible( 'about' ) ) {
+			View::render( 'front/about', $data );
+		}
+
+		$experience = Experience::all();
+		if ( $experience ) {
+			View::render( 'front/experience', array( 'items' => $experience, 'profile' => $profile ) );
+		}
+
+		$projects = Project::all();
+		if ( $projects ) {
+			View::render( 'front/projects', array( 'projects' => $projects, 'terms' => Project::tech_terms(), 'profile' => $profile ) );
+		}
+
+		if ( foliocraft_section_visible( 'opensource' ) ) {
+			View::render( 'front/opensource', $data );
+		}
+
+		if ( foliocraft_section_visible( 'stack' ) ) {
+			View::render( 'front/skills', $data );
+		}
+
+		$posts = Post::latest( 3 );
+		if ( $posts ) {
+			View::render( 'front/blog', array( 'posts' => $posts, 'blog_url' => $blog_url, 'profile' => $profile ) );
+		}
+
 		View::render( 'front/contact', $data );
 
 		get_footer();
