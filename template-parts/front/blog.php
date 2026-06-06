@@ -13,7 +13,7 @@
 			</a>
 		</div>
 		<div class="blog-grid">
-			<?php foreach ( $posts as $post ) { \FolioCraft\Core\View::render( 'cards/post-card', array_merge( $post, array( 'blog_url' => $blog_url ) ) ); } ?>
+			<?php foreach ( $posts as $post ) { \FolioCraft\Core\View::render( 'cards/post-card', $post ); } ?>
 		</div>
 	</div>
 </section>

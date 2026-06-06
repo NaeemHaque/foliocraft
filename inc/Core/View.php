@@ -40,17 +40,4 @@ class View {
 			require $__foliocraft_path;
 		} )( $path, $data );
 	}
-
-	/**
-	 * Render a template part and return it as a string.
-	 *
-	 * @param string $template Path under template-parts/ without extension.
-	 * @param array  $data     Variables extracted into the template scope.
-	 * @return string
-	 */
-	public static function capture( $template, array $data = array() ) {
-		ob_start();
-		self::render( $template, $data );
-		return (string) ob_get_clean();
-	}
 }

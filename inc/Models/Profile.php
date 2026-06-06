@@ -155,7 +155,6 @@ class Profile {
 			),
 			'resume'     => self::resume_data(),
 			'headshot'   => self::headshot_data(),
-			'accent'     => get_theme_mod( 'foliocraft_accent', '#e6926b' ),
 			'footer'     => array( 'copy' => get_theme_mod( 'foliocraft_footer_copy', 'built with <a class="accent" href="https://github.com/naeemhaque/foliocraft" target="_blank" rel="noopener">FolioCraft</a>' ) ),
 		);
 	}

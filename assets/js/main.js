@@ -47,34 +47,6 @@
   if (menuClose) menuClose.addEventListener('click', closeMenu);
   if (mobileMenu) $$('a', mobileMenu).forEach(function (a) { a.addEventListener('click', closeMenu); });
 
-  /* ---------- résumé buttons (prototype) ---------- */
-  $$('#resumeHero').forEach(function (b) {
-    b.addEventListener('click', function (e) {
-      e.preventDefault();
-      flash('Résumé PDF would download here — wired to a Customizer setting in the theme.');
-    });
-  });
-
-  /* lightweight toast */
-  var toastEl;
-  function flash(msg) {
-    if (!toastEl) {
-      toastEl = document.createElement('div');
-      toastEl.style.cssText = 'position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);z-index:300;background:var(--panel);color:var(--text);border:1px solid var(--accent-line);border-radius:12px;padding:13px 20px;font:14px var(--font-mono,monospace);box-shadow:var(--shadow);opacity:0;transition:opacity .3s,transform .3s;max-width:88vw;text-align:center;';
-      document.body.appendChild(toastEl);
-    }
-    toastEl.textContent = msg;
-    requestAnimationFrame(function () {
-      toastEl.style.opacity = '1';
-      toastEl.style.transform = 'translateX(-50%) translateY(0)';
-    });
-    clearTimeout(toastEl._t);
-    toastEl._t = setTimeout(function () {
-      toastEl.style.opacity = '0';
-      toastEl.style.transform = 'translateX(-50%) translateY(20px)';
-    }, 3200);
-  }
-
   /* ---------- scroll reveal (rect-based, IO-independent) ---------- */
   var revealEls = $$('[data-reveal]');
   if (prefersReduced || !document.documentElement.classList.contains('reveal-on')) {
@@ -141,8 +113,7 @@
     } else {
       var ri = 0, ci = 0, deleting = false;
       function tick() {
-        var motion = document.documentElement.getAttribute('data-motion') || 'medium';
-        var typeSpd = motion === 'expressive' ? 55 : motion === 'subtle' ? 90 : 70;
+        var typeSpd = 70;
         var word = roles[ri];
         if (!deleting) {
           ci++;
@@ -198,51 +169,6 @@
         var match = f === 'all' || card.getAttribute('data-filters').split(' ').indexOf(f) !== -1;
         card.classList.toggle('is-hidden', !match);
       });
-    });
-  }
-
-  /* ---------- contact form validation ---------- */
-  var form = $('#contactForm');
-  if (form) {
-    var fName = $('#name'), fEmail = $('#email'), fMsg = $('#message');
-    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    function validate(field, ok) {
-      $('#f-' + field).classList.toggle('invalid', !ok);
-      return ok;
-    }
-    function checkName() { return validate('name', fName.value.trim().length > 0); }
-    function checkEmail() { return validate('email', emailRe.test(fEmail.value.trim())); }
-    function checkMsg() { return validate('message', fMsg.value.trim().length >= 10); }
-
-    [['name', checkName, fName], ['email', checkEmail, fEmail], ['message', checkMsg, fMsg]].forEach(function (pair) {
-      pair[2].addEventListener('input', function () {
-        if ($('#f-' + pair[0]).classList.contains('invalid')) pair[1]();
-      });
-      pair[2].addEventListener('blur', pair[1]);
-    });
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var ok = checkName() & checkEmail() & checkMsg();
-      if (!ok) {
-        var firstBad = $('.field.invalid input, .field.invalid textarea');
-        if (firstBad) firstBad.focus();
-        return;
-      }
-      var btn = $('button[type="submit"]', form);
-      btn.disabled = true;
-      btn.style.opacity = '.6';
-      var fd = new FormData(form);
-      fd.append('foliocraft_ajax', '1');
-      fetch(form.action, { method: 'POST', body: fd, credentials: 'same-origin' })
-        .then(function (r) { return r.json(); })
-        .then(function () {
-          form.reset();
-          $('#formOk').classList.add('show');
-          setTimeout(function () { $('#formOk').classList.remove('show'); }, 6000);
-        })
-        .catch(function () { form.submit(); })
-        .finally(function () { btn.disabled = false; btn.style.opacity = ''; });
     });
   }
 }());

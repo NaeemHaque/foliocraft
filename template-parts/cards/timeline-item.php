@@ -10,7 +10,7 @@
 	</div>
 	<div class="tl-main">
 		<h3 class="tl-role"><?php echo esc_html( $role ); ?></h3>
-		<p class="tl-co"><?php echo esc_html( $company ); ?><?php if ( ! empty( $badge ) ) : ?> <span class="badge"><?php echo esc_html( $badge ); ?></span><?php endif; ?></p>
+		<p class="tl-co"><?php echo esc_html( $company ); ?></p>
 		<p><?php echo esc_html( $desc ); ?></p>
 		<div class="tl-tags">
 			<?php foreach ( $tags as $tag ) : ?>

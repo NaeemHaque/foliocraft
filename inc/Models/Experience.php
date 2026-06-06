@@ -39,7 +39,6 @@ class Experience {
 			'company' => isset( $it['company'] ) ? (string) $it['company'] : '',
 			'when'    => isset( $it['date_range'] ) ? (string) $it['date_range'] : '',
 			'current' => ! empty( $it['is_current'] ),
-			'badge'   => '',
 			'desc'    => isset( $it['desc'] ) ? (string) $it['desc'] : '',
 			'tags'    => self::split_tech( $it ),
 		);
