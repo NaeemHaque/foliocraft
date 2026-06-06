@@ -353,6 +353,16 @@ class Customizer {
 				'type'    => 'url',
 			) );
 
+			$wp_customize->add_setting( 'foliocraft_social_wordpress', array(
+				'default'           => 'https://profiles.wordpress.org/yourusername',
+				'sanitize_callback' => array( __CLASS__, 'sanitize_url' ),
+			) );
+			$wp_customize->add_control( 'foliocraft_social_wordpress', array(
+				'label'   => __( 'WordPress profile URL', 'foliocraft' ),
+				'section' => 'foliocraft_social',
+				'type'    => 'url',
+			) );
+
 			$wp_customize->add_setting( 'foliocraft_social_email', array(
 			'default'           => 'hello@example.com',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_email_field' ),

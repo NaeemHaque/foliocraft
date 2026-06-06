@@ -160,6 +160,7 @@ class Profile {
 				'github'   => get_theme_mod( 'foliocraft_social_github', 'https://github.com/yourusername' ),
 				'linkedin' => get_theme_mod( 'foliocraft_social_linkedin', 'https://linkedin.com/in/yourusername' ),
 				'x'        => get_theme_mod( 'foliocraft_social_x', 'https://x.com/yourusername' ),
+				'wordpress' => get_theme_mod( 'foliocraft_social_wordpress', 'https://profiles.wordpress.org/yourusername' ),
 				'email'    => get_theme_mod( 'foliocraft_social_email', 'hello@example.com' ),
 			),
 			'contact'    => array(

@@ -3,7 +3,7 @@
 <?php
 $contact     = isset( $profile['contact'] ) ? $profile['contact'] : \FolioCraft\Models\Profile::all()['contact'];
 $social      = isset( $profile['social'] ) ? $profile['social'] : \FolioCraft\Models\Profile::all()['social'];
-$fc_channels = ! foliocraft_blank( $social['email'] ) || ! foliocraft_blank( $social['github'] ) || ! foliocraft_blank( $social['linkedin'] ) || ! foliocraft_blank( $social['x'] );
+$fc_channels = ! foliocraft_blank( $social['email'] ) || ! foliocraft_blank( $social['github'] ) || ! foliocraft_blank( $social['linkedin'] ) || ! foliocraft_blank( $social['x'] ) || ! foliocraft_blank( $social['wordpress'] );
 ?>
 <!-- ============ CONTACT ============ -->
 <section class="section contact" id="contact">
@@ -45,6 +45,13 @@ $fc_channels = ! foliocraft_blank( $social['email'] ) || ! foliocraft_blank( $so
           <a class="channel" href="<?php echo esc_url( $social['x'] ); ?>" target="_blank" rel="noopener">
             <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
             <span class="ct"><span class="l"><?php esc_html_e( 'X', 'foliocraft' ); ?></span><span class="v"><?php echo esc_html( foliocraft_url_label( $social['x'] ) ); ?></span></span>
+            <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </a>
+          <?php endif; ?>
+          <?php if ( ! foliocraft_blank( $social['wordpress'] ) ) : ?>
+          <a class="channel" href="<?php echo esc_url( $social['wordpress'] ); ?>" target="_blank" rel="noopener">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.42 12c0 3.39 1.97 6.32 4.83 7.7L4.17 8.98A8.5 8.5 0 0 0 3.42 12zm14.34-.43c0-1.06-.38-1.79-.71-2.36-.43-.71-.84-1.31-.84-2.02 0-.79.6-1.53 1.45-1.53h.11A8.49 8.49 0 0 0 12 3.42c-2.88 0-5.41 1.47-6.89 3.7.19.01.37.01.53.01.89 0 2.27-.11 2.27-.11.46-.03.51.65.05.7 0 0-.46.05-.97.08l3.08 9.16 1.85-5.55-1.32-3.61c-.46-.03-.89-.08-.89-.08-.46-.03-.4-.73.05-.7 0 0 1.41.11 2.24.11.89 0 2.27-.11 2.27-.11.46-.03.51.65.06.7 0 0-.47.05-.97.08l3.06 9.09.84-2.82c.37-1.16.65-2 .65-2.72zm-5.61 1.18l-2.54 7.38c.76.22 1.56.35 2.39.35.99 0 1.93-.17 2.81-.48-.02-.04-.04-.07-.06-.12l-2.6-7.13zm7.06-4.66c.04.27.06.56.06.87 0 .86-.16 1.83-.64 3.04l-2.58 7.46A8.5 8.5 0 0 0 19.21 8.09zM12 2.02c5.51 0 9.98 4.47 9.98 9.98S17.51 21.98 12 21.98 2.02 17.51 2.02 12 6.49 2.02 12 2.02z"/></svg></span>
+            <span class="ct"><span class="l"><?php esc_html_e( 'WordPress', 'foliocraft' ); ?></span><span class="v"><?php echo esc_html( foliocraft_url_label( $social['wordpress'] ) ); ?></span></span>
             <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </a>
           <?php endif; ?>
