@@ -164,7 +164,7 @@ class Customizer {
 
 		$wp_customize->add_setting( 'foliocraft_hero_cta_url', array(
 			'default'           => '#work',
-			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+			'sanitize_callback' => array( __CLASS__, 'sanitize_link' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_hero_cta_url', array(
 			'label'   => __( 'Primary CTA URL', 'foliocraft' ),
@@ -498,7 +498,7 @@ class Customizer {
 
 		$wp_customize->add_setting( 'foliocraft_os_lead', array(
 			'default'           => 'Contributing to the WordPress Open Source Project across five focus areas, plus Acme CMS — fixing issues, shipping patches, and translating for a global community.',
-			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_os_lead', array(
 			'label'   => __( 'Lead paragraph', 'foliocraft' ),
@@ -649,7 +649,7 @@ class Customizer {
 
 		$wp_customize->add_setting( 'foliocraft_contact_lead', array(
 			'default'           => 'Open to interesting open-source collaborations and product engineering work. The fastest way to reach me is email — or any of these:',
-			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
+			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_contact_lead', array(
 			'label'   => __( 'Lead paragraph', 'foliocraft' ),
@@ -659,7 +659,7 @@ class Customizer {
 
 		$wp_customize->add_setting( 'foliocraft_contact_fluent', array(
 			'default'           => '',
-			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
+			'sanitize_callback' => array( __CLASS__, 'sanitize_shortcode' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_contact_fluent', array(
 			'label'       => __( 'Contact form shortcode', 'foliocraft' ),
@@ -712,6 +712,31 @@ class Customizer {
 	public static function sanitize_email_field( $v ) { return sanitize_email( $v ); }
 	public static function sanitize_lines( $v ) { return sanitize_textarea_field( $v ); }
 	public static function sanitize_hex( $v ) { return sanitize_hex_color( $v ); }
+
+	/**
+	 * Restrict the contact "form shortcode" to a single well-formed shortcode
+	 * tag (e.g. [fluentform id="1"]) or empty — no surrounding text/HTML, no
+	 * multiple/nested shortcodes — so do_shortcode() can't be fed arbitrary input.
+	 */
+	public static function sanitize_shortcode( $v ) {
+		$v = trim( sanitize_text_field( (string) $v ) );
+		if ( '' === $v ) {
+			return '';
+		}
+		return preg_match( '/\A\[[a-zA-Z0-9_-]+[^\[\]]*\]\z/', $v ) ? $v : '';
+	}
+
+	/** Sanitize a link that may be an in-page anchor (#work) or a full/relative URL. */
+	public static function sanitize_link( $v ) {
+		$v = trim( (string) $v );
+		if ( '' === $v ) {
+			return '';
+		}
+		if ( '#' === $v[0] ) {
+			return '#' . preg_replace( '/[^A-Za-z0-9_-]/', '', substr( $v, 1 ) );
+		}
+		return esc_url_raw( $v );
+	}
 
 	/** Validate + re-encode the repeater JSON (projects). */
 	public static function sanitize_projects( $value ) {
