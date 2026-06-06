@@ -13,6 +13,7 @@ class Theme {
 
 	public static function init() {
 		add_action( 'after_setup_theme', array( __CLASS__, 'setup' ) );
+		add_action( 'widgets_init', array( __CLASS__, 'widgets' ) );
 	}
 
 	public static function setup() {
@@ -42,5 +43,20 @@ class Theme {
 		if ( ! isset( $GLOBALS['content_width'] ) ) {
 			$GLOBALS['content_width'] = 800;
 		}
+	}
+
+	/** Register the footer widget area. */
+	public static function widgets() {
+		register_sidebar(
+			array(
+				'name'          => __( 'Footer', 'foliocraft' ),
+				'id'            => 'foliocraft-footer',
+				'description'   => __( 'Widgets added here appear in the site footer.', 'foliocraft' ),
+				'before_widget' => '<section id="%1$s" class="footer-widget %2$s">',
+				'after_widget'  => '</section>',
+				'before_title'  => '<h2 class="footer-widget-title">',
+				'after_title'   => '</h2>',
+			)
+		);
 	}
 }

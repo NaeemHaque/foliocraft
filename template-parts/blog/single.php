@@ -15,6 +15,12 @@ $mins       = max( 1, (int) ceil( $words / 200 ) );
 	<?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'large', array( 'class' => 'post-single-cover' ) ); } ?>
 	<div class="post-content"><?php the_content(); ?></div>
 	<?php wp_link_pages( array( 'before' => '<nav class="page-links" aria-label="' . esc_attr__( 'Post pages', 'foliocraft' ) . '">' . esc_html__( 'Pages:', 'foliocraft' ) . ' ', 'after' => '</nav>' ) ); ?>
-	<?php the_post_navigation( array( 'prev_text' => '&larr; %title', 'next_text' => '%title &rarr;' ) ); ?>
+	<?php
+		$foliocraft_tags = get_the_tag_list( '<ul class="post-tags"><li>', '</li><li>', '</li></ul>' );
+		if ( $foliocraft_tags ) {
+			echo '<div class="post-tags-wrap">' . $foliocraft_tags . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_the_tag_list() returns escaped tag links.
+		}
+		?>
+		<?php the_post_navigation( array( 'prev_text' => '&larr; %title', 'next_text' => '%title &rarr;' ) ); ?>
 </article>
 <?php comments_template(); ?>
