@@ -17,10 +17,12 @@ $headshot = isset( $profile['headshot'] ) ? $profile['headshot'] : \FolioCraft\M
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
           <?php echo esc_html( $hero['cta_primary_label'] ); ?>
         </a>
-        <a href="<?php echo ! empty( $resume['url'] ) ? esc_url( $resume['url'] ) : '#'; ?>" class="btn" <?php echo ! empty( $resume['url'] ) ? 'target="_blank" rel="noopener"' : 'id="resumeHero"'; ?>>
+        <?php if ( ! empty( $resume['url'] ) ) : ?>
+        <a href="<?php echo esc_url( $resume['url'] ); ?>" class="btn" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           <?php echo esc_html( $hero['cta_resume_label'] ); ?>
         </a>
+        <?php endif; ?>
       </div>
       <div class="hero-meta" data-reveal data-delay="4">
         <div class="stat"><div class="n" data-count="5"><?php echo esc_html( $hero['stats'][0]['num'] ); ?></div><div class="l"><?php echo esc_html( $hero['stats'][0]['label'] ); ?></div></div>
