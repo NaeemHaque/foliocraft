@@ -183,19 +183,21 @@ class Profile {
 	}
 
 	/**
-	 * Resolve a newline-separated textarea mod into a clean array of lines,
-	 * falling back to the supplied default when unset or empty.
+	 * Resolve a newline-separated textarea mod into a clean array of lines.
+	 *
+	 * Falls back to the bundled default ONLY when the mod was never set; once the
+	 * user has saved the field, it is honored as-is, so clearing it yields an
+	 * empty array (and the caller hides the section) rather than re-showing demo data.
 	 *
 	 * @param string $key     Theme mod key.
 	 * @param array  $default Default list of lines.
 	 * @return array
 	 */
 	private static function lines( $key, array $default ) {
-		$raw = (string) get_theme_mod( $key, '' );
-		if ( '' === trim( $raw ) ) {
+		$raw = get_theme_mod( $key, null );
+		if ( null === $raw ) {
 			return $default;
 		}
-		$lines = array_values( array_filter( array_map( 'trim', explode( "\n", $raw ) ) ) );
-		return ! empty( $lines ) ? $lines : $default;
+		return array_values( array_filter( array_map( 'trim', explode( "\n", (string) $raw ) ) ) );
 	}
 }

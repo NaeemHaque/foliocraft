@@ -41,3 +41,16 @@ function foliocraft_default_nav() {
 		echo '<a href="' . esc_url( $base . $anchor ) . '"><span class="hash">#</span>' . esc_html( $label ) . '</a>';
 	}
 }
+
+/**
+ * Whether a Customizer-driven value is visually empty.
+ *
+ * Used across the front-page templates so that an element is hidden when its
+ * Customizer field is removed/blank, instead of rendering an empty tag.
+ *
+ * @param string $value Raw (possibly HTML) value.
+ * @return bool True when there is no visible content.
+ */
+function foliocraft_blank( $value ) {
+	return '' === trim( wp_strip_all_tags( (string) $value ) );
+}
