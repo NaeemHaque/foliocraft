@@ -335,7 +335,7 @@ class Customizer {
 		) );
 
 		$wp_customize->add_setting( 'foliocraft_about_p2', array(
-			'default'           => 'I contribute to the <strong>WordPress Open Source Project</strong> (Core, Plugins, Meta, Polyglots, Photos) and <strong>Acme CMS</strong>. AI is now a core part of my workflow for research, planning, and debugging; the rest of my time goes to backend systems with a focus on architecture and clean code. I studied CSE at <strong>Example University</strong>, where programming contests shaped how I think and solve problems.',
+			'default'           => 'I contribute to the <strong>WordPress Open Source Project</strong> (Core, Plugins, Meta, Polyglots, Photos) and <strong>Acme CMS</strong>. AI is now a core part of my workflow for research, planning, and debugging. The rest of my time goes to backend systems with a focus on architecture and clean code. I studied CSE at <strong>Example University</strong>, where programming contests shaped how I think and solve problems.',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_html' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_about_p2', array(

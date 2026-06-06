@@ -63,7 +63,7 @@ class Profile {
 				'heading'    => get_theme_mod( 'foliocraft_about_heading', 'Engineering for scale, contributing in the open.' ),
 				'paragraphs' => array(
 					get_theme_mod( 'foliocraft_about_p1', "I'm a software engineer and open-source contributor focused on building <strong>scalable products, developer tools, and web apps</strong>. At Acme Inc., I work on WordPress product engineering, shipping software trusted by teams and businesses worldwide." ),
-					get_theme_mod( 'foliocraft_about_p2', 'I contribute to the <strong>WordPress Open Source Project</strong> (Core, Plugins, Meta, Polyglots, Photos) and <strong>Acme CMS</strong>. AI is now a core part of my workflow for research, planning, and debugging; the rest of my time goes to backend systems with a focus on architecture and clean code. I studied CSE at <strong>Example University</strong>, where programming contests shaped how I think and solve problems.' ),
+					get_theme_mod( 'foliocraft_about_p2', 'I contribute to the <strong>WordPress Open Source Project</strong> (Core, Plugins, Meta, Polyglots, Photos) and <strong>Acme CMS</strong>. AI is now a core part of my workflow for research, planning, and debugging. The rest of my time goes to backend systems with a focus on architecture and clean code. I studied CSE at <strong>Example University</strong>, where programming contests shaped how I think and solve problems.' ),
 				),
 				'pillars'    => array(
 					array(
