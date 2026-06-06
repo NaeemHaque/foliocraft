@@ -57,7 +57,6 @@ class Profile {
 				'lead'              => get_theme_mod( 'foliocraft_hero_lead', 'I build scalable products, developer tools, and web apps — and contribute to the open-source projects that power the web. Currently engineering WordPress products at <strong style="color:var(--text)">Acme Inc.</strong>, used by teams worldwide.' ),
 				'cta_primary_label' => get_theme_mod( 'foliocraft_hero_cta_label', 'View Projects' ),
 				'cta_primary_url'   => get_theme_mod( 'foliocraft_hero_cta_url', '#work' ),
-				'cta_resume_label'  => get_theme_mod( 'foliocraft_hero_resume_label', 'Download Résumé' ),
 				'stats'             => array(
 					array(
 						'num'   => get_theme_mod( 'foliocraft_stat1_num', '5+' ),

@@ -232,16 +232,6 @@ class Customizer {
 			'type'    => 'text',
 		) );
 
-		$wp_customize->add_setting( 'foliocraft_hero_resume_label', array(
-			'default'           => 'Download Résumé',
-			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
-		) );
-		$wp_customize->add_control( 'foliocraft_hero_resume_label', array(
-			'label'   => __( 'Résumé button label', 'foliocraft' ),
-			'section' => 'foliocraft_hero',
-			'type'    => 'text',
-		) );
-
 		$wp_customize->add_setting( 'foliocraft_stat1_num', array(
 			'default'           => '5+',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
@@ -734,9 +724,10 @@ class Customizer {
 			'sanitize_callback' => array( __CLASS__, 'sanitize_text' ),
 		) );
 		$wp_customize->add_control( 'foliocraft_resume_label', array(
-			'label'   => __( 'Résumé button label', 'foliocraft' ),
-			'section' => 'foliocraft_resume',
-			'type'    => 'text',
+			'label'       => __( 'Résumé button label', 'foliocraft' ),
+			'description' => __( 'Labels both the hero “Download Résumé” button and the résumé page download button.', 'foliocraft' ),
+			'section'     => 'foliocraft_resume',
+			'type'        => 'text',
 		) );
 
 		$wp_customize->add_setting( 'foliocraft_resume_pdf', array( 'default' => 0, 'sanitize_callback' => 'absint' ) );
