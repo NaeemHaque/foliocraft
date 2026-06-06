@@ -111,3 +111,14 @@ function foliocraft_section_visible( $id ) {
 function foliocraft_blank( $value ) {
 	return '' === trim( wp_strip_all_tags( (string) $value ) );
 }
+
+/**
+ * Compact display label for a profile URL — drops the scheme, www, and trailing slash
+ * (e.g. https://github.com/jane/ -> github.com/jane).
+ *
+ * @param string $url URL.
+ * @return string
+ */
+function foliocraft_url_label( $url ) {
+	return rtrim( preg_replace( '#^https?://(www\.)?#i', '', (string) $url ), '/' );
+}
