@@ -73,6 +73,34 @@ class Customizer {
 			}
 		}
 
+		// --- Hero aside (code terminal / image / hidden) ---
+		$wp_customize->add_setting( 'foliocraft_hero_aside', array( 'default' => 'terminal', 'sanitize_callback' => array( __CLASS__, 'sanitize_aside_mode' ) ) );
+		$wp_customize->add_control( 'foliocraft_hero_aside', array(
+			'label'    => __( 'Hero visual', 'foliocraft' ),
+			'section'  => 'foliocraft_hero',
+			'type'     => 'radio',
+			'choices'  => array( 'terminal' => __( 'Code terminal', 'foliocraft' ), 'image' => __( 'Image / GIF', 'foliocraft' ), 'none' => __( 'Hidden', 'foliocraft' ) ),
+			'priority' => 30,
+		) );
+		$wp_customize->add_setting( 'foliocraft_hero_terminal_file', array( 'default' => '~/foliocraft/profile.php', 'sanitize_callback' => array( __CLASS__, 'sanitize_text' ) ) );
+		$wp_customize->add_control( 'foliocraft_hero_terminal_file', array( 'label' => __( 'Terminal title bar', 'foliocraft' ), 'section' => 'foliocraft_hero', 'type' => 'text', 'priority' => 31 ) );
+		$wp_customize->add_setting( 'foliocraft_hero_terminal_code', array( 'default' => \FolioCraft\Models\Profile::default_terminal_code(), 'sanitize_callback' => array( __CLASS__, 'sanitize_code' ) ) );
+		$wp_customize->add_control( 'foliocraft_hero_terminal_code', array(
+			'label'       => __( 'Terminal code', 'foliocraft' ),
+			'description' => __( 'Plain text; lightly syntax-highlighted in the terminal. Clear it to hide the terminal.', 'foliocraft' ),
+			'section'     => 'foliocraft_hero',
+			'type'        => 'textarea',
+			'priority'    => 32,
+		) );
+		$wp_customize->add_setting( 'foliocraft_hero_image', array( 'default' => 0, 'sanitize_callback' => 'absint' ) );
+		$wp_customize->add_control( new \WP_Customize_Media_Control( $wp_customize, 'foliocraft_hero_image', array(
+			'label'       => __( 'Hero image / GIF', 'foliocraft' ),
+			'description' => __( 'Shown when "Image / GIF" is selected above. An animated GIF works too.', 'foliocraft' ),
+			'section'     => 'foliocraft_hero',
+			'mime_type'   => 'image',
+			'priority'    => 33,
+		) ) );
+
 		// --- Projects (repeater) ---
 		$wp_customize->add_setting(
 			'foliocraft_projects',
@@ -744,6 +772,8 @@ class Customizer {
 	public static function sanitize_email_field( $v ) { return sanitize_email( $v ); }
 	public static function sanitize_lines( $v ) { return sanitize_textarea_field( $v ); }
 	public static function sanitize_hex( $v ) { return sanitize_hex_color( $v ); }
+	public static function sanitize_aside_mode( $v ) { return in_array( $v, array( 'terminal', 'image', 'none' ), true ) ? $v : 'terminal'; }
+	public static function sanitize_code( $v ) { return (string) wp_check_invalid_utf8( (string) $v, true ); }
 
 	/**
 	 * Restrict the contact "form shortcode" to a single well-formed shortcode

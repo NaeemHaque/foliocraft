@@ -141,3 +141,37 @@ function foliocraft_eyebrow( $id ) {
 		esc_html( $titles[ $id ]['eyebrow'] )
 	);
 }
+
+/**
+ * Lightly syntax-highlight plain code for the hero terminal. Every token is
+ * escaped, so the returned HTML is safe to echo.
+ *
+ * @param string $raw Plain code.
+ * @return string Highlighted, escaped HTML.
+ */
+function foliocraft_terminal_code( $raw ) {
+	$keywords = '/\b(class|public|private|protected|function|return|true|false|null|new|extends|implements|use|const|static|echo|if|else|foreach|for)\b/';
+	$out      = array();
+	foreach ( explode( "\n", str_replace( "\r\n", "\n", (string) $raw ) ) as $line ) {
+		if ( preg_match( '#^(\s*)(//.*)$#', $line, $m ) ) {
+			$out[] = esc_html( $m[1] ) . '<span class="t-comment">' . esc_html( $m[2] ) . '</span>';
+			continue;
+		}
+		$html = '';
+		foreach ( preg_split( "/('[^']*')/", $line, -1, PREG_SPLIT_DELIM_CAPTURE ) as $part ) {
+			if ( '' === $part ) {
+				continue;
+			}
+			if ( strlen( $part ) >= 2 && "'" === $part[0] && "'" === substr( $part, -1 ) ) {
+				$html .= '<span class="t-str">' . esc_html( $part ) . '</span>';
+			} else {
+				$safe  = esc_html( $part );
+				$safe  = preg_replace( $keywords, '<span class="t-key">$1</span>', $safe );
+				$safe  = preg_replace( '/(\$[A-Za-z_]\w*)/', '<span class="t-prop">$1</span>', $safe );
+				$html .= $safe;
+			}
+		}
+		$out[] = $html;
+	}
+	return implode( "\n", $out );
+}

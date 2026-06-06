@@ -73,6 +73,7 @@ class Profile {
 					),
 				),
 			),
+			'hero_aside' => self::hero_aside_data(),
 			'about'      => array(
 				'heading'    => get_theme_mod( 'foliocraft_about_heading', 'Engineering for scale, contributing in the open.' ),
 				'paragraphs' => array(
@@ -196,6 +197,42 @@ class Profile {
 	private static function headshot_data() {
 		$hid = get_theme_mod( 'foliocraft_headshot', 0 );
 		return array( 'url' => $hid ? (string) wp_get_attachment_url( $hid ) : '' );
+	}
+
+	/**
+	 * Hero-aside data: the visual beside the hero text — a code terminal, an
+	 * image/GIF, or hidden. Resolves the image attachment to a URL.
+	 *
+	 * @return array
+	 */
+	private static function hero_aside_data() {
+		$aid = get_theme_mod( 'foliocraft_hero_image', 0 );
+		return array(
+			'mode'          => get_theme_mod( 'foliocraft_hero_aside', 'terminal' ),
+			'terminal_file' => get_theme_mod( 'foliocraft_hero_terminal_file', '~/foliocraft/profile.php' ),
+			'terminal_code' => get_theme_mod( 'foliocraft_hero_terminal_code', self::default_terminal_code() ),
+			'image_url'     => $aid ? (string) wp_get_attachment_image_url( $aid, 'large' ) : '',
+		);
+	}
+
+	/** Default code shown in the hero terminal (plain text; the view tokenizes it). @return string */
+	public static function default_terminal_code() {
+		return implode(
+			"\n",
+			array(
+				'// who am i',
+				'class Engineer {',
+				"  public \$role      = 'Software Engineer';",
+				"  public \$company   = 'Acme Inc.';",
+				"  public \$stack     = ['PHP', 'Laravel', 'Vue', 'WP'];",
+				"  public \$openSource = true;",
+				'',
+				'  public function build() {',
+				"    return 'clean architecture + ship';",
+				'  }',
+				'}',
+			)
+		);
 	}
 
 	/**

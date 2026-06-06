@@ -342,6 +342,8 @@ button { font-family: inherit; }
   border: 3px solid var(--panel);
   box-shadow: var(--shadow-sm);
 }
+.hero-aside-image { display: block; width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
+.hero-grid--solo { grid-template-columns: 1fr; }
 
 /* scroll cue */
 .scroll-cue {

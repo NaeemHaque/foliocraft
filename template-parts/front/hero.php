@@ -2,11 +2,15 @@
 $hero     = isset( $profile['hero'] ) ? $profile['hero'] : \FolioCraft\Models\Profile::all()['hero'];
 $resume   = isset( $profile['resume'] ) ? $profile['resume'] : \FolioCraft\Models\Profile::all()['resume'];
 $headshot = isset( $profile['headshot'] ) ? $profile['headshot'] : \FolioCraft\Models\Profile::all()['headshot'];
+$aside    = isset( $profile['hero_aside'] ) ? $profile['hero_aside'] : \FolioCraft\Models\Profile::all()['hero_aside'];
+$fc_aside_terminal = ( 'terminal' === $aside['mode'] && ! foliocraft_blank( $aside['terminal_code'] ) );
+$fc_aside_image    = ( 'image' === $aside['mode'] && ! empty( $aside['image_url'] ) );
+$fc_show_aside     = $fc_aside_terminal || $fc_aside_image;
 ?>
 
 <!-- ============ HERO ============ -->
 <section class="hero wrap" id="hero">
-  <div class="hero-grid">
+  <div class="hero-grid<?php echo $fc_show_aside ? '' : ' hero-grid--solo'; ?>">
     <div class="hero-text">
       <?php if ( ! foliocraft_blank( $hero['status'] ) ) : ?>
       <span class="hero-status" data-reveal><span class="dot"></span> <?php echo esc_html( $hero['status'] ); ?></span>
@@ -67,28 +71,24 @@ $headshot = isset( $profile['headshot'] ) ? $profile['headshot'] : \FolioCraft\M
       <?php endif; ?>
     </div>
 
+    <?php if ( $fc_show_aside ) : ?>
     <div class="hero-aside" data-reveal data-delay="2" style="position:relative;">
+      <?php if ( $fc_aside_image ) : ?>
+      <img class="hero-aside-image" src="<?php echo esc_url( $aside['image_url'] ); ?>" alt="" loading="lazy" decoding="async" />
+      <?php else : ?>
       <div class="terminal" aria-hidden="true">
         <div class="terminal-bar">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="file">~/foliocraft/profile.php</span>
+          <?php if ( ! foliocraft_blank( $aside['terminal_file'] ) ) : ?><span class="file"><?php echo esc_html( $aside['terminal_file'] ); ?></span><?php endif; ?>
         </div>
-        <div class="terminal-body"><span class="t-comment">// who am i</span>
-<span class="t-key">class</span> <span class="t-fn">Engineer</span> {
-  <span class="t-key">public</span> <span class="t-prop">$role</span>      = <span class="t-str">'Software Engineer'</span>;
-  <span class="t-key">public</span> <span class="t-prop">$company</span>   = <span class="t-str">'Acme Inc.'</span>;
-  <span class="t-key">public</span> <span class="t-prop">$stack</span>     = [<span class="t-str">'PHP'</span>, <span class="t-str">'Laravel'</span>, <span class="t-str">'Vue'</span>, <span class="t-str">'WP'</span>];
-  <span class="t-key">public</span> <span class="t-prop">$openSource</span> = <span class="t-key">true</span>;
-
-  <span class="t-key">public function</span> <span class="t-fn">build</span>() {
-    <span class="t-key">return</span> <span class="t-str">'clean architecture + ship'</span>;
-  }
-}</div>
+        <div class="terminal-body"><?php echo foliocraft_terminal_code( $aside['terminal_code'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- per-token escaped by foliocraft_terminal_code(). ?></div>
       </div>
+      <?php endif; ?>
       <?php if ( ! empty( $headshot['url'] ) ) : ?>
       <img class="headshot-slot" src="<?php echo esc_url( $headshot['url'] ); ?>" alt="<?php echo esc_attr( $profile['identity']['name'] ); ?>" loading="lazy" decoding="async" />
       <?php endif; ?>
     </div>
+    <?php endif; ?>
   </div>
   <div class="scroll-cue" aria-hidden="true"><span>scroll</span><span class="line"></span></div>
 </section>
