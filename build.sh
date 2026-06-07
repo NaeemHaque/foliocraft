@@ -20,6 +20,7 @@ INCLUDE=(
   # Root templates + required files
   '*.php'          # all PHP templates + functions.php
   style.css        # main stylesheet / theme header
+  theme.json       # block editor settings (color palette, etc.)
   readme.txt       # WordPress.org readme
   screenshot.png   # theme screenshot (1200x900)
   # Directories
