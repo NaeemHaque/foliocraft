@@ -124,6 +124,15 @@ function foliocraft_url_label( $url ) {
 }
 
 /**
+ * Screen-reader-only hint for links that open in a new browser tab.
+ *
+ * @return void
+ */
+function foliocraft_new_tab() {
+	printf( '<span class="screen-reader-text"> %s</span>', esc_html__( '(opens in a new tab)', 'foliocraft' ) );
+}
+
+/**
  * Print a section eyebrow ("01 / About") from the Customizer-driven titles.
  * Hidden when the label is blank.
  *

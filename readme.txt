@@ -7,7 +7,7 @@ Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Tags: portfolio, profile, resume, blog, portfolio-template
+Tags: portfolio, blog, custom-colors, custom-logo, custom-menu, featured-images, theme-options, threaded-comments, translation-ready, full-width-template
 
 A fast, MVC-structured portfolio and blog theme with a Tailwind-built design, light/dark modes, and full Customizer control.
 

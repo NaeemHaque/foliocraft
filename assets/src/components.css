@@ -689,7 +689,7 @@ html.reveal-on [data-reveal][data-delay="4"] { transition-delay: .28s; }
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] { opacity: 1 !important; transform: none !important; }
-  .hero-status .dot, .scroll-cue .line { animation: none; }
+  .hero-status .dot, .scroll-cue .line, .hero-role .cursor { animation: none; }
 }
 
 /* scroll progress */

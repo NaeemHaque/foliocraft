@@ -10,7 +10,7 @@ $role = ! empty( $p['hero']['roles'] ) ? $p['hero']['roles'][0] : '';
 			<div class="role"><?php echo esc_html( $role ); ?></div>
 		</div>
 		<?php if ( ! empty( $p['resume']['url'] ) ) : ?>
-			<a class="btn btn--primary" href="<?php echo esc_url( $p['resume']['url'] ); ?>" target="_blank" rel="noopener"><?php echo esc_html( $p['resume']['label'] ); ?></a>
+			<a class="btn btn--primary" href="<?php echo esc_url( $p['resume']['url'] ); ?>" target="_blank" rel="noopener"><?php echo esc_html( $p['resume']['label'] ); ?><?php foliocraft_new_tab(); ?></a>
 		<?php endif; ?>
 	</header>
 
@@ -35,6 +35,6 @@ $role = ! empty( $p['hero']['roles'] ) ? $p['hero']['roles'][0] : '';
 
 	<section class="resume-section">
 		<h2><?php esc_html_e( 'Contact', 'foliocraft' ); ?></h2>
-		<p class="section-lead"><a href="<?php echo esc_url( 'mailto:' . $p['social']['email'] ); ?>"><?php echo esc_html( $p['social']['email'] ); ?></a> · <a href="<?php echo esc_url( $p['social']['github'] ); ?>" target="_blank" rel="noopener">GitHub</a> · <a href="<?php echo esc_url( $p['social']['linkedin'] ); ?>" target="_blank" rel="noopener">LinkedIn</a></p>
+		<p class="section-lead"><a href="<?php echo esc_url( 'mailto:' . $p['social']['email'] ); ?>"><?php echo esc_html( $p['social']['email'] ); ?></a> · <a href="<?php echo esc_url( $p['social']['github'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'GitHub', 'foliocraft' ); ?><?php foliocraft_new_tab(); ?></a> · <a href="<?php echo esc_url( $p['social']['linkedin'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'LinkedIn', 'foliocraft' ); ?><?php foliocraft_new_tab(); ?></a></p>
 	</section>
 </article>

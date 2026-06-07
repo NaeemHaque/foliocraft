@@ -42,10 +42,23 @@
 
   /* ---------- mobile menu ---------- */
   var menuBtn = $('#menuBtn'), menuClose = $('#menuClose'), mobileMenu = $('#mobileMenu');
-  function closeMenu() { if (mobileMenu) mobileMenu.classList.remove('open'); }
-  if (menuBtn) menuBtn.addEventListener('click', function () { mobileMenu.classList.add('open'); });
+  function closeMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove('open');
+    if (menuBtn) { menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.focus(); }
+  }
+  function openMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add('open');
+    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+    if (menuClose) menuClose.focus();
+  }
+  if (menuBtn) menuBtn.addEventListener('click', openMenu);
   if (menuClose) menuClose.addEventListener('click', closeMenu);
   if (mobileMenu) $$('a', mobileMenu).forEach(function (a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('open')) closeMenu();
+  });
 
   /* ---------- scroll reveal (rect-based, IO-independent) ---------- */
   var revealEls = $$('[data-reveal]');
@@ -88,8 +101,8 @@
       if (el && el.offsetTop <= mid) current = id;
     });
     if (current !== lastActive) {
-      Object.keys(navMap).forEach(function (k) { navMap[k].classList.remove('active'); });
-      if (current && navMap[current]) navMap[current].classList.add('active');
+      Object.keys(navMap).forEach(function (k) { navMap[k].classList.remove('active'); navMap[k].removeAttribute('aria-current'); });
+      if (current && navMap[current]) { navMap[current].classList.add('active'); navMap[current].setAttribute('aria-current', 'true'); }
       lastActive = current;
     }
   }

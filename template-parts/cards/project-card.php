@@ -17,7 +17,7 @@ $icon_dot    = '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy=
 		?></div>
 		<div class="proj-links">
 			<a href="<?php echo ! empty( $live_url ) ? esc_url( $live_url ) : '#'; ?>"<?php echo ! empty( $live_url ) ? ' target="_blank" rel="noopener"' : ''; ?> aria-label="<?php esc_attr_e( 'Live site', 'foliocraft' ); ?>" title="<?php esc_attr_e( 'Live site', 'foliocraft' ); ?>"><?php echo $icon_ext; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?></a>
-			<a href="<?php echo ! empty( $github_url ) ? esc_url( $github_url ) : '#'; ?>"<?php echo ! empty( $github_url ) ? ' target="_blank" rel="noopener"' : ''; ?> aria-label="<?php esc_attr_e( 'GitHub repo', 'foliocraft' ); ?>" title="GitHub"><?php echo $icon_github; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?></a>
+			<a href="<?php echo ! empty( $github_url ) ? esc_url( $github_url ) : '#'; ?>"<?php echo ! empty( $github_url ) ? ' target="_blank" rel="noopener"' : ''; ?> aria-label="<?php esc_attr_e( 'GitHub repo', 'foliocraft' ); ?>" title="<?php esc_attr_e( 'GitHub', 'foliocraft' ); ?>"><?php echo $icon_github; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- trusted static SVG ?></a>
 		</div>
 	</div>
 	<h3><?php echo esc_html( $name ); ?></h3>
