@@ -77,6 +77,9 @@ function foliocraft_primary_menu( $menu_class ) {
 			)
 		);
 		$html = is_string( $html ) ? $html : '';
+		// The markup is reused in two locations (desktop + mobile), so strip the
+		// auto-generated menu-item IDs to keep the duplicated render valid HTML.
+		$html = preg_replace( '/ id="menu-item-\d+"/', '', $html );
 	}
 	echo str_replace( '%fc-menu-class%', esc_attr( $menu_class ), $html ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_nav_menu()/fallback markup (already escaped); only the esc_attr'd class placeholder is swapped.
 }
