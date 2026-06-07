@@ -14,17 +14,7 @@ $profile = isset( $profile ) ? $profile : \FolioCraft\Models\Profile::all();
     <span><?php echo esc_html( $profile['identity']['brand'] ); ?><span class="dim">.dev</span></span>
   </a>
   <nav class="nav-links" id="navLinks" aria-label="<?php esc_attr_e( 'Primary', 'foliocraft' ); ?>">
-    <?php
-    wp_nav_menu(
-      array(
-        'theme_location' => 'primary',
-        'container'      => false,
-        'menu_class'     => 'nav-menu',
-        'depth'          => 1,
-        'fallback_cb'    => 'foliocraft_default_nav',
-      )
-    );
-    ?>
+    <?php foliocraft_primary_menu( 'nav-menu' ); ?>
   </nav>
   <div class="nav-right">
     <a class="btn btn--ghost" href="<?php echo is_front_page() ? '' : esc_url( home_url( '/' ) ); ?>#contact" id="contactTop">

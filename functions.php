@@ -27,7 +27,7 @@ require_once FOLIOCRAFT_DIR . '/inc/Autoloader.php';
  * Fallback for the 'primary' nav location: the one-page anchor links rendered
  * when no menu is assigned. Passed to wp_nav_menu() as fallback_cb.
  */
-function foliocraft_default_nav() {
+function foliocraft_default_nav( $args = array() ) {
 	$base  = is_front_page() ? '' : home_url( '/' );
 	$items = array(
 		'about'      => array( '#about', _x( 'about', 'nav item', 'foliocraft' ) ),
@@ -37,12 +37,48 @@ function foliocraft_default_nav() {
 		'stack'      => array( '#stack', _x( 'stack', 'nav item', 'foliocraft' ) ),
 		'writing'    => array( '#writing', _x( 'writing', 'nav item', 'foliocraft' ) ),
 	);
+	$out = '';
 	foreach ( $items as $id => $item ) {
 		if ( ! foliocraft_section_visible( $id ) ) {
 			continue;
 		}
-		echo '<a href="' . esc_url( $base . $item[0] ) . '"><span class="hash">#</span>' . esc_html( $item[1] ) . '</a>';
+		$out .= '<a href="' . esc_url( $base . $item[0] ) . '"><span class="hash">#</span>' . esc_html( $item[1] ) . '</a>';
 	}
+	// wp_nav_menu() passes its args as an array and uses the returned string when
+	// 'echo' is false, letting foliocraft_primary_menu() render the menu once.
+	if ( is_array( $args ) && isset( $args['echo'] ) && ! $args['echo'] ) {
+		return $out;
+	}
+	echo $out; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- assembled from esc_url()/esc_html() above.
+	return $out;
+}
+
+/**
+ * Render the 'primary' menu once and reuse it for both the desktop and mobile
+ * navigations. Rendering the menu twice repeats its menu/term queries; a static
+ * cache keeps it to a single render per request, with a placeholder so each
+ * location can use its own <ul> class.
+ *
+ * @param string $menu_class Class for the menu <ul> (e.g. nav-menu, mobile-menu-list).
+ * @return void
+ */
+function foliocraft_primary_menu( $menu_class ) {
+	static $html = null;
+	if ( null === $html ) {
+		$html = wp_nav_menu(
+			array(
+				'theme_location' => 'primary',
+				'container'      => false,
+				'menu_class'     => '%fc-menu-class%',
+				'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
+				'depth'          => 1,
+				'fallback_cb'    => 'foliocraft_default_nav',
+				'echo'           => false,
+			)
+		);
+		$html = is_string( $html ) ? $html : '';
+	}
+	echo str_replace( '%fc-menu-class%', esc_attr( $menu_class ), $html ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_nav_menu()/fallback markup (already escaped); only the esc_attr'd class placeholder is swapped.
 }
 
 /**
